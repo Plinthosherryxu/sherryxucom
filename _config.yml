@@ -1,0 +1,37 @@
+# GitHub Pages configuration for sherryxu.com
+
+title: Sherry Xu
+description: >
+  AI tools, research, and practical guides for real estate professionals
+  navigating ESG, digital assets, and the automation era.
+url: "https://sherryxu.com"
+baseurl: ""
+
+# Author
+author:
+  name: Yishuang (Sherry) Xu
+  email: your@email.com
+
+# Build settings
+theme: null
+plugins: []
+
+# Exclude from build
+exclude:
+  - README.md
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+
+# SEO
+lang: en
+twitter:
+  card: summary
+
+# Defaults (for future article pages)
+defaults:
+  - scope:
+      path: "articles"
+      type: "pages"
+    values:
+      layout: null

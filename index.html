@@ -1,0 +1,923 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sherry Xu — AI, ESG & Real Estate</title>
+<meta name="description" content="Sherry Xu (Yishuang Xu) — Researcher, author and founder working at the intersection of AI, ESG and real estate. Routledge author. University of Manchester.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg:       #f0f5f8;
+    --surface:  #ffffff;
+    --ink:      #0d1f35;
+    --ink-2:    #2e4a62;
+    --ink-3:    #7a90a4;
+    --teal:     #1a6b45;
+    --teal-lt:  #e4f2ec;
+    --gold:     #1a4a8a;
+    --gold-lt:  #e8f0fb;
+    --border:   #ccd9e4;
+    --serif:    'Playfair Display', Georgia, serif;
+    --sans:     'DM Sans', system-ui, sans-serif;
+    --max:      1080px;
+    --r:        12px;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: var(--sans);
+    background: var(--bg);
+    color: var(--ink);
+    font-size: 16px;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: inherit; text-decoration: none; }
+  img { display: block; max-width: 100%; }
+
+  /* ── NAV ─────────────────────────────────────────── */
+  nav {
+    position: sticky; top: 0; z-index: 100;
+    background: rgba(240,245,248,0.94);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    padding: 0 2rem;
+  }
+  .nav-inner {
+    max-width: var(--max); margin: 0 auto;
+    display: flex; align-items: center; justify-content: space-between;
+    height: 60px;
+  }
+  .nav-logo {
+    font-family: var(--serif);
+    font-size: 1.1rem; font-weight: 500;
+    letter-spacing: 0.01em;
+  }
+  .nav-links {
+    display: flex; gap: 2rem; list-style: none;
+  }
+  .nav-links a {
+    font-size: 0.875rem; font-weight: 400;
+    color: var(--ink-2); transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--teal); }
+
+  /* ── HERO ─────────────────────────────────────────── */
+  .hero {
+    max-width: var(--max); margin: 0 auto;
+    padding: 7rem 2rem 5rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+  }
+  .hero-tag {
+    display: inline-block;
+    font-size: 0.75rem; font-weight: 500;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--teal);
+    margin-bottom: 1.5rem;
+  }
+  .hero h1 {
+    font-family: var(--serif);
+    font-size: clamp(2.8rem, 5vw, 4.2rem);
+    font-weight: 400; line-height: 1.12;
+    letter-spacing: -0.02em;
+    margin-bottom: 1.5rem;
+  }
+  .hero h1 em { font-style: italic; color: var(--teal); }
+  .hero-desc {
+    font-size: 1.05rem; color: var(--ink-2);
+    max-width: 420px; margin-bottom: 2.5rem;
+    line-height: 1.75;
+  }
+  .hero-creds {
+    display: flex; flex-direction: column; gap: 0.6rem;
+    margin-bottom: 2.5rem;
+  }
+  .cred {
+    display: flex; align-items: center; gap: 0.75rem;
+    font-size: 0.875rem; color: var(--ink-2);
+  }
+  .cred-dot {
+    width: 6px; height: 6px; border-radius: 50%;
+    background: var(--teal); flex-shrink: 0;
+  }
+  .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
+  .btn {
+    display: inline-flex; align-items: center;
+    padding: 0.75rem 1.5rem;
+    border-radius: 6px;
+    font-family: var(--sans); font-size: 0.875rem; font-weight: 500;
+    transition: all 0.2s; cursor: pointer;
+  }
+  .btn-primary {
+    background: var(--teal); color: #fff;
+    border: 1.5px solid var(--teal);
+  }
+  .btn-primary:hover { background: #085549; border-color: #085549; }
+  .btn-outline {
+    background: transparent; color: var(--ink);
+    border: 1.5px solid var(--border);
+  }
+  .btn-outline:hover { border-color: var(--ink-2); }
+
+  .hero-visual {
+    display: flex; justify-content: center; align-items: center;
+  }
+  .hero-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--r);
+    padding: 2rem;
+    width: 100%; max-width: 360px;
+    box-shadow: 0 4px 32px rgba(13,45,74,0.08);
+  }
+  .hero-card-label {
+    font-size: 0.7rem; text-transform: uppercase;
+    letter-spacing: 0.1em; color: var(--teal);
+    font-weight: 500; margin-bottom: 1rem;
+  }
+  .hero-card-title {
+    font-family: var(--serif);
+    font-size: 1.15rem; line-height: 1.4;
+    margin-bottom: 0.75rem;
+  }
+  .hero-card-meta {
+    font-size: 0.8rem; color: var(--ink-3);
+    margin-bottom: 1.5rem;
+  }
+  .hero-card-divider {
+    height: 1px; background: var(--border); margin: 1.25rem 0;
+  }
+  .hero-card-stat {
+    display: flex; justify-content: space-between;
+    font-size: 0.8rem;
+  }
+  .hero-card-stat span:first-child { color: var(--ink-3); }
+  .hero-card-stat span:last-child { font-weight: 500; color: var(--teal); }
+
+  /* ── SECTION WRAPPER ─────────────────────────────── */
+  section { padding: 5rem 2rem; }
+  .section-inner { max-width: var(--max); margin: 0 auto; }
+  .section-label {
+    font-size: 0.72rem; text-transform: uppercase;
+    letter-spacing: 0.12em; color: var(--ink-3);
+    font-weight: 500; margin-bottom: 0.6rem;
+  }
+  .section-title {
+    font-family: var(--serif);
+    font-size: clamp(1.6rem, 3vw, 2.2rem);
+    font-weight: 400; letter-spacing: -0.01em;
+    margin-bottom: 1rem;
+  }
+  .section-desc {
+    font-size: 1rem; color: var(--ink-2);
+    max-width: 560px; margin-bottom: 3rem;
+    line-height: 1.75;
+  }
+  .divider { height: 1px; background: var(--border); }
+
+  /* ── ABOUT ─────────────────────────────────────────── */
+  #about { background: var(--surface); }
+  .about-grid {
+    display: grid; grid-template-columns: 1fr 2fr; gap: 4rem; align-items: start;
+  }
+  .about-aside {}
+  .about-photo {
+    width: 100%; aspect-ratio: 3/4; object-fit: cover;
+    border-radius: var(--r); background: var(--teal-lt);
+    display: flex; align-items: center; justify-content: center;
+    color: var(--teal); font-size: 0.85rem;
+    border: 1px solid var(--border);
+  }
+  .about-photo-placeholder {
+    width: 100%; aspect-ratio: 3/4;
+    border-radius: var(--r);
+    background: var(--teal-lt);
+    border: 1px solid var(--border);
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    gap: 0.5rem; color: var(--teal);
+  }
+  .about-photo-placeholder span { font-size: 0.8rem; }
+  .about-body p {
+    color: var(--ink-2); margin-bottom: 1.25rem; line-height: 1.8;
+  }
+  .about-body p:last-of-type { margin-bottom: 2rem; }
+  .affil-row {
+    display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 2rem;
+  }
+  .affil-tag {
+    font-size: 0.8rem; font-weight: 500;
+    padding: 0.35rem 0.9rem;
+    border-radius: 20px;
+    border: 1px solid var(--border);
+    color: var(--ink-2);
+    background: var(--bg);
+  }
+
+  /* ── FEATURED BOOK ─────────────────────────────────── */
+  #book { background: var(--gold-lt); border-top: 1px solid #b8cfe8; border-bottom: 1px solid #b8cfe8; }
+  .book-grid {
+    display: grid; grid-template-columns: auto 1fr; gap: 4rem; align-items: center;
+  }
+  .book-cover {
+    width: 200px; height: 280px;
+    background: #0d2d4a;
+    border-radius: 4px 10px 10px 4px;
+    box-shadow: 6px 6px 24px rgba(0,0,0,0.18), 2px 2px 0 rgba(0,0,0,0.08);
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    padding: 1.5rem; text-align: center;
+    position: relative; overflow: hidden;
+  }
+  .book-cover::before {
+    content: '';
+    position: absolute; top: 0; left: 0;
+    width: 8px; height: 100%;
+    background: rgba(255,255,255,0.06);
+  }
+  .book-cover-spine {
+    font-family: var(--serif);
+    color: rgba(255,255,255,0.45);
+    font-size: 0.65rem; letter-spacing: 0.12em;
+    text-transform: uppercase; margin-bottom: 1.5rem;
+  }
+  .book-cover-title {
+    font-family: var(--serif);
+    color: #fff; font-size: 0.95rem;
+    line-height: 1.35; margin-bottom: 1rem;
+  }
+  .book-cover-accent {
+    width: 32px; height: 2px; background: #4aaa78; margin: 0 auto 1rem;
+  }
+  .book-cover-author {
+    font-size: 0.7rem; color: rgba(255,255,255,0.55);
+    letter-spacing: 0.05em;
+  }
+  .book-publisher-badge {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    font-size: 0.75rem; font-weight: 500;
+    color: var(--gold);
+    border: 1px solid #a8c0e8;
+    padding: 0.3rem 0.8rem; border-radius: 4px;
+    background: rgba(255,255,255,0.7);
+    margin-bottom: 1.25rem;
+    letter-spacing: 0.04em; text-transform: uppercase;
+  }
+  .book-title {
+    font-family: var(--serif);
+    font-size: clamp(1.4rem, 2.5vw, 2rem);
+    font-weight: 400; line-height: 1.3;
+    letter-spacing: -0.01em; margin-bottom: 1rem;
+  }
+  .book-desc {
+    color: var(--ink-2); margin-bottom: 2rem; line-height: 1.75;
+  }
+  .book-meta { display: flex; gap: 2rem; margin-bottom: 2rem; }
+  .book-meta-item { font-size: 0.82rem; }
+  .book-meta-item strong { display: block; color: var(--ink); font-weight: 500; }
+  .book-meta-item span { color: var(--ink-3); }
+
+  /* ── BOOKS GRID ─────────────────────────────────────── */
+  #books { background: var(--bg); }
+  .books-group { margin-bottom: 3.5rem; }
+  .books-group:last-child { margin-bottom: 0; }
+  .group-label {
+    font-size: 0.75rem; text-transform: uppercase;
+    letter-spacing: 0.1em; color: var(--ink-3); font-weight: 500;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 0.6rem; margin-bottom: 1.5rem;
+  }
+  .books-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 1.25rem;
+  }
+  .book-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--r); overflow: hidden;
+    transition: box-shadow 0.2s, transform 0.2s;
+  }
+  .book-card:hover { box-shadow: 0 8px 28px rgba(0,0,0,0.08); transform: translateY(-2px); }
+  .book-card-thumb {
+    aspect-ratio: 2/3; background: var(--teal);
+    display: flex; align-items: center; justify-content: center;
+    padding: 1rem; text-align: center;
+  }
+  .book-card-thumb-text {
+    font-family: var(--serif); color: rgba(255,255,255,0.9);
+    font-size: 0.85rem; line-height: 1.35;
+  }
+  .book-card-body { padding: 0.9rem; }
+  .book-card-title { font-size: 0.82rem; font-weight: 500; line-height: 1.4; margin-bottom: 0.4rem; }
+  .book-card-tag {
+    font-size: 0.7rem; color: var(--teal); font-weight: 500;
+  }
+  /* Colour variants for book thumbs */
+  .thumb-1 { background: #1a4a8a; }
+  .thumb-2 { background: #0d2d4a; }
+  .thumb-3 { background: #1a6b45; }
+  .thumb-4 { background: #6b3a1a; }
+
+  /* ── TOOLS ─────────────────────────────────────────── */
+  #tools { background: var(--surface); }
+  .tools-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.25rem;
+  }
+  .tool-card {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: var(--r); padding: 1.5rem;
+    transition: box-shadow 0.2s, transform 0.2s;
+    display: flex; flex-direction: column;
+  }
+  .tool-card:hover { box-shadow: 0 8px 28px rgba(0,0,0,0.07); transform: translateY(-2px); }
+  .tool-card-top {
+    display: flex; align-items: flex-start;
+    justify-content: space-between; margin-bottom: 0.75rem;
+  }
+  .tool-tag {
+    font-size: 0.7rem; font-weight: 500;
+    text-transform: uppercase; letter-spacing: 0.08em;
+    padding: 0.25rem 0.6rem; border-radius: 4px;
+  }
+  .tag-workspace { background: var(--teal-lt); color: var(--teal); }
+  .tag-prompts { background: #e8f0fe; color: #1a56a0; }
+  .tag-tool { background: #fce8f3; color: #8b1a5e; }
+  .tag-subscription { background: #ddeeff; color: #1a4a8a; }
+  .tool-price { font-size: 0.9rem; font-weight: 500; color: var(--ink); }
+  .tool-card-title {
+    font-family: var(--serif); font-size: 1.1rem;
+    font-weight: 400; margin-bottom: 0.6rem;
+  }
+  .tool-card-desc { font-size: 0.875rem; color: var(--ink-2); line-height: 1.65; flex-grow: 1; }
+  .tool-card-footer { margin-top: 1.25rem; }
+  .tool-link {
+    font-size: 0.82rem; font-weight: 500; color: var(--teal);
+    display: inline-flex; align-items: center; gap: 0.35rem;
+  }
+  .tool-link::after { content: '→'; }
+
+  /* ── ARTICLES ─────────────────────────────────────── */
+  #articles { background: var(--bg); }
+  .articles-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.25rem;
+  }
+  .article-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--r); padding: 1.75rem;
+    transition: box-shadow 0.2s;
+  }
+  .article-card:hover { box-shadow: 0 8px 28px rgba(0,0,0,0.07); }
+  .article-pillar {
+    font-size: 0.7rem; font-weight: 500;
+    text-transform: uppercase; letter-spacing: 0.08em;
+    color: var(--teal); margin-bottom: 0.75rem;
+  }
+  .article-title {
+    font-family: var(--serif); font-size: 1.05rem;
+    font-weight: 400; line-height: 1.45;
+    margin-bottom: 0.75rem;
+  }
+  .article-desc { font-size: 0.85rem; color: var(--ink-2); line-height: 1.65; }
+  .article-status {
+    display: inline-block; margin-top: 1rem;
+    font-size: 0.72rem; font-weight: 500;
+    padding: 0.2rem 0.6rem; border-radius: 4px;
+    background: #f0f0f0; color: var(--ink-3);
+  }
+  .article-status.live { background: var(--teal-lt); color: var(--teal); }
+
+  /* ── SUBSTACK ─────────────────────────────────────── */
+  #substack {
+    background: #0d2540;
+    color: #fff;
+  }
+  #substack .section-label { color: rgba(255,255,255,0.45); }
+  #substack .section-title { color: #fff; }
+  #substack .section-desc { color: rgba(255,255,255,0.65); max-width: 500px; }
+  .substack-inner {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center;
+  }
+  .substack-features { display: flex; flex-direction: column; gap: 1.25rem; }
+  .substack-feat {
+    display: flex; gap: 1rem; align-items: flex-start;
+  }
+  .substack-feat-icon {
+    width: 36px; height: 36px; flex-shrink: 0;
+    background: rgba(74,170,120,0.15);
+    border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 0.9rem;
+  }
+  .substack-feat-text h4 { font-size: 0.9rem; font-weight: 500; margin-bottom: 0.25rem; }
+  .substack-feat-text p { font-size: 0.82rem; color: rgba(255,255,255,0.5); line-height: 1.6; }
+  .substack-cta {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: var(--r); padding: 2rem;
+  }
+  .substack-cta p { color: rgba(255,255,255,0.7); font-size: 0.9rem; margin-bottom: 1.25rem; }
+  .btn-substack {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    background: #fff; color: var(--ink);
+    padding: 0.8rem 1.5rem; border-radius: 6px;
+    font-weight: 500; font-size: 0.875rem;
+    transition: background 0.2s;
+    width: 100%; justify-content: center;
+  }
+  .btn-substack:hover { background: #f0eeea; }
+
+  /* ── RESEARCH ─────────────────────────────────────── */
+  #research { background: var(--surface); }
+  .research-row {
+    display: flex; gap: 1rem; align-items: flex-start;
+    padding: 1.25rem 0; border-bottom: 1px solid var(--border);
+  }
+  .research-row:first-child { border-top: 1px solid var(--border); }
+  .research-year { font-size: 0.78rem; color: var(--ink-3); min-width: 44px; padding-top: 0.1rem; }
+  .research-body {}
+  .research-title { font-size: 0.95rem; font-weight: 500; margin-bottom: 0.25rem; }
+  .research-venue { font-size: 0.82rem; color: var(--ink-3); font-style: italic; }
+
+  /* ── FOOTER ─────────────────────────────────────────── */
+  footer {
+    padding: 3rem 2rem;
+    background: #e4edf5;
+    border-top: 1px solid var(--border);
+  }
+  .footer-inner {
+    max-width: var(--max); margin: 0 auto;
+    display: flex; justify-content: space-between; align-items: center;
+    flex-wrap: wrap; gap: 1.5rem;
+  }
+  .footer-name {
+    font-family: var(--serif); font-size: 1rem;
+  }
+  .footer-links {
+    display: flex; gap: 1.5rem; list-style: none;
+  }
+  .footer-links a {
+    font-size: 0.82rem; color: var(--ink-3);
+    transition: color 0.2s;
+  }
+  .footer-links a:hover { color: var(--teal); }
+  .footer-copy { font-size: 0.78rem; color: var(--ink-3); }
+
+  /* ── ANIMATIONS ──────────────────────────────────── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(18px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  .fade-up { animation: fadeUp 0.65s ease both; }
+  .delay-1 { animation-delay: 0.1s; }
+  .delay-2 { animation-delay: 0.22s; }
+  .delay-3 { animation-delay: 0.34s; }
+  .delay-4 { animation-delay: 0.46s; }
+
+  /* ── RESPONSIVE ────────────────────────────────────── */
+  @media (max-width: 768px) {
+    .hero { grid-template-columns: 1fr; gap: 3rem; padding: 4rem 1.25rem 3rem; }
+    .hero-visual { display: none; }
+    .about-grid { grid-template-columns: 1fr; }
+    .about-aside { display: none; }
+    .book-grid { grid-template-columns: 1fr; gap: 2rem; }
+    .book-cover { display: none; }
+    .substack-inner { grid-template-columns: 1fr; gap: 2.5rem; }
+    .nav-links { display: none; }
+    section { padding: 3.5rem 1.25rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ── NAV ──────────────────────────────────────── -->
+<nav>
+  <div class="nav-inner">
+    <a href="#" class="nav-logo">Sherry Xu</a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#book">Book</a></li>
+      <li><a href="#books">Books</a></li>
+      <li><a href="#tools">Tools</a></li>
+      <li><a href="#articles">Articles</a></li>
+      <li><a href="#substack">Newsletter</a></li>
+      <li><a href="#research">Research</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- ── HERO ─────────────────────────────────────── -->
+<section style="padding: 0;">
+  <div class="hero">
+    <div>
+      <span class="hero-tag fade-up">AI · ESG · Real Estate</span>
+      <h1 class="fade-up delay-1">
+        Research that<br><em>builds things.</em>
+      </h1>
+      <p class="hero-desc fade-up delay-2">
+        AI tools, research, and practical guides for real estate professionals navigating ESG, digital assets, and the automation era.
+      </p>
+      <div class="hero-creds fade-up delay-3">
+        <div class="cred"><span class="cred-dot"></span><span>Routledge author — PropTech Innovations in Real Estate Investment and Finance (2026)</span></div>
+        <div class="cred"><span class="cred-dot"></span><span>Researcher, University of Manchester</span></div>
+        <div class="cred"><span class="cred-dot"></span><span>Founder, Plinthos — ESG compliance for UK real estate funds</span></div>
+      </div>
+      <div class="hero-actions fade-up delay-4">
+        <a href="#book" class="btn btn-primary">See my book</a>
+        <a href="#tools" class="btn btn-outline">Explore tools</a>
+      </div>
+    </div>
+    <div class="hero-visual fade-up delay-2">
+      <div class="hero-card">
+        <div class="hero-card-label">Latest release</div>
+        <div class="hero-card-title">PropTech Innovations in Real Estate Investment and Finance</div>
+        <div class="hero-card-meta">Routledge · 2026</div>
+        <div class="hero-card-divider"></div>
+        <div class="hero-card-stat"><span>Publisher</span><span>Routledge</span></div>
+        <div class="hero-card-stat" style="margin-top:0.5rem"><span>Focus</span><span>Sustainable futures</span></div>
+        <div class="hero-card-stat" style="margin-top:0.5rem"><span>Available</span><span>Now</span></div>
+        <div style="margin-top:1.5rem">
+          <a href="https://www.routledge.com" target="_blank" class="btn btn-primary" style="width:100%;justify-content:center;font-size:0.82rem">
+            Buy on Routledge → <!-- ✏️ EDIT: Replace href with direct book URL -->
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ── ABOUT ─────────────────────────────────────── -->
+<section id="about">
+  <div class="section-inner">
+    <div class="about-grid">
+      <div class="about-aside">
+        <div class="about-photo-placeholder">
+          <!-- ✏️ EDIT: Replace this placeholder with your photo.
+             Step 1: Add a file called "photo.jpg" to your GitHub repository.
+             Step 2: Delete the SVG block below and replace with:
+             <img src="photo.jpg" alt="Sherry Xu" style="width:100%;aspect-ratio:3/4;object-fit:cover;border-radius:12px;"> -->
+          <svg width="48" height="48" viewBox="0 0 48 48" fill="none"><circle cx="24" cy="18" r="10" stroke="#0a6b5e" stroke-width="1.5"/><path d="M4 44c0-11 9-18 20-18s20 7 20 18" stroke="#0a6b5e" stroke-width="1.5" stroke-linecap="round"/></svg>
+          <span>Add your photo here</span>
+        </div>
+      </div>
+      <div class="about-body">
+        <div class="section-label">About</div>
+        <h2 class="section-title">Yishuang (Sherry) Xu</h2>
+        <p>I work at the intersection of AI, sustainability, and real estate — as a researcher, author, and founder. My academic work focuses on how emerging technologies reshape real estate investment and the built environment. My practical work turns that research into tools that professionals can actually use.</p>
+        <p>At the University of Manchester I research PropTech, digital assets, and ESG in real estate. As founder of <strong>Plinthos</strong>, I build ESG compliance software for UK real estate funds. My writing spans academic journals, practical guides, and self-published books read by analysts and investors worldwide.</p>
+        <p>My most recent book, <em>PropTech Innovations in Real Estate Investment and Finance: Sustainable Futures</em> (Routledge, 2026), explores how technology is reshaping real estate investment across global markets.</p>
+        <p style="color: var(--ink-2); font-size:0.9rem;">For advisory or collaboration enquiries, <a href="mailto:your@email.com" <!-- ✏️ EDIT: Replace with your real email address --> style="color:var(--teal); border-bottom:1px solid var(--teal);">get in touch</a>.</p>
+        <div class="affil-row">
+          <span class="affil-tag">University of Manchester</span>
+          <span class="affil-tag">Plinthos</span>
+          <span class="affil-tag">Routledge</span>
+          <span class="affil-tag">ESG</span>
+          <span class="affil-tag">PropTech</span>
+          <span class="affil-tag">AI</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ── FEATURED BOOK ──────────────────────────────── -->
+<section id="book">
+  <div class="section-inner">
+    <div class="book-grid">
+      <div>
+        <div class="book-cover">
+          <div class="book-cover-spine">Routledge · 2026</div>
+          <div class="book-cover-accent"></div>
+          <div class="book-cover-title">PropTech Innovations in Real Estate Investment and Finance</div>
+          <div class="book-cover-accent"></div>
+          <div class="book-cover-author">Yishuang Xu</div>
+        </div>
+      </div>
+      <div>
+        <div class="book-publisher-badge">Routledge · Taylor &amp; Francis Group</div>
+        <h2 class="book-title">PropTech Innovations in Real Estate Investment and Finance:<br>Sustainable Futures</h2>
+        <p class="book-desc">A comprehensive examination of how property technology is transforming real estate investment and finance across global markets — from ESG integration and digital assets to AI-driven analytics and sustainable infrastructure.</p>
+        <div class="book-meta">
+          
+          <div class="book-meta-item"><strong>Publisher</strong><span>Routledge</span></div>
+          <div class="book-meta-item"><strong>Published</strong><span>2026</span></div>
+        </div>
+        <div style="display:flex; gap:1rem; flex-wrap:wrap;">
+          <a href="https://www.routledge.com" target="_blank" class="btn btn-primary">Buy from Routledge</a> <!-- ✏️ EDIT: Replace with the direct book URL from Routledge -->
+          <a href="https://www.amazon.co.uk/dp/BOOK-ASIN-HERE" target="_blank" class="btn btn-outline">Find on Amazon UK</a> <!-- ✏️ EDIT: Replace BOOK-ASIN-HERE with the Routledge book ASIN -->
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ── BOOKS ─────────────────────────────────────── -->
+<section id="books">
+  <div class="section-inner">
+    <div class="section-label">KDP titles · Available on Amazon</div>
+    <h2 class="section-title">Practical guides &amp; handbooks</h2>
+    <p class="section-desc">Practical guides on AI, ESG, and digital assets — written for investors, analysts, and professionals navigating the transformation of real estate.</p>
+
+    <div class="books-group">
+      <div class="group-label">AI &amp; Technology</div>
+      <div class="books-row">
+        <a href="https://www.amazon.co.uk/dp/B0DTQS552F" target="_blank" class="book-card">
+          <div class="book-card-thumb" style="background:#0a3d5e;aspect-ratio:2/3;display:flex;align-items:center;justify-content:center;padding:1rem;text-align:center;">
+            <div class="book-card-thumb-text">How to Use AI in Financial Analysis</div>
+          </div>
+          <div class="book-card-body">
+            <div class="book-card-title">How to Use AI in Financial Analysis: Building AI Agents That Actually Work</div>
+            <div class="book-card-tag">For analysts &amp; finance professionals</div>
+          </div>
+        </a>
+        <a href="https://www.amazon.co.uk/dp/B0FRZJGQPP" target="_blank" class="book-card">
+          <div class="book-card-thumb" style="background:#1a3a5c;aspect-ratio:2/3;display:flex;align-items:center;justify-content:center;padding:1rem;text-align:center;">
+            <div class="book-card-thumb-text">The AI Crossroads</div>
+          </div>
+          <div class="book-card-body">
+            <div class="book-card-title">The AI Crossroads: Why the Robot Catastrophe Isn't What You Think</div>
+            <div class="book-card-tag">AI &amp; the future of work</div>
+          </div>
+        </a>
+        <a href="https://www.amazon.co.uk/dp/B0FRB4RVM7" target="_blank" class="book-card">
+          <div class="book-card-thumb" style="background:#0f4d6b;aspect-ratio:2/3;display:flex;align-items:center;justify-content:center;padding:1rem;text-align:center;">
+            <div class="book-card-thumb-text">The Navigator in the AI Economy</div>
+          </div>
+          <div class="book-card-body">
+            <div class="book-card-title">The Navigator in the AI Economy: Your Playbook for Thriving</div>
+            <div class="book-card-tag">For professionals navigating AI</div>
+          </div>
+        </a>
+        <a href="https://www.amazon.co.uk/dp/B0DL4QY2XJ" target="_blank" class="book-card">
+          <div class="book-card-thumb" style="background:#2a1a5c;aspect-ratio:2/3;display:flex;align-items:center;justify-content:center;padding:1rem;text-align:center;">
+            <div class="book-card-thumb-text">The Shape of a Mind</div>
+          </div>
+          <div class="book-card-body">
+            <div class="book-card-title">The Shape of a Mind: A Race to Understand is a Race to Survive</div>
+            <div class="book-card-tag">AI &amp; intelligence</div>
+          </div>
+        </a>
+      </div>
+    </div>
+
+    <div class="books-group">
+      <div class="group-label">ESG &amp; Sustainability</div>
+      <div class="books-row">
+        <a href="https://www.amazon.co.uk/dp/B0FMYS7G37" target="_blank" class="book-card">
+          <div class="book-card-thumb" style="background:#1a4d2e;aspect-ratio:2/3;display:flex;align-items:center;justify-content:center;padding:1rem;text-align:center;">
+            <div class="book-card-thumb-text">The Journey to Net Zero Real Estate</div>
+          </div>
+          <div class="book-card-body">
+            <div class="book-card-title">The Journey to Net Zero Real Estate: A Beginner's Guide to Sustainable Property Development and Investment</div>
+            <div class="book-card-tag">For landlords &amp; developers</div>
+          </div>
+        </a>
+        <a href="https://www.amazon.co.uk/dp/B0DJ3823BQ" target="_blank" class="book-card">
+          <div class="book-card-thumb" style="background:#2d5a1e;aspect-ratio:2/3;display:flex;align-items:center;justify-content:center;padding:1rem;text-align:center;">
+            <div class="book-card-thumb-text">Sustainability in Real Estate</div>
+          </div>
+          <div class="book-card-body">
+            <div class="book-card-title">Sustainability in Real Estate: A Beginner's Guide</div>
+            <div class="book-card-tag">For property professionals</div>
+          </div>
+        </a>
+      </div>
+    </div>
+
+    <div class="books-group">
+      <div class="group-label">Digital Assets &amp; Tokenisation</div>
+      <div class="books-row">
+        <a href="https://www.amazon.co.uk/dp/B0FKBX591P" target="_blank" class="book-card">
+          <div class="book-card-thumb" style="background:#0a4d6e;aspect-ratio:2/3;display:flex;align-items:center;justify-content:center;padding:1rem;text-align:center;">
+            <div class="book-card-thumb-text">Fundamentals of Real Estate Tokenisation</div>
+          </div>
+          <div class="book-card-body">
+            <div class="book-card-title">Fundamentals of Real Estate Tokenisation</div>
+            <div class="book-card-tag">RWA Tokenization Series · Book 1</div>
+          </div>
+        </a>
+        <a href="https://www.amazon.co.uk/dp/B0FPJNF32K" target="_blank" class="book-card">
+          <div class="book-card-thumb" style="background:#134e7a;aspect-ratio:2/3;display:flex;align-items:center;justify-content:center;padding:1rem;text-align:center;">
+            <div class="book-card-thumb-text">How to Make Money from Real Estate Tokenization</div>
+          </div>
+          <div class="book-card-body">
+            <div class="book-card-title">How to Make Money from Real Estate Tokenization: A Practical Guide for Everyday Property Investors</div>
+            <div class="book-card-tag">RWA Tokenization Series · Book 2</div>
+          </div>
+        </a>
+        <a href="https://www.amazon.co.uk/dp/B0FJ28BDBW" target="_blank" class="book-card">
+          <div class="book-card-thumb" style="background:#3d1a5c;aspect-ratio:2/3;display:flex;align-items:center;justify-content:center;padding:1rem;text-align:center;">
+            <div class="book-card-thumb-text">A Brief History of Stablecoins</div>
+          </div>
+          <div class="book-card-body">
+            <div class="book-card-title">A Brief History of Stablecoins: From Digital Banking to Monetary Evolution</div>
+            <div class="book-card-tag">Digital finance &amp; monetary history</div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ── TOOLS ─────────────────────────────────────── -->
+<section id="tools">
+  <div class="section-inner">
+    <div class="section-label">Gumroad tools</div>
+    <h2 class="section-title">Tools you can use today</h2>
+    <p class="section-desc">Practical workspaces, frameworks, and prompt libraries for real estate professionals. Open it on Monday, use it on a real problem by Monday afternoon.</p>
+    <div class="tools-grid">
+      <div class="tool-card">
+        <div class="tool-card-top">
+          <span class="tool-tag tag-workspace">Notion workspace</span>
+          <span class="tool-price">£99</span>
+        </div>
+        <div class="tool-card-title">Token Ready</div>
+        <div class="tool-card-desc">A pre-built Notion workspace for real estate tokenisation due diligence. Structure your analysis, track legal readiness, and evaluate deals — no setup required.</div>
+        <div class="tool-card-footer"><a href="https://YOUR-GUMROAD-LINK" class="tool-link">Get on Gumroad</a> <!-- ✏️ EDIT: Replace with your Gumroad product URL --></div>
+      </div>
+      <div class="tool-card">
+        <div class="tool-card-top">
+          <span class="tool-tag tag-prompts">Prompt library</span>
+          <span class="tool-price">£39</span>
+        </div>
+        <div class="tool-card-title">AI Prompts for Property</div>
+        <div class="tool-card-desc">50 ready-to-use AI prompts for property professionals — financial analysis, ESG reporting, client communications, and investment memos. Copy, paste, get results.</div>
+        <div class="tool-card-footer"><a href="https://YOUR-GUMROAD-LINK" class="tool-link">Get on Gumroad</a> <!-- ✏️ EDIT: Replace with your Gumroad product URL --></div>
+      </div>
+      <div class="tool-card">
+        <div class="tool-card-top">
+          <span class="tool-tag tag-tool">Decision tool</span>
+          <span class="tool-price">£49</span>
+        </div>
+        <div class="tool-card-title">Deal Tester</div>
+        <div class="tool-card-desc">Enter your deal inputs — purchase price, yield, financing, exit assumptions — and get a structured go/no-go output with commentary. A decision framework, not a spreadsheet to build.</div>
+        <div class="tool-card-footer"><a href="https://YOUR-GUMROAD-LINK" class="tool-link">Get on Gumroad</a> <!-- ✏️ EDIT: Replace with your Gumroad product URL --></div>
+      </div>
+      <div class="tool-card">
+        <div class="tool-card-top">
+          <span class="tool-tag tag-subscription">Monthly</span>
+          <span class="tool-price">£9/mo</span>
+        </div>
+        <div class="tool-card-title">PropTech AI Radar</div>
+        <div class="tool-card-desc">Monthly curated intelligence on AI tools, regulatory shifts, and use cases relevant to real estate professionals. I read everything so you don't have to.</div>
+        <div class="tool-card-footer"><a href="https://YOUR-GUMROAD-LINK" class="tool-link">Subscribe on Gumroad</a> <!-- ✏️ EDIT: Replace with your Gumroad subscription URL --></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ── ARTICLES ─────────────────────────────────── -->
+<section id="articles">
+  <div class="section-inner">
+    <div class="section-label">Writing</div>
+    <h2 class="section-title">Practical guides &amp; analysis</h2>
+    <p class="section-desc">In-depth articles on AI, ESG, and digital assets in real estate — written for professionals who want substance, not summaries.</p>
+    <div class="articles-grid">
+      <div class="article-card">
+        <div class="article-pillar">AI in Real Estate</div>
+        <div class="article-title">How is AI actually being used in real estate right now — and what doesn't work yet?</div>
+        <div class="article-desc">An honest practitioner's map of AI use cases by maturity — what's production-ready, what's promising, and what's still hype.</div>
+        <span class="article-status">Coming soon</span> <!-- ✏️ EDIT: When article is live, replace this whole line with: <a href="/articles/ARTICLE-SLUG/" class="article-status live">Read article →</a> -->
+      </div>
+      <div class="article-card">
+        <div class="article-pillar">ESG &amp; Sustainability</div>
+        <div class="article-title">What does MEES compliance mean for UK landlords in 2025 and beyond?</div>
+        <div class="article-desc">A plain-English guide to EPC requirements, timelines, and what landlords actually need to do before the deadlines arrive.</div>
+        <span class="article-status">Coming soon</span> <!-- ✏️ EDIT: When article is live, replace this whole line with: <a href="/articles/ARTICLE-SLUG/" class="article-status live">Read article →</a> -->
+      </div>
+      <div class="article-card">
+        <div class="article-pillar">Digital Assets</div>
+        <div class="article-title">What does it mean to tokenise real estate — how does it actually work?</div>
+        <div class="article-desc">From blockchain basics to fractional ownership structures — a clear explanation of how real estate tokenisation works in practice.</div>
+        <span class="article-status">Coming soon</span> <!-- ✏️ EDIT: When article is live, replace this whole line with: <a href="/articles/ARTICLE-SLUG/" class="article-status live">Read article →</a> -->
+      </div>
+      <div class="article-card">
+        <div class="article-pillar">AI Agents</div>
+        <div class="article-title">What can AI agents actually do in real estate — and what can't they do yet?</div>
+        <div class="article-desc">A researcher-practitioner's assessment of agent capabilities across data aggregation, ESG scoring, lease abstraction, and more.</div>
+        <span class="article-status">Coming soon</span> <!-- ✏️ EDIT: When article is live, replace this whole line with: <a href="/articles/ARTICLE-SLUG/" class="article-status live">Read article →</a> -->
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ── SUBSTACK ──────────────────────────────────── -->
+<section id="substack">
+  <div class="section-inner">
+    <div class="substack-inner">
+      <div>
+        <div class="section-label">Newsletter</div>
+        <h2 class="section-title" style="color:#fff;">AI and ESG — a fortnightly briefing</h2>
+        <p class="section-desc">Thinking at the intersection of artificial intelligence and sustainable real estate. For practitioners who want analysis, not announcements.</p>
+        <div class="substack-features">
+          <div class="substack-feat">
+            <div class="substack-feat-icon">✦</div>
+            <div class="substack-feat-text">
+              <h4>Practitioner-first</h4>
+              <p>Written from inside real estate — not from the outside looking in.</p>
+            </div>
+          </div>
+          <div class="substack-feat">
+            <div class="substack-feat-icon">✦</div>
+            <div class="substack-feat-text">
+              <h4>Research-grounded</h4>
+              <p>Academic rigour with practical application. No fluff, no filler.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="substack-cta">
+        <p>Join readers who want to understand where AI and ESG are actually taking the real estate industry — before it arrives.</p>
+        <a href="https://YOUR-SUBSTACK-URL.substack.com" target="_blank" class="btn-substack" <!-- ✏️ EDIT: Replace with your Substack URL -->>
+          Subscribe on Substack →
+        </a>
+        <p style="font-size:0.75rem; text-align:center; margin-top:1rem; margin-bottom:0; color:rgba(255,255,255,0.3);">Free · Fortnightly · Unsubscribe anytime</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ── RESEARCH ──────────────────────────────────── -->
+<section id="research">
+  <div class="section-inner">
+    <div class="section-label">Academic work</div>
+    <h2 class="section-title">Research &amp; publications</h2>
+    <p class="section-desc">Peer-reviewed research in PropTech, ESG, digital assets, and AI in real estate. University of Manchester.</p>
+
+    <!-- Add your actual publications here -->
+    <div class="research-row">
+      <div class="research-year">2026</div>
+      <div class="research-body">
+        <div class="research-title">PropTech Innovations in Real Estate Investment and Finance: Sustainable Futures</div>
+        <div class="research-venue">Routledge</div>
+      </div>
+    </div>
+    <div class="research-row">
+      <div class="research-year">2025</div>
+      <div class="research-body">
+        <!-- ✏️ EDIT: Replace the two blocks below with your real publications.
+         Copy and paste this pattern for each paper:
+         <div class="research-title">YOUR PAPER TITLE</div>
+         <div class="research-venue">JOURNAL NAME · Vol X, pp. XX-XX</div> -->
+        <div class="research-title">Add your journal paper title here</div>
+        <div class="research-venue">Journal Name · Volume, Pages</div>
+      </div>
+    </div>
+    <div class="research-row">
+      <div class="research-year">2024</div>
+      <div class="research-body">
+        <div class="research-title">Add your journal paper title here</div>
+        <div class="research-venue">Journal Name · Volume, Pages</div>
+      </div>
+    </div>
+
+    <div style="margin-top:2rem;">
+      <a href="https://www.linkedin.com/in/YOUR-LINKEDIN-HANDLE" target="_blank" class="btn btn-outline" <!-- ✏️ EDIT: Replace with your LinkedIn URL -->>View full profile on LinkedIn</a>
+    </div>
+  </div>
+</section>
+
+<!-- ── FOOTER ─────────────────────────────────────── -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-name">Sherry Xu</div>
+    <ul class="footer-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#book">Book</a></li>
+      <li><a href="#tools">Tools</a></li>
+      <li><a href="#articles">Articles</a></li>
+      <li><a href="https://YOUR-SUBSTACK-URL.substack.com" target="_blank">Newsletter</a></li> <!-- ✏️ EDIT: Replace with your Substack URL -->
+      <li><a href="https://www.linkedin.com/in/YOUR-LINKEDIN-HANDLE" target="_blank">LinkedIn <!-- ✏️ EDIT: LinkedIn URL --></a></li>
+    </ul>
+    <div class="footer-copy">© 2026 Yishuang (Sherry) Xu</div>
+  </div>
+</footer>
+
+</body>
+</html>
