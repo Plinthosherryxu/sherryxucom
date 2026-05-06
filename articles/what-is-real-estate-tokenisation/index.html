@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>What Does It Mean to Tokenise Real Estate — How Does It Actually Work?</title>
+<meta name="description" content="A plain-English explanation of real estate tokenisation — what it is, how ownership works, the UK regulatory context, and what investors need to know before getting involved.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "What Does It Mean to Tokenise Real Estate — How Does It Actually Work?",
+  "description": "A plain-English explanation of real estate tokenisation — what it is, how ownership works, the UK regulatory context, and what investors need to know before getting involved.",
+  "author": {
+    "@type": "Person",
+    "name": "Yishuang (Sherry) Xu",
+    "url": "https://sherryxu.com"
+  },
+  "publisher": {
+    "@type": "Person",
+    "name": "Yishuang (Sherry) Xu"
+  },
+  "datePublished": "2025-05-06",
+  "dateModified": "2025-05-06",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://sherryxu.com/articles/what-is-real-estate-tokenisation/"
+  }
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What does it mean to tokenise real estate?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Tokenising real estate means converting ownership rights in a property or portfolio into digital tokens recorded on a blockchain. Each token represents a fractional share of the asset — its value, income, and in some structures, its governance rights. Tokens can be bought, sold, and transferred digitally, which in theory makes real estate investment more accessible and more liquid than traditional property ownership."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do I actually own the property when I buy a real estate token?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Not directly. In most tokenisation structures, the property is held by a Special Purpose Vehicle (SPV) — a legal entity created specifically to own the asset. Investors hold tokens that represent shares in the SPV, not title to the underlying property. This is similar to owning shares in a company that owns a building, rather than owning the building itself. The legal ownership chain is: token → SPV shares → property."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is real estate tokenisation legal in the UK?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, with the right structure. Security tokens — tokens that represent ownership or economic rights in an asset — are regulated financial instruments in the UK and fall under FCA oversight. Any platform issuing or facilitating the trading of real estate security tokens must be FCA authorised or exempt. Investors are subject to standard AML and KYC requirements. The regulatory framework exists; the key is ensuring the structure used is compliant with both financial regulation and UK property law."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What are the main risks of tokenised real estate investment?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The main risks are: liquidity risk (secondary markets for real estate tokens are still thin, so selling your tokens quickly at a fair price is not guaranteed), platform risk (if the issuing platform fails, the legal and operational consequences for token holders may be complex), smart contract risk (code vulnerabilities can be exploited), regulatory risk (the framework is still evolving), and the standard real estate risks of vacancy, maintenance, and market value movement. Tokenisation changes the access and transfer mechanism — it does not change the underlying economics of the asset."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is RWA tokenisation?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "RWA stands for Real World Assets. RWA tokenisation refers to the broader project of bringing physical, real-world assets — property, infrastructure, commodities, private credit — onto blockchain infrastructure. Real estate is the largest and most actively pursued category within RWA tokenisation, given the size of the global property market and the well-known liquidity and access constraints of traditional real estate investment."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How is tokenised real estate different from a REIT?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A REIT (Real Estate Investment Trust) is a listed or unlisted fund that pools investor capital to buy and manage property. REITs are a mature, regulated, and liquid vehicle for real estate investment. Tokenised real estate can offer more granular asset selection (you choose which specific property to invest in, rather than a diversified fund), potentially lower minimum investment sizes, and the possibility of peer-to-peer transfer without going through an exchange. The trade-off is that REITs have decades of regulatory track record, deep liquidity, and institutional-grade governance — most tokenised real estate platforms do not yet match this."
+      }
+    }
+  ]
+}
+</script>
+
+<style>
+  :root {
+    --bg:      #f0f5f8;
+    --surface: #ffffff;
+    --ink:     #0d1f35;
+    --ink-2:   #2e4a62;
+    --ink-3:   #7a90a4;
+    --green:   #1a6b45;
+    --green-lt:#e4f2ec;
+    --blue:    #1a4a8a;
+    --blue-lt: #e8f0fb;
+    --amber:   #7a5200;
+    --amber-lt:#fef3dc;
+    --border:  #ccd9e4;
+    --serif:   'Playfair Display', Georgia, serif;
+    --sans:    'DM Sans', system-ui, sans-serif;
+    --max:     720px;
+    --r:       10px;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: var(--sans);
+    background: var(--bg);
+    color: var(--ink);
+    font-size: 17px;
+    line-height: 1.75;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: var(--green); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+
+  nav {
+    position: sticky; top: 0; z-index: 100;
+    background: rgba(240,245,248,0.94);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    padding: 0 2rem;
+  }
+  .nav-inner {
+    max-width: 900px; margin: 0 auto;
+    display: flex; align-items: center; justify-content: space-between;
+    height: 56px;
+  }
+  .nav-logo { font-family: var(--serif); font-size: 1rem; color: var(--ink); }
+  .nav-back { font-size: 0.85rem; color: var(--ink-3); }
+  .nav-back:hover { color: var(--green); text-decoration: none; }
+
+  .article-wrap {
+    max-width: var(--max); margin: 0 auto;
+    padding: 4rem 2rem 6rem;
+  }
+  .article-pillar {
+    font-size: 0.75rem; font-weight: 500;
+    text-transform: uppercase; letter-spacing: 0.1em;
+    color: var(--amber); margin-bottom: 1rem;
+  }
+  .article-title {
+    font-family: var(--serif);
+    font-size: clamp(1.9rem, 4vw, 2.8rem);
+    font-weight: 400; line-height: 1.18;
+    letter-spacing: -0.02em; margin-bottom: 1.5rem;
+  }
+  .article-meta {
+    display: flex; gap: 1.5rem; flex-wrap: wrap;
+    font-size: 0.82rem; color: var(--ink-3);
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 2.5rem;
+  }
+  .article-body h2 {
+    font-family: var(--serif);
+    font-size: 1.45rem; font-weight: 400;
+    margin: 2.5rem 0 1rem; color: var(--ink);
+  }
+  .article-body h3 {
+    font-size: 1.05rem; font-weight: 500;
+    margin: 1.75rem 0 0.6rem; color: var(--ink);
+  }
+  .article-body p { margin-bottom: 1.25rem; color: var(--ink-2); }
+  .article-body p:first-child { font-size: 1.08rem; color: var(--ink); line-height: 1.8; }
+  .article-body ul, .article-body ol { margin: 0 0 1.25rem 1.5rem; color: var(--ink-2); }
+  .article-body li { margin-bottom: 0.5rem; }
+  .article-body strong { color: var(--ink); font-weight: 500; }
+
+  .callout {
+    background: var(--blue-lt);
+    border-left: 3px solid var(--blue);
+    border-radius: 0 var(--r) var(--r) 0;
+    padding: 1.25rem 1.5rem; margin: 2rem 0;
+  }
+  .callout.amber {
+    background: var(--amber-lt);
+    border-left-color: #c47f00;
+  }
+  .callout.green {
+    background: var(--green-lt);
+    border-left-color: var(--green);
+  }
+  .callout p { margin: 0; color: var(--ink); }
+
+  /* Ownership chain diagram */
+  .chain-diagram {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--r);
+    padding: 1.75rem; margin: 2rem 0;
+  }
+  .chain-title {
+    font-size: 0.75rem; font-weight: 500;
+    text-transform: uppercase; letter-spacing: 0.08em;
+    color: var(--ink-3); margin-bottom: 1.5rem;
+  }
+  .chain-steps {
+    display: flex; align-items: center;
+    gap: 0; flex-wrap: wrap;
+  }
+  .chain-node {
+    flex: 1; min-width: 110px;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 1rem 0.75rem;
+    text-align: center;
+  }
+  .chain-node-icon { font-size: 1.5rem; margin-bottom: 0.4rem; }
+  .chain-node-label {
+    font-size: 0.8rem; font-weight: 500; color: var(--ink);
+    margin-bottom: 0.2rem;
+  }
+  .chain-node-desc { font-size: 0.7rem; color: var(--ink-3); line-height: 1.4; }
+  .chain-arrow {
+    font-size: 1.1rem; color: var(--ink-3);
+    padding: 0 0.5rem; flex-shrink: 0;
+  }
+
+  /* Process steps */
+  .process-steps { margin: 2rem 0; }
+  .process-step {
+    display: flex; gap: 1.25rem; align-items: flex-start;
+    padding: 1rem 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .process-step:first-child { border-top: 1px solid var(--border); }
+  .step-num {
+    width: 28px; height: 28px; flex-shrink: 0;
+    background: var(--ink); color: #fff;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 0.78rem; font-weight: 500; margin-top: 0.1rem;
+  }
+  .step-body h4 { font-size: 0.95rem; font-weight: 500; margin-bottom: 0.3rem; }
+  .step-body p { font-size: 0.88rem; color: var(--ink-2); margin: 0; line-height: 1.65; }
+
+  .table-wrap { overflow-x: auto; margin: 2rem 0; }
+  table { width: 100%; border-collapse: collapse; font-size: 0.9rem; }
+  thead th {
+    background: var(--ink); color: #fff;
+    padding: 0.75rem 1rem; text-align: left;
+    font-weight: 500; font-size: 0.82rem; letter-spacing: 0.02em;
+  }
+  tbody tr:nth-child(odd) { background: var(--surface); }
+  tbody tr:nth-child(even) { background: var(--bg); }
+  tbody td {
+    padding: 0.75rem 1rem;
+    border-bottom: 1px solid var(--border);
+    color: var(--ink-2); vertical-align: top;
+  }
+  tbody td:first-child { font-weight: 500; color: var(--ink); }
+
+  .faq-section {
+    margin-top: 3.5rem; padding-top: 2.5rem;
+    border-top: 1px solid var(--border);
+  }
+  .faq-title {
+    font-family: var(--serif); font-size: 1.5rem;
+    font-weight: 400; margin-bottom: 1.5rem;
+  }
+  details { border-bottom: 1px solid var(--border); padding: 1rem 0; }
+  details:first-of-type { border-top: 1px solid var(--border); }
+  summary {
+    font-weight: 500; font-size: 0.97rem;
+    cursor: pointer; list-style: none;
+    display: flex; justify-content: space-between; align-items: center;
+    gap: 1rem; color: var(--ink);
+  }
+  summary::-webkit-details-marker { display: none; }
+  summary::after { content: '+'; font-size: 1.2rem; color: var(--amber); flex-shrink: 0; }
+  details[open] summary::after { content: '−'; }
+  details p { margin-top: 0.75rem; color: var(--ink-2); font-size: 0.95rem; line-height: 1.75; }
+
+  .cta-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 3rem; }
+  .cta-box {
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: var(--r); padding: 1.5rem;
+    display: flex; flex-direction: column;
+  }
+  .cta-tag {
+    font-size: 0.7rem; font-weight: 500;
+    text-transform: uppercase; letter-spacing: 0.08em;
+    color: var(--ink-3); margin-bottom: 0.75rem;
+  }
+  .cta-box h4 { font-size: 0.95rem; font-weight: 500; margin-bottom: 0.4rem; }
+  .cta-box p { font-size: 0.82rem; color: var(--ink-2); margin-bottom: 1rem; flex-grow: 1; line-height: 1.6; }
+  .btn-sm {
+    display: inline-flex; align-items: center;
+    padding: 0.55rem 1.1rem; border-radius: 6px;
+    font-size: 0.82rem; font-weight: 500;
+    transition: background 0.2s; align-self: flex-start;
+  }
+  .btn-green { background: var(--green); color: #fff; }
+  .btn-green:hover { background: #145435; text-decoration: none; }
+  .btn-blue { background: var(--blue); color: #fff; }
+  .btn-blue:hover { background: #123a6e; text-decoration: none; }
+
+  .article-footer {
+    max-width: var(--max); margin: 0 auto;
+    padding: 2rem; border-top: 1px solid var(--border);
+    display: flex; justify-content: space-between;
+    align-items: center; flex-wrap: wrap; gap: 1rem;
+    font-size: 0.82rem; color: var(--ink-3);
+  }
+  .article-footer a { color: var(--ink-3); }
+  .article-footer a:hover { color: var(--green); }
+
+  @media (max-width: 640px) {
+    .article-wrap { padding: 2.5rem 1.25rem 4rem; }
+    .chain-steps { flex-direction: column; }
+    .chain-arrow { transform: rotate(90deg); align-self: center; }
+    .cta-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="/" class="nav-logo">Sherry Xu</a>
+    <a href="/#articles" class="nav-back">← All articles</a>
+  </div>
+</nav>
+
+<main>
+<article class="article-wrap">
+
+  <div class="article-pillar">Digital Assets &amp; Tokenisation</div>
+
+  <h1 class="article-title">What Does It Mean to Tokenise Real Estate — How Does It Actually Work?</h1>
+
+  <div class="article-meta">
+    <span>By Yishuang (Sherry) Xu</span>
+    <span><!-- ✏️ EDIT: update to publication date --> May 2025</span>
+    <span>12 min read</span>
+  </div>
+
+  <div class="article-body">
+
+    <p>Real estate tokenisation is one of those ideas that generates either enthusiasm or scepticism in roughly equal measure — often from people who have not examined exactly what it is. The concept is straightforward. The implementation is not. This article explains both: what tokenisation actually means, how the ownership structure works in practice, what the UK regulatory position is, and what investors need to understand before treating a token as a property investment.</p>
+
+    <h2>What tokenisation means — the core idea</h2>
+
+    <p>To tokenise a real estate asset means to represent ownership rights in that asset as digital tokens recorded on a blockchain. Each token is a unit of fractional ownership — a small share of the asset's value, income stream, and in some structures, its governance rights. The tokens exist as entries on a distributed ledger, which means they can be transferred between parties without going through a central intermediary such as a land registry or a broker.</p>
+
+    <p>The appeal is straightforward. Real estate is the world's largest asset class, but it has two persistent problems: high minimum investment sizes that exclude most investors, and low liquidity that makes it difficult to enter or exit a position quickly. Tokenisation, in theory, addresses both. A £10 million office building can be divided into 100,000 tokens at £100 each, making it accessible to investors who could not otherwise participate. And because tokens are digital instruments that can be traded on secondary markets, they offer the possibility of liquidity that direct property ownership never has.</p>
+
+    <div class="callout green">
+      <p><strong>The short version:</strong> Tokenisation converts a property interest into a tradeable digital instrument. It changes how you access the asset and how you transfer it — it does not change what the asset fundamentally is.</p>
+    </div>
+
+    <h2>How the ownership structure actually works</h2>
+
+    <p>This is where most explanations of tokenisation become imprecise — and where the practical implications become important.</p>
+
+    <p>In the UK, land title is registered at HM Land Registry. You cannot put a property's Land Registry title directly onto a blockchain. What tokenisation platforms actually do is create a legal entity — typically a Special Purpose Vehicle (SPV), usually a limited company — that holds the property. Investors then buy tokens that represent shares in the SPV, not title to the underlying property.</p>
+
+    <div class="chain-diagram">
+      <div class="chain-title">The tokenised real estate ownership chain</div>
+      <div class="chain-steps">
+        <div class="chain-node">
+          <div class="chain-node-icon">🪙</div>
+          <div class="chain-node-label">Token</div>
+          <div class="chain-node-desc">Digital instrument on blockchain — what the investor holds</div>
+        </div>
+        <div class="chain-arrow">→</div>
+        <div class="chain-node">
+          <div class="chain-node-icon">🏢</div>
+          <div class="chain-node-label">SPV shares</div>
+          <div class="chain-node-desc">Legal equity in the Special Purpose Vehicle company</div>
+        </div>
+        <div class="chain-arrow">→</div>
+        <div class="chain-node">
+          <div class="chain-node-icon">📄</div>
+          <div class="chain-node-label">Property title</div>
+          <div class="chain-node-desc">Registered at HM Land Registry in the SPV's name</div>
+        </div>
+        <div class="chain-arrow">→</div>
+        <div class="chain-node">
+          <div class="chain-node-icon">🏗️</div>
+          <div class="chain-node-label">Physical asset</div>
+          <div class="chain-node-desc">The building, land, or portfolio</div>
+        </div>
+      </div>
+    </div>
+
+    <p>This structure has important consequences. Token holders are, in legal terms, shareholders in a company — not property owners. Their rights are defined by the SPV's articles of association and the token terms, not by property law. This matters for everything from tax treatment to what happens in a dispute or an insolvency.</p>
+
+    <p>Smart contracts — self-executing code on the blockchain — handle the operational layer: distributing rental income to token holders proportionally, recording ownership transfers when tokens are bought and sold, and in some structures, managing governance votes. The smart contract is the mechanism that makes the SPV's obligations to token holders automatic and transparent.</p>
+
+    <h2>How tokenisation happens — the six steps</h2>
+
+    <div class="process-steps">
+      <div class="process-step">
+        <div class="step-num">1</div>
+        <div class="step-body">
+          <h4>Asset selection and legal structuring</h4>
+          <p>The property is identified and an SPV is established to hold it. Legal counsel structures the token offering to comply with FCA requirements — this is typically a security token offering (STO), not a cryptocurrency sale.</p>
+        </div>
+      </div>
+      <div class="process-step">
+        <div class="step-num">2</div>
+        <div class="step-body">
+          <h4>Valuation and token design</h4>
+          <p>The asset is professionally valued. The total token supply is set, establishing the per-token price. Economic rights — income entitlement, capital gain participation, voting rights — are defined and written into the smart contract.</p>
+        </div>
+      </div>
+      <div class="process-step">
+        <div class="step-num">3</div>
+        <div class="step-body">
+          <h4>Regulatory approval and documentation</h4>
+          <p>Depending on the structure, an FCA-authorised platform or prospectus may be required. Investor documentation — equivalent to a prospectus or information memorandum — discloses the risks and terms.</p>
+        </div>
+      </div>
+      <div class="process-step">
+        <div class="step-num">4</div>
+        <div class="step-body">
+          <h4>Investor onboarding (KYC/AML)</h4>
+          <p>All investors undergo identity verification and anti-money laundering checks — the same requirements as any regulated financial product. This is a legal requirement, not optional.</p>
+        </div>
+      </div>
+      <div class="process-step">
+        <div class="step-num">5</div>
+        <div class="step-body">
+          <h4>Token issuance and primary sale</h4>
+          <p>Tokens are minted on the chosen blockchain and sold to investors. Capital raised is used to complete the property acquisition (or refinance an existing asset).</p>
+        </div>
+      </div>
+      <div class="process-step">
+        <div class="step-num">6</div>
+        <div class="step-body">
+          <h4>Ongoing management and secondary trading</h4>
+          <p>The property is managed by a professional manager. Rental income is distributed automatically via smart contract. Token holders can trade their tokens on a secondary market if one is available — though this is where current limitations bite hardest.</p>
+        </div>
+      </div>
+    </div>
+
+    <h2>The UK regulatory position</h2>
+
+    <p>Real estate security tokens in the UK fall under the Financial Services and Markets Act 2000. The FCA classifies tokens that confer ownership or economic rights as security tokens — regulated financial instruments, not cryptocurrencies. This matters because it means:</p>
+
+    <ul>
+      <li>Platforms issuing or facilitating trading of real estate security tokens must be FCA authorised or use an FCA-authorised intermediary</li>
+      <li>Investors are afforded the protections of financial regulation — disclosure requirements, conduct rules, and access to the Financial Ombudsman Service in some cases</li>
+      <li>AML and KYC requirements apply universally — anonymous token ownership is not permitted</li>
+      <li>HMRC treats gains on security tokens as capital gains — the same tax treatment as gains on shares</li>
+    </ul>
+
+    <p>The regulatory framework exists and is workable. The challenge is that it is still evolving — and that compliance is operationally demanding for smaller platforms. This is one reason why most active tokenisation activity in the UK involves institutional-grade assets and professional investors rather than retail.</p>
+
+    <div class="callout amber">
+      <p><strong>Important:</strong> The presence of regulatory frameworks does not guarantee investor protection in all circumstances. Always verify that any platform you use is FCA authorised, and read the investment documentation carefully — tokenised real estate is an investment in an SPV, not direct property ownership, and the risks are different.</p>
+    </div>
+
+    <h2>Tokenised real estate vs traditional investment vehicles</h2>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Feature</th>
+            <th>Direct ownership</th>
+            <th>REIT</th>
+            <th>Tokenised real estate</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Minimum investment</td>
+            <td>High (full purchase price)</td>
+            <td>Low (share price)</td>
+            <td>Low to medium (per-token price)</td>
+          </tr>
+          <tr>
+            <td>Liquidity</td>
+            <td>Very low</td>
+            <td>High (listed REITs)</td>
+            <td>Low to medium (thin secondary markets)</td>
+          </tr>
+          <tr>
+            <td>Asset selection</td>
+            <td>Full control</td>
+            <td>Fund-level (diversified)</td>
+            <td>Asset-level (specific property)</td>
+          </tr>
+          <tr>
+            <td>Regulatory maturity</td>
+            <td>Very high</td>
+            <td>Very high</td>
+            <td>Developing</td>
+          </tr>
+          <tr>
+            <td>Income distribution</td>
+            <td>Manual / via agent</td>
+            <td>Quarterly dividends</td>
+            <td>Automated via smart contract</td>
+          </tr>
+          <tr>
+            <td>Transparency</td>
+            <td>High (your asset)</td>
+            <td>Medium (fund-level reporting)</td>
+            <td>High (blockchain record)</td>
+          </tr>
+          <tr>
+            <td>Tax treatment (UK)</td>
+            <td>CGT + stamp duty</td>
+            <td>CGT on shares + REIT distributions</td>
+            <td>CGT on tokens (as shares)</td>
+          </tr>
+          <tr>
+            <td>Platform / counterparty risk</td>
+            <td>Low</td>
+            <td>Low</td>
+            <td>Higher (newer platforms)</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h2>The real limitations today</h2>
+
+    <p>Tokenisation's theoretical advantages are genuine. The practical limitations are equally real and worth understanding clearly before investing.</p>
+
+    <h3>Secondary market liquidity is limited</h3>
+    <p>The promise of tokenisation is that your investment becomes liquid — you can sell your tokens whenever you want. In practice, the secondary markets for real estate tokens are thin. There are not yet enough buyers and sellers on any single platform to guarantee that you can exit a position at a fair price when you need to. This is likely to improve as the market matures, but it is a significant current constraint. Do not invest in tokenised real estate with capital you might need to access quickly.</p>
+
+    <h3>Platform risk is real</h3>
+    <p>The tokenisation platforms that manage the SPV structure, smart contracts, and secondary markets are mostly young companies. If a platform fails, the consequences for token holders — while legally manageable given the SPV structure — can be complex and time-consuming to resolve. The quality of the legal structure underlying a token offering matters as much as the quality of the underlying asset.</p>
+
+    <h3>Smart contract risk</h3>
+    <p>Smart contracts are code, and code can contain vulnerabilities. An exploited smart contract could enable unauthorised transfers or manipulation of income distributions. Reputable platforms audit their contracts, but this risk cannot be entirely eliminated.</p>
+
+    <h2>Where the market is heading</h2>
+
+    <p>The most significant development driving tokenisation forward in 2025 is institutional interest in Real World Assets (RWA) tokenisation. Major financial institutions are exploring tokenised bonds, funds, and real estate as a way to improve settlement efficiency and open new distribution channels. When institutional infrastructure catches up with the theoretical promise, the liquidity problem — currently the most significant barrier — will diminish substantially.</p>
+
+    <p>For real estate specifically, the assets most likely to tokenise successfully first are those with stable, predictable income streams and strong institutional-grade documentation: prime commercial property, student accommodation portfolios, logistics assets. These are the assets where the due diligence standards, legal structures, and investor appetite align most clearly with what tokenisation requires.</p>
+
+    <p>The technology is not the constraint. The infrastructure — legal, regulatory, and market — is catching up. For investors and professionals wanting to be prepared when that infrastructure matures, understanding the mechanics now is the right time to do it.</p>
+
+  </div>
+
+  <!-- FAQ -->
+  <div class="faq-section">
+    <h2 class="faq-title">Frequently asked questions</h2>
+
+    <details>
+      <summary>What does it mean to tokenise real estate?</summary>
+      <p>Tokenising real estate means converting ownership rights in a property or portfolio into digital tokens recorded on a blockchain. Each token represents a fractional share of the asset — its value, income, and in some structures, its governance rights. Tokens can be bought, sold, and transferred digitally, which in theory makes real estate investment more accessible and more liquid than traditional property ownership.</p>
+    </details>
+
+    <details>
+      <summary>Do I actually own the property when I buy a real estate token?</summary>
+      <p>Not directly. In most tokenisation structures, the property is held by a Special Purpose Vehicle (SPV) — a legal entity created specifically to own the asset. Investors hold tokens that represent shares in the SPV, not title to the underlying property. This is similar to owning shares in a company that owns a building, rather than owning the building itself. The legal ownership chain is: token → SPV shares → property.</p>
+    </details>
+
+    <details>
+      <summary>Is real estate tokenisation legal in the UK?</summary>
+      <p>Yes, with the right structure. Security tokens — tokens that represent ownership or economic rights in an asset — are regulated financial instruments in the UK and fall under FCA oversight. Any platform issuing or facilitating the trading of real estate security tokens must be FCA authorised or exempt. Investors are subject to standard AML and KYC requirements. The regulatory framework exists; the key is ensuring the structure used is compliant with both financial regulation and UK property law.</p>
+    </details>
+
+    <details>
+      <summary>What are the main risks of tokenised real estate investment?</summary>
+      <p>The main risks are: liquidity risk (secondary markets are still thin), platform risk (newer platforms carry operational and business continuity risk), smart contract risk (code vulnerabilities), regulatory risk (the framework is still evolving), and standard real estate risks of vacancy, maintenance, and market value movement. Tokenisation changes the access and transfer mechanism — it does not change the underlying economics of the asset.</p>
+    </details>
+
+    <details>
+      <summary>What is RWA tokenisation?</summary>
+      <p>RWA stands for Real World Assets. RWA tokenisation refers to bringing physical, real-world assets — property, infrastructure, commodities, private credit — onto blockchain infrastructure. Real estate is the largest and most actively pursued category within RWA tokenisation, given the size of the global property market and the well-known liquidity and access constraints of traditional real estate investment.</p>
+    </details>
+
+    <details>
+      <summary>How is tokenised real estate different from a REIT?</summary>
+      <p>A REIT pools investor capital to buy and manage a diversified property portfolio. Tokenised real estate typically offers asset-level selection — you choose a specific property, not a fund. Tokens can offer lower minimums and potentially more transparency via blockchain records. The trade-off is that REITs have decades of regulatory track record, deep liquidity, and institutional-grade governance — most tokenised real estate platforms do not yet match this.</p>
+    </details>
+
+  </div>
+
+  <!-- CTA — two products -->
+  <div class="cta-grid">
+    <div class="cta-box">
+      <div class="cta-tag">Notion workspace · £99</div>
+      <h4>Token Ready</h4>
+      <p>A pre-built due diligence workspace for real estate tokenisation — open it and use it on a real deal the same day. No setup required.</p>
+      <a href="https://YOUR-GUMROAD-LINK" class="btn-sm btn-green">Get on Gumroad →</a>
+    </div>
+    <div class="cta-box">
+      <div class="cta-tag">Book · RWA Tokenization Series</div>
+      <h4>Fundamentals of Real Estate Tokenisation</h4>
+      <p>The complete foundation — from blockchain basics to deal structures, written for property professionals not technologists.</p>
+      <a href="https://www.amazon.co.uk/dp/B0FKBX591P" class="btn-sm btn-blue">Find on Amazon →</a>
+    </div>
+  </div>
+
+</article>
+</main>
+
+<footer>
+  <div class="article-footer">
+    <span>© 2025 Yishuang (Sherry) Xu</span>
+    <span><a href="/">sherryxu.com</a> · <a href="/#articles">All articles</a></span>
+  </div>
+</footer>
+
+</body>
+</html>
