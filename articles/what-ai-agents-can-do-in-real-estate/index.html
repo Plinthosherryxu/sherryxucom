@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>What Can AI Agents Actually Do in Real Estate — And What Can't They Do Yet?</title>
+<meta name="description" content="A researcher-practitioner's honest assessment of AI agent capabilities in real estate — from portfolio monitoring to due diligence — and where the limits still lie.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "What Can AI Agents Actually Do in Real Estate — And What Can't They Do Yet?",
+  "description": "A researcher-practitioner's honest assessment of AI agent capabilities in real estate — from portfolio monitoring to due diligence — and where the limits still lie.",
+  "author": {
+    "@type": "Person",
+    "name": "Yishuang (Sherry) Xu",
+    "url": "https://sherryxu.com"
+  },
+  "publisher": {
+    "@type": "Person",
+    "name": "Yishuang (Sherry) Xu"
+  },
+  "datePublished": "2025-05-06",
+  "dateModified": "2025-05-06",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://sherryxu.com/articles/what-ai-agents-can-do-in-real-estate/"
+  }
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is an AI agent in simple terms?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "An AI agent is a system that can take a sequence of actions to complete a goal — not just answer a question. A standard AI chatbot responds to what you ask. An agent can retrieve documents, analyse them, cross-reference them against a database, flag the issues it finds, and draft a summary report, all without you prompting each individual step. The key difference is autonomy over multi-step tasks."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How is an AI agent different from ChatGPT?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "ChatGPT — and similar large language models — respond to a single input and produce a single output. An AI agent uses a language model as its reasoning engine, but wraps it in a system that can take actions: searching the web, reading files, running calculations, calling APIs, sending notifications. The agent persists across multiple steps toward a goal. ChatGPT answers your question; an agent completes your task."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What real estate tasks can AI agents handle today?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The most reliable real estate applications today are: lease event monitoring (tracking breaks, expiries, and rent reviews across a portfolio), ESG data collection and compliance flagging, due diligence document retrieval and summarisation, market intelligence briefings compiled from multiple data sources, and investment screening against predefined criteria. These all share a common characteristic — they are structured, rule-based, and high-volume."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can AI agents make investment decisions?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No — not responsibly, and not yet. AI agents can prepare the analysis that supports an investment decision: screening opportunities, modelling scenarios, retrieving comparable transactions, summarising due diligence findings, and flagging risks. But the decision itself — which involves legal accountability, fiduciary duty, and judgement that goes beyond pattern recognition — remains a human responsibility. The agent removes the bottleneck between intention and information; the human makes the call."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the biggest risk of using AI agents in real estate?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The biggest risk is compounding errors in long task chains. A single agent completing a 10-step task will occasionally make a mistake at step 3 — and if no human is checking, that mistake propagates through steps 4 to 10, producing a confidently wrong output. The more autonomous the agent, the higher the cost of unchecked errors. Well-designed agent systems build in checkpoints, surface their reasoning, and flag uncertainty rather than proceeding blindly."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "When will AI agents be widely used in real estate?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Narrowly scoped agents — those handling specific, well-defined tasks like lease monitoring or ESG data collection — are being deployed now by larger funds and PropTech platforms. Broader autonomous agents that work across integrated property management systems will become more common over the next 12 to 24 months as the underlying infrastructure matures. The constraint is less the AI capability and more the quality and accessibility of the data the agents need to work with."
+      }
+    }
+  ]
+}
+</script>
+
+<style>
+  :root {
+    --bg:      #f0f5f8;
+    --surface: #ffffff;
+    --ink:     #0d1f35;
+    --ink-2:   #2e4a62;
+    --ink-3:   #7a90a4;
+    --green:   #1a6b45;
+    --green-lt:#e4f2ec;
+    --blue:    #1a4a8a;
+    --blue-lt: #e8f0fb;
+    --border:  #ccd9e4;
+    --serif:   'Playfair Display', Georgia, serif;
+    --sans:    'DM Sans', system-ui, sans-serif;
+    --max:     720px;
+    --r:       10px;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: var(--sans);
+    background: var(--bg);
+    color: var(--ink);
+    font-size: 17px;
+    line-height: 1.75;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: var(--green); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+
+  nav {
+    position: sticky; top: 0; z-index: 100;
+    background: rgba(240,245,248,0.94);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    padding: 0 2rem;
+  }
+  .nav-inner {
+    max-width: 900px; margin: 0 auto;
+    display: flex; align-items: center; justify-content: space-between;
+    height: 56px;
+  }
+  .nav-logo { font-family: var(--serif); font-size: 1rem; color: var(--ink); }
+  .nav-back { font-size: 0.85rem; color: var(--ink-3); }
+  .nav-back:hover { color: var(--green); text-decoration: none; }
+
+  .article-wrap {
+    max-width: var(--max); margin: 0 auto;
+    padding: 4rem 2rem 6rem;
+  }
+  .article-pillar {
+    font-size: 0.75rem; font-weight: 500;
+    text-transform: uppercase; letter-spacing: 0.1em;
+    color: var(--blue); margin-bottom: 1rem;
+  }
+  .article-title {
+    font-family: var(--serif);
+    font-size: clamp(1.9rem, 4vw, 2.8rem);
+    font-weight: 400; line-height: 1.18;
+    letter-spacing: -0.02em; margin-bottom: 1.5rem;
+  }
+  .article-meta {
+    display: flex; gap: 1.5rem; flex-wrap: wrap;
+    font-size: 0.82rem; color: var(--ink-3);
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 2.5rem;
+  }
+
+  .article-body h2 {
+    font-family: var(--serif);
+    font-size: 1.45rem; font-weight: 400;
+    margin: 2.5rem 0 1rem; color: var(--ink);
+  }
+  .article-body h3 {
+    font-size: 1.05rem; font-weight: 500;
+    margin: 1.75rem 0 0.6rem; color: var(--ink);
+  }
+  .article-body p { margin-bottom: 1.25rem; color: var(--ink-2); }
+  .article-body p:first-child { font-size: 1.08rem; color: var(--ink); line-height: 1.8; }
+  .article-body ul, .article-body ol { margin: 0 0 1.25rem 1.5rem; color: var(--ink-2); }
+  .article-body li { margin-bottom: 0.5rem; }
+  .article-body strong { color: var(--ink); font-weight: 500; }
+
+  .callout {
+    background: var(--blue-lt);
+    border-left: 3px solid var(--blue);
+    border-radius: 0 var(--r) var(--r) 0;
+    padding: 1.25rem 1.5rem;
+    margin: 2rem 0;
+  }
+  .callout p { margin: 0; color: var(--ink); }
+  .callout.green {
+    background: var(--green-lt);
+    border-left-color: var(--green);
+  }
+
+  /* Agent anatomy diagram */
+  .agent-diagram {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--r);
+    padding: 1.75rem;
+    margin: 2rem 0;
+  }
+  .agent-diagram-title {
+    font-size: 0.75rem; font-weight: 500;
+    text-transform: uppercase; letter-spacing: 0.08em;
+    color: var(--ink-3); margin-bottom: 1.25rem;
+  }
+  .agent-steps {
+    display: flex; gap: 0; flex-wrap: wrap;
+  }
+  .agent-step {
+    flex: 1; min-width: 120px;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 1rem;
+    text-align: center;
+    position: relative;
+  }
+  .agent-step + .agent-step { margin-left: 0.5rem; }
+  .agent-step-icon { font-size: 1.4rem; margin-bottom: 0.4rem; }
+  .agent-step-label {
+    font-size: 0.78rem; font-weight: 500;
+    color: var(--ink); margin-bottom: 0.25rem;
+  }
+  .agent-step-desc { font-size: 0.72rem; color: var(--ink-3); line-height: 1.4; }
+  .agent-arrow {
+    display: flex; align-items: center;
+    color: var(--ink-3); font-size: 1rem;
+    padding: 0 0.25rem; margin-top: 1rem;
+  }
+
+  .table-wrap { overflow-x: auto; margin: 2rem 0; }
+  table { width: 100%; border-collapse: collapse; font-size: 0.9rem; }
+  thead th {
+    background: var(--ink); color: #fff;
+    padding: 0.75rem 1rem; text-align: left;
+    font-weight: 500; font-size: 0.82rem;
+    letter-spacing: 0.02em;
+  }
+  tbody tr:nth-child(odd) { background: var(--surface); }
+  tbody tr:nth-child(even) { background: var(--bg); }
+  tbody td {
+    padding: 0.75rem 1rem;
+    border-bottom: 1px solid var(--border);
+    color: var(--ink-2); vertical-align: top;
+  }
+  tbody td:first-child { font-weight: 500; color: var(--ink); }
+  .tag {
+    display: inline-block; font-size: 0.72rem; font-weight: 500;
+    padding: 0.2rem 0.55rem; border-radius: 4px; white-space: nowrap;
+  }
+  .tag-ready    { background: var(--green-lt); color: var(--green); }
+  .tag-emerging { background: #fff3cd; color: #7a5800; }
+  .tag-early    { background: #fde8e8; color: #9b1a1a; }
+
+  .faq-section {
+    margin-top: 3.5rem; padding-top: 2.5rem;
+    border-top: 1px solid var(--border);
+  }
+  .faq-title {
+    font-family: var(--serif); font-size: 1.5rem;
+    font-weight: 400; margin-bottom: 1.5rem;
+  }
+  details { border-bottom: 1px solid var(--border); padding: 1rem 0; }
+  details:first-of-type { border-top: 1px solid var(--border); }
+  summary {
+    font-weight: 500; font-size: 0.97rem;
+    cursor: pointer; list-style: none;
+    display: flex; justify-content: space-between; align-items: center;
+    gap: 1rem; color: var(--ink);
+  }
+  summary::-webkit-details-marker { display: none; }
+  summary::after { content: '+'; font-size: 1.2rem; color: var(--blue); flex-shrink: 0; }
+  details[open] summary::after { content: '−'; }
+  details p { margin-top: 0.75rem; color: var(--ink-2); font-size: 0.95rem; line-height: 1.75; }
+
+  .cta-box {
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: var(--r); padding: 2rem; margin-top: 3rem;
+    display: flex; gap: 1.5rem; align-items: flex-start;
+  }
+  .cta-icon {
+    width: 44px; height: 44px; flex-shrink: 0;
+    background: var(--blue-lt); border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.2rem;
+  }
+  .cta-body h4 { font-size: 1rem; font-weight: 500; margin-bottom: 0.35rem; }
+  .cta-body p { font-size: 0.875rem; color: var(--ink-2); margin-bottom: 0.75rem; }
+  .btn-blue {
+    display: inline-flex; align-items: center;
+    background: var(--blue); color: #fff;
+    padding: 0.6rem 1.25rem; border-radius: 6px;
+    font-size: 0.85rem; font-weight: 500;
+    transition: background 0.2s;
+  }
+  .btn-blue:hover { background: #123a6e; text-decoration: none; }
+
+  .article-footer {
+    max-width: var(--max); margin: 0 auto;
+    padding: 2rem; border-top: 1px solid var(--border);
+    display: flex; justify-content: space-between;
+    align-items: center; flex-wrap: wrap; gap: 1rem;
+    font-size: 0.82rem; color: var(--ink-3);
+  }
+  .article-footer a { color: var(--ink-3); }
+  .article-footer a:hover { color: var(--green); }
+
+  @media (max-width: 640px) {
+    .article-wrap { padding: 2.5rem 1.25rem 4rem; }
+    .agent-steps { flex-direction: column; }
+    .agent-step + .agent-step { margin-left: 0; margin-top: 0.5rem; }
+    .cta-box { flex-direction: column; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="/" class="nav-logo">Sherry Xu</a>
+    <a href="/#articles" class="nav-back">← All articles</a>
+  </div>
+</nav>
+
+<main>
+<article class="article-wrap">
+
+  <div class="article-pillar">AI Agents in Real Estate</div>
+
+  <h1 class="article-title">What Can AI Agents Actually Do in Real Estate — And What Can't They Do Yet?</h1>
+
+  <div class="article-meta">
+    <span>By Yishuang (Sherry) Xu</span>
+    <span><!-- ✏️ EDIT: update to publication date --> May 2025</span>
+    <span>11 min read</span>
+  </div>
+
+  <div class="article-body">
+
+    <p>The conversation about AI in real estate has shifted. A year ago, the question was whether AI could do anything useful in the sector. Today, most serious practitioners accept that it can — but they're asking a more precise question: what specifically can AI <em>agents</em> do, and how is that different from what we already have? This distinction matters, because agent-based AI represents a meaningfully different capability from the chatbots and analytical tools that most people have encountered so far.</p>
+
+    <p>This article gives a clear, honest answer — drawing on both research into the technology and direct experience building AI tools for real estate. The goal is not to sell the technology or dismiss it, but to give practitioners a map they can actually use.</p>
+
+    <h2>What is an AI agent — and how is it different from ChatGPT?</h2>
+
+    <p>Most people's experience of AI is conversational: you ask a question, you get an answer. That interaction is self-contained. An AI agent is different in one fundamental way: it can take <em>sequences of actions</em> toward a goal, without being prompted at each step.</p>
+
+    <p>Rather than answering "what are the lease expiry dates in this portfolio?", an agent can: retrieve the relevant leases from your document system, extract the key dates, cross-reference them against today's date, rank them by urgency, and deliver a prioritised alert — all triggered by a single instruction. The language model is the reasoning engine at the centre; the agent wraps it in tools, memory, and the ability to act.</p>
+
+    <div class="agent-diagram">
+      <div class="agent-diagram-title">How an AI agent works — the four components</div>
+      <div class="agent-steps">
+        <div class="agent-step">
+          <div class="agent-step-icon">👁</div>
+          <div class="agent-step-label">Perceive</div>
+          <div class="agent-step-desc">Reads inputs — documents, data, instructions, system state</div>
+        </div>
+        <div class="agent-step">
+          <div class="agent-step-icon">🧠</div>
+          <div class="agent-step-label">Reason</div>
+          <div class="agent-step-desc">LLM decides what to do next — plan, analyse, choose a tool</div>
+        </div>
+        <div class="agent-step">
+          <div class="agent-step-icon">⚡</div>
+          <div class="agent-step-label">Act</div>
+          <div class="agent-step-desc">Executes — searches, reads files, calls APIs, writes outputs</div>
+        </div>
+        <div class="agent-step">
+          <div class="agent-step-icon">🔄</div>
+          <div class="agent-step-label">Iterate</div>
+          <div class="agent-step-desc">Checks the result, adjusts, continues until the goal is met</div>
+        </div>
+      </div>
+    </div>
+
+    <p>The practical implication is significant. Tasks that previously required a human to coordinate across multiple systems — pulling data from here, checking a document there, comparing against a standard, drafting a response — can now be handled by an agent that moves through those steps autonomously. The human sets the goal and reviews the output. The agent does the legwork between.</p>
+
+    <h2>What AI agents can do in real estate today</h2>
+
+    <p>Agent capabilities that are working reliably in real estate today share a common profile: the task is well-defined, the data is accessible, and the steps involved are rule-based rather than judgement-based. Five applications are worth examining in detail.</p>
+
+    <h3>Lease and portfolio event monitoring</h3>
+    <p>Large portfolios generate a continuous stream of time-sensitive events — lease breaks, expiry dates, rent review triggers, option windows, compliance deadlines. Missing any one of them carries material financial consequences. An agent connected to a portfolio management system can monitor these events continuously, flag approaching deadlines at configurable horizons, and generate briefing notes that give asset managers exactly the context they need without requiring them to query the system manually. This is one of the clearest cases where the agent's core capability — persistence and pattern recognition across a large dataset — is directly matched to a genuine operational problem.</p>
+
+    <h3>ESG data collection and compliance flagging</h3>
+    <p>ESG reporting has become one of the most time-intensive workflows in real estate fund management. Gathering energy performance certificates, consumption data, carbon footprint figures, and TCFD-relevant metrics from assets spread across a portfolio — often held in inconsistent formats by different property managers — is work that currently consumes significant analyst time. Agents can systematically retrieve data from connected sources, identify gaps, flag assets that are approaching compliance thresholds (MEES ratings, net zero pathways), and pre-populate reporting templates. The technology is ready; the constraint is typically the quality and accessibility of the underlying data infrastructure.</p>
+
+    <h3>Due diligence document processing</h3>
+    <p>A commercial real estate acquisition generates hundreds of documents — title reports, planning histories, environmental assessments, lease schedules, service charge accounts. An agent tasked with due diligence can retrieve these documents, extract key terms and figures, cross-reference them against a defined checklist, and produce a structured summary that highlights the material issues for a human reviewer to assess. What previously took a junior analyst two days can be reduced to a two-hour review of an agent-generated briefing. The agent is not making the decision — it is removing the bottleneck between the documents and the decision-maker.</p>
+
+    <h3>Market intelligence compilation</h3>
+    <p>Staying current across planning applications, transaction data, rental movement, and policy developments across multiple markets simultaneously is genuinely difficult for any individual analyst. An agent can monitor designated data sources continuously — planning portals, land registry data, industry publications, regulatory announcements — and compile regular intelligence briefings filtered to a fund's specific geographies and asset classes. This is a task where the agent's ability to operate without fatigue and across multiple sources simultaneously gives it a real advantage over human monitoring.</p>
+
+    <h3>Investment screening</h3>
+    <p>Applying a defined set of investment criteria — yield thresholds, lot sizes, ESG requirements, covenant quality, planning risk — to a large universe of potential opportunities is laborious when done manually. An agent can screen opportunities against these criteria systematically, rank them, and surface the ones that warrant deeper analysis. The criteria have to be specified clearly by the human; the filtering is done by the agent. The result is that senior analysts spend their time on the opportunities that have already passed initial qualification, not on the process of qualification itself.</p>
+
+    <h2>What AI agents still cannot do</h2>
+
+    <p>The honest account of agent capabilities requires equal attention to the limits.</p>
+
+    <h3>Tasks requiring physical world presence</h3>
+    <p>An agent cannot walk a site, assess the quality of a building's construction by touch, or sense the atmosphere of a neighbourhood. Physical inspection remains irreducibly human. Agents can process photographs and sensor data, and computer vision is improving — but the gap between analysing images and being present is real and material for property assessment.</p>
+
+    <h3>Decisions with legal accountability</h3>
+    <p>No agent can bear fiduciary responsibility. Investment decisions, offer negotiations, fund disclosures — wherever legal accountability attaches to a decision, a human must own it. Agents prepare the ground; humans sign off. This is not a temporary technological limitation — it reflects the legal and ethical architecture of how consequential decisions should be made.</p>
+
+    <h3>Relationship-based negotiations</h3>
+    <p>Real estate deals are closed by people. The trust between counterparties, the informal intelligence exchanged between agents, the intuition about whether a vendor will accept a certain structure — this operates through relationships that an agent has no access to. An agent can brief you for a negotiation. It cannot conduct one.</p>
+
+    <h3>Long chains with undetected errors</h3>
+    <p>The more steps an agent takes, the greater the chance that an error at one step propagates through all subsequent steps, producing a confidently wrong output. This is the most underappreciated risk of agent deployment. A well-designed agent system surfaces its reasoning, flags uncertainty, and builds in human checkpoints at critical junctions. An agent that runs autonomously from start to finish without review is a liability, not an asset.</p>
+
+    <div class="callout">
+      <p><strong>The governing principle:</strong> AI agents perform best where tasks are structured, data is accessible, and errors are visible. They are most dangerous where tasks are long-chain, data is incomplete, and errors are hard to detect.</p>
+    </div>
+
+    <h2>Capability map — AI agents in real estate</h2>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Task</th>
+            <th>Agent readiness</th>
+            <th>Value when it works</th>
+            <th>Key constraint</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Lease event monitoring</td>
+            <td><span class="tag tag-ready">Ready now</span></td>
+            <td>Eliminates missed deadlines across large portfolios</td>
+            <td>Requires connected portfolio management system</td>
+          </tr>
+          <tr>
+            <td>ESG data collection</td>
+            <td><span class="tag tag-ready">Ready now</span></td>
+            <td>Cuts manual reporting time substantially</td>
+            <td>Data quality and access across the portfolio</td>
+          </tr>
+          <tr>
+            <td>Due diligence summarisation</td>
+            <td><span class="tag tag-ready">Ready now</span></td>
+            <td>Reduces document review time from days to hours</td>
+            <td>Human review still required for material clauses</td>
+          </tr>
+          <tr>
+            <td>Market intelligence monitoring</td>
+            <td><span class="tag tag-ready">Ready now</span></td>
+            <td>Continuous coverage across multiple markets</td>
+            <td>Source access and data structure vary</td>
+          </tr>
+          <tr>
+            <td>Investment screening</td>
+            <td><span class="tag tag-ready">Ready now</span></td>
+            <td>Scales analyst capacity across large opportunity sets</td>
+            <td>Criteria must be precisely specified upfront</td>
+          </tr>
+          <tr>
+            <td>Compliance monitoring (MEES, TCFD)</td>
+            <td><span class="tag tag-emerging">Emerging</span></td>
+            <td>Continuous portfolio-wide compliance visibility</td>
+            <td>Regulatory data feeds not yet standardised</td>
+          </tr>
+          <tr>
+            <td>End-to-end due diligence agents</td>
+            <td><span class="tag tag-emerging">Emerging</span></td>
+            <td>Near-autonomous deal preparation</td>
+            <td>Multi-step error propagation risk</td>
+          </tr>
+          <tr>
+            <td>Multi-agent coordination</td>
+            <td><span class="tag tag-emerging">Emerging</span></td>
+            <td>Parallel workflows across specialised agents</td>
+            <td>Orchestration complexity and error attribution</td>
+          </tr>
+          <tr>
+            <td>Negotiation preparation</td>
+            <td><span class="tag tag-early">Preparation only</span></td>
+            <td>Better-briefed negotiators</td>
+            <td>Cannot substitute for live relationship judgement</td>
+          </tr>
+          <tr>
+            <td>Autonomous deal execution</td>
+            <td><span class="tag tag-early">Not viable</span></td>
+            <td>—</td>
+            <td>Legal accountability cannot be delegated to agents</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h2>What to watch over the next 12 to 24 months</h2>
+
+    <p>Three developments are worth tracking closely.</p>
+
+    <p><strong>Integration with property management infrastructure.</strong> The most significant near-term unlock for agent deployment in real estate is not AI capability — it is data connectivity. Systems like Yardi, MRI, and CoStar hold the data that agents need to act. As APIs and integration layers between these platforms and AI tooling mature, the range of tasks agents can execute reliably will expand significantly. The agent that can only read PDFs you upload manually is far less powerful than one that can pull live data from your portfolio management system.</p>
+
+    <p><strong>ESG compliance as the first killer app.</strong> Regulatory pressure on real estate ESG reporting is intensifying — MEES, SFDR, TCFD, GRESB all impose increasingly granular data and disclosure requirements. The manual burden of compliance is becoming untenable for mid-sized funds. This creates a compelling case for agent deployment specifically in ESG: the task is well-defined, the regulatory requirements are explicit, the data is (increasingly) available, and the cost of non-compliance is clear. Expect the first wave of widespread agent adoption in real estate to happen here.</p>
+
+    <p><strong>Multi-agent systems.</strong> The current generation of agents works in relative isolation. The next generation will involve multiple specialised agents working in coordination — one handling document retrieval, one handling financial analysis, one handling compliance checking — with an orchestrating agent synthesising their outputs. This architecture dramatically expands what is achievable, but also introduces new failure modes that the industry will need to learn to manage.</p>
+
+    <h2>What this means for real estate professionals</h2>
+
+    <p>The question for practitioners is not whether to engage with AI agents — that decision is already being made for them by the competitive landscape — but how to engage deliberately. The highest-value starting point is identifying one specific, high-volume, rule-based workflow in your organisation where the cost of the current manual process is visible and the data is reasonably accessible. Start there. Build confidence in how agents reason and fail before expanding their scope.</p>
+
+    <p>The professionals who will gain most from agents are not necessarily those with the most technical sophistication — they are those who understand their own workflows clearly enough to specify what a good outcome looks like. That specification work is the part agents cannot do for you.</p>
+
+  </div>
+
+  <!-- FAQ -->
+  <div class="faq-section">
+    <h2 class="faq-title">Frequently asked questions</h2>
+
+    <details>
+      <summary>What is an AI agent in simple terms?</summary>
+      <p>An AI agent is a system that can take a sequence of actions to complete a goal — not just answer a question. A standard AI chatbot responds to what you ask. An agent can retrieve documents, analyse them, cross-reference them against a database, flag the issues it finds, and draft a summary report, all without you prompting each individual step. The key difference is autonomy over multi-step tasks.</p>
+    </details>
+
+    <details>
+      <summary>How is an AI agent different from ChatGPT?</summary>
+      <p>ChatGPT — and similar large language models — respond to a single input and produce a single output. An AI agent uses a language model as its reasoning engine, but wraps it in a system that can take actions: searching the web, reading files, running calculations, calling APIs, sending notifications. The agent persists across multiple steps toward a goal. ChatGPT answers your question; an agent completes your task.</p>
+    </details>
+
+    <details>
+      <summary>What real estate tasks can AI agents handle today?</summary>
+      <p>The most reliable applications today are: lease event monitoring across large portfolios, ESG data collection and compliance flagging, due diligence document retrieval and summarisation, market intelligence briefings compiled from multiple sources, and investment screening against predefined criteria. These all share a common characteristic — they are structured, rule-based, and high-volume.</p>
+    </details>
+
+    <details>
+      <summary>Can AI agents make investment decisions?</summary>
+      <p>No — not responsibly, and not yet. AI agents can prepare the analysis that supports an investment decision: screening opportunities, modelling scenarios, summarising due diligence findings, and flagging risks. But the decision itself — which involves legal accountability, fiduciary duty, and judgement beyond pattern recognition — remains a human responsibility. The agent removes the bottleneck between intention and information; the human makes the call.</p>
+    </details>
+
+    <details>
+      <summary>What is the biggest risk of using AI agents in real estate?</summary>
+      <p>The biggest risk is compounding errors in long task chains. A single agent completing a 10-step task will occasionally make a mistake at step 3 — and if no human is checking, that mistake propagates through steps 4 to 10, producing a confidently wrong output. Well-designed agent systems build in checkpoints, surface their reasoning, and flag uncertainty rather than proceeding blindly.</p>
+    </details>
+
+    <details>
+      <summary>When will AI agents be widely used in real estate?</summary>
+      <p>Narrowly scoped agents handling specific tasks like lease monitoring or ESG data collection are being deployed now by larger funds and PropTech platforms. Broader autonomous agents working across integrated property management systems will become more common over the next 12 to 24 months as the underlying infrastructure matures. The constraint is less the AI capability and more the quality and accessibility of the data agents need to work with.</p>
+    </details>
+
+  </div>
+
+  <!-- CTA -->
+  <div class="cta-box">
+    <div class="cta-icon">📘</div>
+    <div class="cta-body">
+      <h4>Ready to build AI agents for financial analysis?</h4>
+      <p>My book <em>How to Use AI in Financial Analysis: Building AI Agents That Actually Work</em> covers how to design, deploy, and evaluate AI agents specifically for real estate financial workflows — practical frameworks, not theory.</p>
+      <a href="https://www.amazon.co.uk/dp/B0DTQS552F" target="_blank" class="btn-blue">Find it on Amazon →</a>
+    </div>
+  </div>
+
+</article>
+</main>
+
+<footer>
+  <div class="article-footer">
+    <span>© 2025 Yishuang (Sherry) Xu</span>
+    <span><a href="/">sherryxu.com</a> · <a href="/#articles">All articles</a></span>
+  </div>
+</footer>
+
+</body>
+</html>
