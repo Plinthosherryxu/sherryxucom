@@ -184,7 +184,7 @@
   /* ── ABOUT ─────────────────────────────────────────── */
   #about { background: var(--surface); }
   .about-grid {
-    display: grid; grid-template-columns: 1fr 2fr; gap: 4rem; align-items: start;
+    display: block;
   }
   .about-aside {}
   .about-photo {
@@ -204,6 +204,7 @@
     gap: 0.5rem; color: var(--teal);
   }
   .about-photo-placeholder span { font-size: 0.8rem; }
+  .about-body { max-width: 680px; }
   .about-body p {
     color: var(--ink-2); margin-bottom: 1.25rem; line-height: 1.8;
   }
@@ -491,7 +492,7 @@
     .hero { grid-template-columns: 1fr; gap: 3rem; padding: 4rem 1.25rem 3rem; }
     .hero-visual { display: none; }
     .about-grid { grid-template-columns: 1fr; }
-    .about-aside { display: none; }
+  
     .book-grid { grid-template-columns: 1fr; gap: 2rem; }
     .book-cover { display: none; }
     .substack-inner { grid-template-columns: 1fr; gap: 2.5rem; }
@@ -564,9 +565,6 @@
 <section id="about">
   <div class="section-inner">
     <div class="about-grid">
-      <div class="about-aside">
-
-      </div>
       <div class="about-body">
         <div class="section-label">About</div>
         <h2 class="section-title">Yishuang (Sherry) Xu</h2>
