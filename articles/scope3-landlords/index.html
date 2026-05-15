@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Scope 3 for Landlords: Measuring What You Can't See</title>
+<meta name="description" content="A practical guide to measuring Scope 3 emissions as a UK property owner — data hierarchy, estimation methods, and how to make your methodology defensible.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Article","headline":"Scope 3 for Landlords: Measuring What You Can't See","description":"A practical guide to measuring Scope 3 emissions as a UK property owner — data hierarchy, estimation methods, and how to make your methodology defensible.","author":{"@type":"Person","name":"Yishuang (Sherry) Xu","url":"https://sherryxu.com"},"publisher":{"@type":"Person","name":"Yishuang (Sherry) Xu"},"datePublished":"2026-05-06","mainEntityOfPage":{"@type":"WebPage","@id":"https://sherryxu.com/articles/scope3-landlords/"}}
+</script>
+<style>
+  :root {
+    --bg:#f0f5f8;--surface:#fff;--ink:#0d1f35;--ink-2:#2e4a62;--ink-3:#7a90a4;
+    --green:#1a6b45;--green-lt:#e4f2ec;--blue:#1a4a8a;--blue-lt:#e8f0fb;
+    --border:#ccd9e4;--serif:'Playfair Display',Georgia,serif;
+    --sans:'DM Sans',system-ui,sans-serif;--max:720px;--r:10px;
+  }
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{font-family:var(--sans);background:var(--bg);color:var(--ink);font-size:17px;line-height:1.75;-webkit-font-smoothing:antialiased;}
+  a{color:var(--green);text-decoration:none;}
+  a:hover{text-decoration:underline;}
+  nav{position:sticky;top:0;z-index:100;background:rgba(240,245,248,0.94);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:0 2rem;}
+  .nav-inner{max-width:900px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:56px;}
+  .nav-logo{font-family:var(--serif);font-size:1rem;color:var(--ink);}
+  .nav-back{font-size:0.85rem;color:var(--ink-3);}
+  .nav-back:hover{color:var(--green);text-decoration:none;}
+  .article-wrap{max-width:var(--max);margin:0 auto;padding:4rem 2rem 6rem;}
+  .article-pillar{font-size:0.75rem;font-weight:500;text-transform:uppercase;letter-spacing:0.1em;color:var(--green);margin-bottom:1rem;}
+  .article-title{font-family:var(--serif);font-size:clamp(1.9rem,4vw,2.8rem);font-weight:400;line-height:1.18;letter-spacing:-0.02em;margin-bottom:1.5rem;}
+  .article-meta{display:flex;gap:1.5rem;flex-wrap:wrap;font-size:0.82rem;color:var(--ink-3);padding-bottom:1.5rem;border-bottom:1px solid var(--border);margin-bottom:2.5rem;}
+  .article-body h2{font-family:var(--serif);font-size:1.45rem;font-weight:400;margin:2.5rem 0 1rem;color:var(--ink);}
+  .article-body h3{font-size:1.05rem;font-weight:500;margin:1.75rem 0 0.6rem;color:var(--ink);}
+  .article-body p{margin-bottom:1.25rem;color:var(--ink-2);}
+  .article-body p:first-child{font-size:1.08rem;color:var(--ink);line-height:1.8;}
+  .article-body ul,.article-body ol{margin:0 0 1.25rem 1.5rem;color:var(--ink-2);}
+  .article-body li{margin-bottom:0.5rem;}
+  .article-body strong{color:var(--ink);font-weight:500;}
+  .callout{background:var(--green-lt);border-left:3px solid var(--green);border-radius:0 var(--r) var(--r) 0;padding:1.25rem 1.5rem;margin:2rem 0;}
+  .callout.blue{background:var(--blue-lt);border-left-color:var(--blue);}
+  .callout p{margin:0;color:var(--ink);}
+  .table-wrap{overflow-x:auto;margin:2rem 0;}
+  table{width:100%;border-collapse:collapse;font-size:0.9rem;}
+  thead th{background:var(--ink);color:#fff;padding:0.75rem 1rem;text-align:left;font-weight:500;font-size:0.82rem;}
+  tbody tr:nth-child(odd){background:var(--surface);}
+  tbody tr:nth-child(even){background:var(--bg);}
+  tbody td{padding:0.75rem 1rem;border-bottom:1px solid var(--border);color:var(--ink-2);vertical-align:top;}
+  tbody td:first-child{font-weight:500;color:var(--ink);}
+  .faq-section{margin-top:3.5rem;padding-top:2.5rem;border-top:1px solid var(--border);}
+  .faq-title{font-family:var(--serif);font-size:1.5rem;font-weight:400;margin-bottom:1.5rem;}
+  details{border-bottom:1px solid var(--border);padding:1rem 0;}
+  details:first-of-type{border-top:1px solid var(--border);}
+  summary{font-weight:500;font-size:0.97rem;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:1rem;color:var(--ink);}
+  summary::-webkit-details-marker{display:none;}
+  summary::after{content:'+';font-size:1.2rem;color:var(--green);flex-shrink:0;}
+  details[open] summary::after{content:'−';}
+  details p{margin-top:0.75rem;color:var(--ink-2);font-size:0.95rem;line-height:1.75;}
+  .cta-box{background:var(--surface);border:1px solid var(--border);border-radius:var(--r);padding:2rem;margin-top:3rem;display:flex;gap:1.5rem;align-items:flex-start;}
+  .cta-icon{width:44px;height:44px;flex-shrink:0;background:var(--green-lt);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:1.2rem;}
+  .cta-body h4{font-size:1rem;font-weight:500;margin-bottom:0.35rem;}
+  .cta-body p{font-size:0.875rem;color:var(--ink-2);margin-bottom:0.75rem;}
+  .btn-green{display:inline-flex;align-items:center;background:var(--green);color:#fff;padding:0.6rem 1.25rem;border-radius:6px;font-size:0.85rem;font-weight:500;transition:background 0.2s;}
+  .btn-green:hover{background:#145435;text-decoration:none;}
+  .article-footer{max-width:var(--max);margin:0 auto;padding:2rem;border-top:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;font-size:0.82rem;color:var(--ink-3);}
+  .article-footer a{color:var(--ink-3);}
+  .article-footer a:hover{color:var(--green);}
+  @media(max-width:640px){.article-wrap{padding:2.5rem 1.25rem 4rem;}.cta-box{flex-direction:column;}}
+</style>
+</head>
+<body>
+<nav>
+  <div class="nav-inner">
+    <a href="/" class="nav-logo">Sherry Xu</a>
+    <a href="/#articles" class="nav-back">← All articles</a>
+  </div>
+</nav>
+<main>
+<article class="article-wrap">
+  <div class="article-pillar">ESG &amp; Sustainability</div>
+  <h1 class="article-title">Scope 3 for Landlords: A Practical Guide to Measuring What You Can't See</h1>
+  <div class="article-meta">
+    <span>By Yishuang (Sherry) Xu</span>
+    <span>May 2026</span>
+    <span>10 min read</span>
+  </div>
+  <div class="article-body">
+
+    <p>Scope 1 and 2 emissions are hard enough. But at least the data is, in principle, yours to collect. Scope 3 is different. For a landlord, the largest Scope 3 category is usually downstream leased assets — the energy your tenants consume in your buildings. You own the building. They pay the electricity bill. And under UK SRS S2, you may need to report those emissions, or explain why you can't.</p>
+    <h2>Why Scope 3 matters for property</h2>
+    <p>For most commercial property portfolios, Scope 3 emissions dwarf Scope 1 and 2. A typical office landlord's direct emissions are small. Tenant electricity consumption — lighting, IT equipment, supplementary cooling — can be ten to fifty times larger.</p>
+    <p>Under UK SRS S2, Scope 3 reporting is on a comply-or-explain basis with a one-year transitional relief. That sounds lenient. It isn't. "Comply or explain" means you either report or you publicly explain why you can't. Investors and assessors will read that explanation carefully.</p>
+    <h2>The data hierarchy: measured, estimated, modelled</h2>
+    <p><strong>Measured data (highest quality).</strong> Actual metered energy consumption from tenant sub-meters or utility bills. If you have green leases with data-sharing clauses, or if you control the building management system, you may have access to this. It's the gold standard.</p>
+    <p><strong>Estimated data (mid quality).</strong> Based on building characteristics, benchmarks, or partial data extrapolated to the whole. For example: you know the EPC rating and floor area, so you estimate consumption using CIBSE benchmarks for that building type.</p>
+    <p><strong>Modelled data (lowest quality).</strong> Based on spend data or generic assumptions. Acceptable for initial disclosures but not sustainable long-term.</p>
+    <h2>Practical approaches for UK landlords</h2>
+    <h3>Green lease clauses</h3>
+    <p>The single most effective thing you can do for future Scope 3 reporting is include data-sharing clauses in new and renewed leases. The Better Buildings Partnership has published model green lease clauses specifically for the UK market.</p>
+    <h3>Sub-metering</h3>
+    <p>Where you control the building infrastructure, install sub-meters on tenant demises. This produces measured data — the highest quality category — and increasingly, tenants expect it as part of a well-managed building.</p>
+    <h3>EPC-based estimation</h3>
+    <p>For assets where you have no tenant data, EPCs provide a starting point. The EPC includes estimated energy consumption by fuel type, which can be converted to emissions using BEIS conversion factors.</p>
+    <h3>CIBSE benchmarks</h3>
+    <p>The Chartered Institution of Building Services Engineers publishes energy benchmarks by building type. Combined with floor area, these give a reasonable estimate for typical consumption.</p>
+    <h2>Where AI helps with Scope 3</h2>
+    <p>AI can pull EPC data from the public register, apply the correct benchmarks, use the current conversion factors, and produce portfolio-wide Scope 3 estimates in minutes. It can classify each asset's data by quality tier and show you where to prioritise data improvement efforts. Year-on-year, AI can flag assets where estimated emissions have changed significantly and prompt investigation.</p>
+    <h2>Making your Scope 3 methodology defensible</h2>
+    <p>Whatever approach you take, document three things: your boundary (which Scope 3 categories you're reporting), your data sources and quality (measured, estimated, or modelled for each asset), and your assumptions and limitations.</p>
+    <p>A methodology note that says "For 35% of our portfolio, we estimated tenant energy consumption using CIBSE TM46 benchmarks by building type" is vastly more credible than a single Scope 3 number with no explanation. Transparency isn't a weakness. It's what separates a defensible disclosure from a number someone made up.</p>
+  </div>
+    <div class="cta-box">
+    <div class="cta-icon">🌿</div>
+    <div class="cta-body">
+      <h4>Preparing for UK SRS or GRESB compliance?</h4>
+      <p>Plinthos helps UK real estate firms produce AI-assisted sustainability reports that are audit-ready and aligned with UK SRS, GRESB, and TCFD frameworks.</p>
+      <a href="mailto:yishuang.xu@manchester.ac.uk" class="btn-green">Get in touch →</a>
+    </div>
+  </div>
+</article>
+</main>
+<footer>
+  <div class="article-footer">
+    <span>© 2026 Yishuang (Sherry) Xu</span>
+    <span><a href="/">sherryxu.com</a> · <a href="/#articles">All articles</a></span>
+  </div>
+</footer>
+</body>
+</html>
