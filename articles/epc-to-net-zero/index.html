@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>From EPC to Net Zero: Building a Property Transition Plan</title>
+<meta name="description" content="Every property firm has a net zero target. This article explains how to use AI to build a transition plan grounded in actual portfolio data — not just aspirations.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Article","headline":"From EPC to Net Zero: Building a Property Transition Plan","description":"Every property firm has a net zero target. This article explains how to use AI to build a transition plan grounded in actual portfolio data — not just aspirations.","author":{"@type":"Person","name":"Yishuang (Sherry) Xu","url":"https://sherryxu.com"},"publisher":{"@type":"Person","name":"Yishuang (Sherry) Xu"},"datePublished":"2026-05-06","mainEntityOfPage":{"@type":"WebPage","@id":"https://sherryxu.com/articles/epc-to-net-zero/"}}
+</script>
+<style>
+  :root {
+    --bg:#f0f5f8;--surface:#fff;--ink:#0d1f35;--ink-2:#2e4a62;--ink-3:#7a90a4;
+    --green:#1a6b45;--green-lt:#e4f2ec;--blue:#1a4a8a;--blue-lt:#e8f0fb;
+    --border:#ccd9e4;--serif:'Playfair Display',Georgia,serif;
+    --sans:'DM Sans',system-ui,sans-serif;--max:720px;--r:10px;
+  }
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{font-family:var(--sans);background:var(--bg);color:var(--ink);font-size:17px;line-height:1.75;-webkit-font-smoothing:antialiased;}
+  a{color:var(--green);text-decoration:none;}
+  a:hover{text-decoration:underline;}
+  nav{position:sticky;top:0;z-index:100;background:rgba(240,245,248,0.94);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:0 2rem;}
+  .nav-inner{max-width:900px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:56px;}
+  .nav-logo{font-family:var(--serif);font-size:1rem;color:var(--ink);}
+  .nav-back{font-size:0.85rem;color:var(--ink-3);}
+  .nav-back:hover{color:var(--green);text-decoration:none;}
+  .article-wrap{max-width:var(--max);margin:0 auto;padding:4rem 2rem 6rem;}
+  .article-pillar{font-size:0.75rem;font-weight:500;text-transform:uppercase;letter-spacing:0.1em;color:var(--green);margin-bottom:1rem;}
+  .article-title{font-family:var(--serif);font-size:clamp(1.9rem,4vw,2.8rem);font-weight:400;line-height:1.18;letter-spacing:-0.02em;margin-bottom:1.5rem;}
+  .article-meta{display:flex;gap:1.5rem;flex-wrap:wrap;font-size:0.82rem;color:var(--ink-3);padding-bottom:1.5rem;border-bottom:1px solid var(--border);margin-bottom:2.5rem;}
+  .article-body h2{font-family:var(--serif);font-size:1.45rem;font-weight:400;margin:2.5rem 0 1rem;color:var(--ink);}
+  .article-body h3{font-size:1.05rem;font-weight:500;margin:1.75rem 0 0.6rem;color:var(--ink);}
+  .article-body p{margin-bottom:1.25rem;color:var(--ink-2);}
+  .article-body p:first-child{font-size:1.08rem;color:var(--ink);line-height:1.8;}
+  .article-body ul,.article-body ol{margin:0 0 1.25rem 1.5rem;color:var(--ink-2);}
+  .article-body li{margin-bottom:0.5rem;}
+  .article-body strong{color:var(--ink);font-weight:500;}
+  .callout{background:var(--green-lt);border-left:3px solid var(--green);border-radius:0 var(--r) var(--r) 0;padding:1.25rem 1.5rem;margin:2rem 0;}
+  .callout.blue{background:var(--blue-lt);border-left-color:var(--blue);}
+  .callout p{margin:0;color:var(--ink);}
+  .table-wrap{overflow-x:auto;margin:2rem 0;}
+  table{width:100%;border-collapse:collapse;font-size:0.9rem;}
+  thead th{background:var(--ink);color:#fff;padding:0.75rem 1rem;text-align:left;font-weight:500;font-size:0.82rem;}
+  tbody tr:nth-child(odd){background:var(--surface);}
+  tbody tr:nth-child(even){background:var(--bg);}
+  tbody td{padding:0.75rem 1rem;border-bottom:1px solid var(--border);color:var(--ink-2);vertical-align:top;}
+  tbody td:first-child{font-weight:500;color:var(--ink);}
+  .faq-section{margin-top:3.5rem;padding-top:2.5rem;border-top:1px solid var(--border);}
+  .faq-title{font-family:var(--serif);font-size:1.5rem;font-weight:400;margin-bottom:1.5rem;}
+  details{border-bottom:1px solid var(--border);padding:1rem 0;}
+  details:first-of-type{border-top:1px solid var(--border);}
+  summary{font-weight:500;font-size:0.97rem;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:1rem;color:var(--ink);}
+  summary::-webkit-details-marker{display:none;}
+  summary::after{content:'+';font-size:1.2rem;color:var(--green);flex-shrink:0;}
+  details[open] summary::after{content:'−';}
+  details p{margin-top:0.75rem;color:var(--ink-2);font-size:0.95rem;line-height:1.75;}
+  .cta-box{background:var(--surface);border:1px solid var(--border);border-radius:var(--r);padding:2rem;margin-top:3rem;display:flex;gap:1.5rem;align-items:flex-start;}
+  .cta-icon{width:44px;height:44px;flex-shrink:0;background:var(--green-lt);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:1.2rem;}
+  .cta-body h4{font-size:1rem;font-weight:500;margin-bottom:0.35rem;}
+  .cta-body p{font-size:0.875rem;color:var(--ink-2);margin-bottom:0.75rem;}
+  .btn-green{display:inline-flex;align-items:center;background:var(--green);color:#fff;padding:0.6rem 1.25rem;border-radius:6px;font-size:0.85rem;font-weight:500;transition:background 0.2s;}
+  .btn-green:hover{background:#145435;text-decoration:none;}
+  .article-footer{max-width:var(--max);margin:0 auto;padding:2rem;border-top:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;font-size:0.82rem;color:var(--ink-3);}
+  .article-footer a{color:var(--ink-3);}
+  .article-footer a:hover{color:var(--green);}
+  @media(max-width:640px){.article-wrap{padding:2.5rem 1.25rem 4rem;}.cta-box{flex-direction:column;}}
+</style>
+</head>
+<body>
+<nav>
+  <div class="nav-inner">
+    <a href="/" class="nav-logo">Sherry Xu</a>
+    <a href="/#articles" class="nav-back">← All articles</a>
+  </div>
+</nav>
+<main>
+<article class="article-wrap">
+  <div class="article-pillar">ESG &amp; Sustainability</div>
+  <h1 class="article-title">From EPC to Net Zero: Using AI to Build a Property Transition Plan</h1>
+  <div class="article-meta">
+    <span>By Yishuang (Sherry) Xu</span>
+    <span>May 2026</span>
+    <span>10 min read</span>
+  </div>
+  <div class="article-body">
+
+    <p>Every property company in the UK has a net zero target. Not every property company has a plan to get there. The difference between a target and a plan is specificity. A target says "net zero by 2050." A plan says "retrofit the HVAC systems in these twelve buildings by 2030 at a cost of £8.2 million, reducing portfolio emissions by 35%, funded through green financing."</p>
+    <p>UK SRS S2 doesn't require you to have a transition plan. But it does require you to disclose one if you have it — and investors and lenders increasingly expect one. Without one, your net zero target is a press release, not a strategy.</p>
+    <h2>Starting with what you have: the EPC landscape</h2>
+    <p>EPCs are imperfect, but they're universal. Every commercially let property in England and Wales has one, and the data is publicly available. For a portfolio owner, this is your baseline. AI can pull your entire portfolio's EPC data from the public register, classify assets by current rating and recommended improvements, and estimate the cost and impact of each improvement.</p>
+    <h2>Building the plan: a four-step framework</h2>
+    <h3>Step 1: Baseline your portfolio</h3>
+    <p>Aggregate current energy consumption, emissions, and EPC ratings across all assets. AI can automate this from your existing data sources and the EPC register. The output should be a clear picture of where you stand today — total emissions, emissions intensity, distribution by EPC rating, and the worst-performing assets.</p>
+    <h3>Step 2: Model the interventions</h3>
+    <p>For each underperforming asset, identify available improvements: insulation, HVAC replacement, LED lighting, renewable energy generation, heat pump installation. AI can estimate the cost, emissions reduction, and payback period for each. Rank interventions by cost-effectiveness — the marginal abatement cost curve for your portfolio.</p>
+    <h3>Step 3: Sequence the investment</h3>
+    <p>You can't retrofit everything at once. A credible transition plan sequences interventions across time, aligned with lease events, natural capital expenditure cycles, and available financing. AI can optimise this sequencing based on constraints you define: annual capex budget, target emissions trajectory, lease expiry dates, and regulatory deadlines.</p>
+    <h3>Step 4: Monitor and adjust</h3>
+    <p>A transition plan isn't a one-off document. It's a living strategy that needs updating as energy prices change, as regulations evolve, and as actual retrofit performance differs from projections. AI dashboards that track actual versus planned emissions reduction keep the plan honest.</p>
+    <h2>Where AI adds the most value</h2>
+    <p>Deciding which buildings to retrofit first is an optimisation problem that humans solve intuitively but AI solves systematically — factoring in lease events, building condition, tenant requirements, and cost-effectiveness simultaneously. AI can also run scenarios in minutes: what happens to your transition plan if energy prices spike 30%, or if the EPC C deadline is brought forward?</p>
+    <h2>Where AI falls short</h2>
+    <p>AI can tell you that a heat pump would save a certain amount of emissions. It can't tell you that the listed building won't get planning permission for one, or that the ground conditions make ground-source impractical. Portfolio managers know things about their buildings that don't appear in any dataset. Some assets will never reach net zero at a reasonable cost — deciding whether to invest heavily or dispose is a strategic decision with financial, reputational, and ethical dimensions that AI cannot weigh for you.</p>
+    <h2>Starting imperfectly is better than not starting</h2>
+    <p>A transition plan that says "based on current data, we estimate our pathway to net zero requires £12 million in capital investment over 15 years, with the following uncertainties" is infinitely more useful than a target that says "net zero by 2050" with nothing behind it. Your first transition plan will be imperfect. Update it next year with better data and improved methodology. The point is to start.</p>
+  </div>
+    <div class="cta-box">
+    <div class="cta-icon">🏗️</div>
+    <div class="cta-body">
+      <h4>Want a deeper guide to net zero real estate?</h4>
+      <p>My book <em>The Journey to Net Zero Real Estate</em> covers the full sustainability compliance landscape — from MEES and EPC pathways to transition planning strategies.</p>
+      <a href="https://www.amazon.co.uk/dp/B0FMYS7G37" target="_blank" class="btn-green">Find it on Amazon →</a>
+    </div>
+  </div>
+</article>
+</main>
+<footer>
+  <div class="article-footer">
+    <span>© 2026 Yishuang (Sherry) Xu</span>
+    <span><a href="/">sherryxu.com</a> · <a href="/#articles">All articles</a></span>
+  </div>
+</footer>
+</body>
+</html>
