@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Can AI Hear What We Can't?</title>
+<meta name="description" content="Inside the methodology of acoustic sentiment analysis for financial media — how AI can decompose broadcast delivery into a financial signal that text alone cannot capture.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Article","headline":"Can AI Hear What We Can't?","description":"Inside the methodology of acoustic sentiment analysis for financial media — how AI can decompose broadcast delivery into a financial signal that text alone cannot capture.","author":{"@type":"Person","name":"Yishuang (Sherry) Xu","url":"https://sherryxu.com"},"publisher":{"@type":"Person","name":"Yishuang (Sherry) Xu"},"datePublished":"2026-05-01","mainEntityOfPage":{"@type":"WebPage","@id":"https://sherryxu.com/articles/can-ai-hear-what-we-cant/"}}
+</script>
+<style>
+  :root {
+    --bg:#f0f5f8;--surface:#fff;--ink:#0d1f35;--ink-2:#2e4a62;--ink-3:#7a90a4;
+    --green:#1a6b45;--green-lt:#e4f2ec;--blue:#1a4a8a;--blue-lt:#e8f0fb;
+    --border:#ccd9e4;--serif:'Playfair Display',Georgia,serif;
+    --sans:'DM Sans',system-ui,sans-serif;--max:720px;--r:10px;
+  }
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{font-family:var(--sans);background:var(--bg);color:var(--ink);font-size:17px;line-height:1.75;-webkit-font-smoothing:antialiased;}
+  a{color:var(--green);text-decoration:none;}
+  a:hover{text-decoration:underline;}
+  nav{position:sticky;top:0;z-index:100;background:rgba(240,245,248,0.94);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:0 2rem;}
+  .nav-inner{max-width:900px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:56px;}
+  .nav-logo{font-family:var(--serif);font-size:1rem;color:var(--ink);}
+  .nav-back{font-size:0.85rem;color:var(--ink-3);}
+  .nav-back:hover{color:var(--green);text-decoration:none;}
+  .article-wrap{max-width:var(--max);margin:0 auto;padding:4rem 2rem 6rem;}
+  .article-pillar{font-size:0.75rem;font-weight:500;text-transform:uppercase;letter-spacing:0.1em;color:var(--green);margin-bottom:1rem;}
+  .article-title{font-family:var(--serif);font-size:clamp(1.9rem,4vw,2.8rem);font-weight:400;line-height:1.18;letter-spacing:-0.02em;margin-bottom:1.5rem;}
+  .article-meta{display:flex;gap:1.5rem;flex-wrap:wrap;font-size:0.82rem;color:var(--ink-3);padding-bottom:1.5rem;border-bottom:1px solid var(--border);margin-bottom:2.5rem;}
+  .article-body h2{font-family:var(--serif);font-size:1.45rem;font-weight:400;margin:2.5rem 0 1rem;color:var(--ink);}
+  .article-body h3{font-size:1.05rem;font-weight:500;margin:1.75rem 0 0.6rem;color:var(--ink);}
+  .article-body p{margin-bottom:1.25rem;color:var(--ink-2);}
+  .article-body p:first-child{font-size:1.08rem;color:var(--ink);line-height:1.8;}
+  .article-body ul,.article-body ol{margin:0 0 1.25rem 1.5rem;color:var(--ink-2);}
+  .article-body li{margin-bottom:0.5rem;}
+  .article-body strong{color:var(--ink);font-weight:500;}
+  .callout{background:var(--green-lt);border-left:3px solid var(--green);border-radius:0 var(--r) var(--r) 0;padding:1.25rem 1.5rem;margin:2rem 0;}
+  .callout.blue{background:var(--blue-lt);border-left-color:var(--blue);}
+  .callout p{margin:0;color:var(--ink);}
+  .table-wrap{overflow-x:auto;margin:2rem 0;}
+  table{width:100%;border-collapse:collapse;font-size:0.9rem;}
+  thead th{background:var(--ink);color:#fff;padding:0.75rem 1rem;text-align:left;font-weight:500;font-size:0.82rem;}
+  tbody tr:nth-child(odd){background:var(--surface);}
+  tbody tr:nth-child(even){background:var(--bg);}
+  tbody td{padding:0.75rem 1rem;border-bottom:1px solid var(--border);color:var(--ink-2);vertical-align:top;}
+  tbody td:first-child{font-weight:500;color:var(--ink);}
+  .faq-section{margin-top:3.5rem;padding-top:2.5rem;border-top:1px solid var(--border);}
+  .faq-title{font-family:var(--serif);font-size:1.5rem;font-weight:400;margin-bottom:1.5rem;}
+  details{border-bottom:1px solid var(--border);padding:1rem 0;}
+  details:first-of-type{border-top:1px solid var(--border);}
+  summary{font-weight:500;font-size:0.97rem;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:1rem;color:var(--ink);}
+  summary::-webkit-details-marker{display:none;}
+  summary::after{content:'+';font-size:1.2rem;color:var(--green);flex-shrink:0;}
+  details[open] summary::after{content:'−';}
+  details p{margin-top:0.75rem;color:var(--ink-2);font-size:0.95rem;line-height:1.75;}
+  .cta-box{background:var(--surface);border:1px solid var(--border);border-radius:var(--r);padding:2rem;margin-top:3rem;display:flex;gap:1.5rem;align-items:flex-start;}
+  .cta-icon{width:44px;height:44px;flex-shrink:0;background:var(--green-lt);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:1.2rem;}
+  .cta-body h4{font-size:1rem;font-weight:500;margin-bottom:0.35rem;}
+  .cta-body p{font-size:0.875rem;color:var(--ink-2);margin-bottom:0.75rem;}
+  .btn-green{display:inline-flex;align-items:center;background:var(--green);color:#fff;padding:0.6rem 1.25rem;border-radius:6px;font-size:0.85rem;font-weight:500;transition:background 0.2s;}
+  .btn-green:hover{background:#145435;text-decoration:none;}
+  .article-footer{max-width:var(--max);margin:0 auto;padding:2rem;border-top:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;font-size:0.82rem;color:var(--ink-3);}
+  .article-footer a{color:var(--ink-3);}
+  .article-footer a:hover{color:var(--green);}
+  @media(max-width:640px){.article-wrap{padding:2.5rem 1.25rem 4rem;}.cta-box{flex-direction:column;}}
+</style>
+</head>
+<body>
+<nav>
+  <div class="nav-inner">
+    <a href="/" class="nav-logo">Sherry Xu</a>
+    <a href="/#articles" class="nav-back">← All articles</a>
+  </div>
+</nav>
+<main>
+<article class="article-wrap">
+  <div class="article-pillar">AI &amp; Financial Media</div>
+  <h1 class="article-title">Can AI Hear What We Can't?</h1>
+  <div class="article-meta">
+    <span>By Yishuang (Sherry) Xu</span>
+    <span>May 2026</span>
+    <span>13 min read · Part 3 of 3</span>
+  </div>
+  <div class="article-body">
+  <div style="background:var(--blue-lt);border:1px solid var(--border);border-radius:var(--r);padding:1.25rem 1.5rem;margin-bottom:2.5rem;">
+    <div style="font-size:0.72rem;font-weight:600;text-transform:uppercase;letter-spacing:0.1em;color:var(--blue);margin-bottom:0.75rem;">The Sound of Money — 3-part series</div>
+    <div style="display:flex;flex-direction:column;gap:0.4rem;font-size:0.875rem;">
+      <a href="/articles/cramers-voice-moves-markets/" style="color:var(--ink-2);">Part 1 — Does Jim Cramer's Voice Move Markets?</a>
+      <a href="/articles/what-your-lender-is-hearing/" style="color:var(--ink-2);">Part 2 — What Your Lender Is Really Hearing</a>
+      <a href="/articles/can-ai-hear-what-we-cant/" style="color:var(--ink-2);">Part 3 — Can AI Hear What We Can't?</a>
+    </div>
+  </div>
+    <p>Every time a financial broadcaster goes on air, they produce two streams of data simultaneously. The first is obvious: the words. Transcripts are easy to generate, easy to search, and easy to analyse. An entire industry of financial NLP has been built on this layer. The second stream is hiding in plain sight: the voice itself — the pitch contour, the speech rate, the pause architecture, the loudness dynamics. This second stream carries enormous amounts of information. Linguists and psychologists have known this for decades. But in finance, it has been almost entirely ignored.</p>
+    <p>The technology to change this now exists. It is open-source, well-documented, and computationally inexpensive. The question is no longer whether we <em>can</em> analyse the acoustic layer of financial media. It is whether doing so would tell us anything that text alone does not. I believe it would.</p>
+
+    <h2>Listening like a machine</h2>
+    <p>When a human listener watches Jim Cramer, they process his voice holistically and feel an emotional response. They can't decompose the signal — they can't tell you whether it was the pitch variability or the speech rate that made them anxious. A machine can decompose the signal. Audio feature extraction tools like OpenSMILE and Python's Librosa library can take a broadcast segment and produce a detailed acoustic profile.</p>
+    <p><strong>Fundamental frequency (F0):</strong> the physical pitch of the voice. More useful than the mean is F0 variability — the standard deviation of pitch across a segment. High variability signals emotional engagement, excitement, or alarm. Research on political speech has shown that F0 variability predicts audience arousal more reliably than the words being spoken.</p>
+    <p><strong>Speech rate:</strong> words per minute, calculated from forced alignment of the transcript to the audio. Cramer routinely exceeds 180 words per minute in high-intensity segments. Sorkin typically sits around 130–140. Speech rate is one of the strongest paralinguistic predictors of perceived urgency.</p>
+    <p><strong>Pause frequency and duration:</strong> frequent short pauses signal careful thought; infrequent pauses in fast speech signal urgency. The pattern matters as much as the average.</p>
+    <p><strong>Loudness dynamics:</strong> not just average volume but the variance. A speaker whose volume spikes on key words — "the stock <em>crashed</em>" — is performing emphasis that listeners register as emotional intensity, often unconsciously.</p>
+    <p><strong>Spectral features:</strong> measures of vocal quality like jitter and shimmer, which increase under stress. These are the micro-tremors that human listeners sense but cannot name.</p>
+
+    <h2>Building the Acoustic-Textual Divergence Score</h2>
+    <p><strong>Step 1: Segment and transcribe.</strong> Take a corpus of financial broadcasts — say, two years of Mad Money and Squawk Box. Segment each episode into individual story-level units. Generate transcripts using a speech-to-text model.</p>
+    <p><strong>Step 2: Extract textual sentiment.</strong> Run each transcript through a financial sentiment model. FinBERT, a BERT-based model fine-tuned on financial text, is the current standard. This produces a sentiment score for each segment.</p>
+    <p><strong>Step 3: Extract acoustic features.</strong> For each segment, compute the acoustic profile. Then map these features to an acoustic sentiment score — either trained on labelled data or derived from established psychoacoustic literature.</p>
+    <p><strong>Step 4: Calculate divergence.</strong> ATDS = acoustic sentiment score − textual sentiment score, normalised to a common scale. A segment where the text says "modest earnings miss" but the voice communicates alarm would have a high positive ATDS.</p>
+    <p><strong>Step 5: Test predictive power.</strong> Does ATDS have incremental explanatory power over textual sentiment in predicting retail trading volume, abnormal returns, or — in the property context — shifts in lending terms or valuation adjustments? If it does, we have evidence that the paralinguistic channel is doing independent work in financial markets.</p>
+
+    <h2>What the score could reveal</h2>
+    <p><strong>Broadcaster signatures.</strong> Each host likely has a characteristic ATDS range. Cramer probably runs consistently high-positive. Sorkin probably runs near zero or slightly negative. These signatures would be stable baselines against which anomalies become meaningful: if Sorkin's ATDS suddenly spikes positive, something genuinely unusual is happening.</p>
+    <p><strong>Topic-specific patterns.</strong> ESG and climate risk, with their apocalyptic overtones, may be structurally high-ATDS topics — not because they are more severe, but because they are more narratively dramatic. If true, this would suggest that certain topics receive disproportionate emotional amplification through broadcast delivery, regardless of their actual financial materiality.</p>
+    <p><strong>Momentum signals.</strong> If the average ATDS for ESG-related segments has been rising over six months, that tells you the emotional register of coverage is intensifying. That directional shift in acoustic framing may anticipate the sentiment shifts in lending committees and valuation reports that Part 2 described.</p>
+
+    <h2>The honest limitations</h2>
+    <p><strong>Causal identification is hard.</strong> Acoustic intensity may simply correlate with news severity — when Cramer shouts about a crash, he's shouting because the crash is dramatic. Separating the independent effect of delivery from the effect of content requires careful research design: same-story comparisons across hosts, within-host variation over time, and robustness checks. Doable but not trivial.</p>
+    <p><strong>The acoustic-to-sentiment mapping is imperfect.</strong> High pitch variability could signal alarm, but it could also signal excitement. Context matters, and context is hard to encode.</p>
+    <p><strong>Data access is a barrier.</strong> Archived broadcast audio is not as freely available as text transcripts. Building a comprehensive corpus requires either licensing agreements or creative use of public archives.</p>
+    <p><strong>Property-specific applications are further away.</strong> The jump from equity market trading data to property market outcomes — which are infrequent, opaque, and relationship-mediated — is significant. None of these limitations invalidate the framework. They define the research agenda.</p>
+
+    <h2>What comes next</h2>
+    <p>When Jim Cramer and Andrew Ross Sorkin cover the same story on the same day, they deliver the same information through radically different acoustic envelopes. One transmits urgency. The other transmits deliberation. And if the psychology of emotional contagion is even partially right, those two envelopes produce different responses in the people who receive them — including the people who approve loans, set valuations, and allocate capital to property.</p>
+    <p>We have, right now, the technology to measure this systematically. What we don't have yet is anyone doing it at scale in financial media, and certainly not in property. The industry building sustainability reporting tools and ESG risk models is growing quickly. But almost all of it is backward-looking — measuring what has already happened. The next frontier is forward-looking: understanding the signals that precede formal outcomes.</p>
+    <p>Whoever figures out how to track media acoustic sentiment systematically will have an advantage that purely compliance-focused tools cannot match. They won't just tell you where you stand. They'll tell you where the ground is shifting.</p>
+  </div>
+    <div class="cta-box">
+    <div class="cta-icon">📖</div>
+    <div class="cta-body">
+      <h4>The full book is now available</h4>
+      <p><em>The Sound of Money: How Media Voice, Tone, and Delivery Shape Financial Decisions</em> — the complete treatment of the ideas in this series, including the methodology, the evidence, and the implications for property and finance professionals.</p>
+      <a href="https://www.amazon.co.uk/dp/B0H2471L9H" target="_blank" class="btn-green">Buy on Amazon →</a>
+    </div>
+  </div>
+</article>
+</main>
+<footer>
+  <div class="article-footer">
+    <span>© 2026 Yishuang (Sherry) Xu</span>
+    <span><a href="/">sherryxu.com</a> · <a href="/#articles">All articles</a></span>
+  </div>
+</footer>
+</body>
+</html>
