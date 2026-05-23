@@ -309,8 +309,12 @@
   .book-card-thumb {
     aspect-ratio: 2/3; background: var(--teal);
     display: flex; align-items: center; justify-content: center;
-    padding: 1rem; text-align: center;
+    padding: 1rem; text-align: center; overflow: hidden; position: relative;
   }
+  .book-card-thumb img {
+    position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;
+  }
+  .book-card-thumb img.loaded + .book-card-thumb-text { display:none; }
   .book-card-thumb-text {
     font-family: var(--serif); color: rgba(255,255,255,0.9);
     font-size: 0.85rem; line-height: 1.35;
@@ -525,15 +529,15 @@
     <div>
       <span class="hero-tag fade-up">AI · ESG · Real Estate</span>
       <h1 class="fade-up delay-1">
-        Research that<br><em>builds things.</em>
+        AI, ESG &amp; real estate —<br><em>practical, not theoretical.</em>
       </h1>
       <p class="hero-desc fade-up delay-2">
-        AI tools, research, and practical guides for real estate professionals navigating ESG, digital assets, and the automation era.
+        Practical guides, tools, and books for real estate professionals navigating AI, ESG compliance, and digital assets. Written by a researcher who also builds things.
       </p>
       <div class="hero-creds fade-up delay-3">
         <div class="cred"><span class="cred-dot"></span><span>Routledge author — PropTech Innovations in Real Estate Investment and Finance (2026)</span></div>
         <div class="cred"><span class="cred-dot"></span><span>Associate Professor, University of Manchester</span></div>
-        <div class="cred"><span class="cred-dot"></span><span>Founder, Plinthos — ESG compliance for UK real estate funds</span></div>
+        <div class="cred"><span class="cred-dot"></span><span>Founder, Plinthos — AI-powered ESG compliance platform for UK real estate funds and UK valuers</span></div>
       </div>
       <div class="hero-actions fade-up delay-4">
         <a href="#book" class="btn btn-primary">See my book</a>
@@ -569,12 +573,12 @@
         <div class="section-label">About</div>
         <h2 class="section-title">Yishuang (Sherry) Xu</h2>
         <p>I work at the intersection of AI, sustainability, and real estate — as a researcher, author, and founder. My academic work focuses on how emerging technologies reshape real estate investment and the built environment. My practical work turns that research into tools that professionals can actually use.</p>
-        <p>At the University of Manchester, where I am an Associate Professor, I research PropTech, digital assets, and ESG in real estate. As founder of <strong>Plinthos</strong>, I build ESG compliance software for UK real estate funds. My writing spans academic journals, practical guides, and self-published books read by analysts and investors worldwide.</p>
+        <p>At the University of Manchester, where I am an Associate Professor, I research PropTech, digital assets, and ESG in real estate. As founder of <strong>Plinthos</strong>, I build an AI-powered ESG compliance platform for UK real estate funds and UK valuers. My writing spans academic journals, practical guides, and self-published books read by analysts and investors worldwide.</p>
         <p>My most recent book, <em>PropTech Innovations in Real Estate Investment and Finance: Sustainable Futures</em> (Routledge, 2026), explores how technology is reshaping real estate investment across global markets.</p>
         <p style="color: var(--ink-2); font-size:0.9rem;">For advisory or collaboration enquiries, <a href="mailto:yishuang.xu@manchester.ac.uk" style="color:var(--teal); border-bottom:1px solid var(--teal);">get in touch</a>.</p>
         <div class="affil-row">
           <span class="affil-tag">University of Manchester</span>
-          <span class="affil-tag">Plinthos</span>
+          <span class="affil-tag">Plinthos — AI ESG platform</span>
           <span class="affil-tag">Routledge</span>
           <span class="affil-tag">ESG</span>
           <span class="affil-tag">PropTech</span>
@@ -632,8 +636,8 @@
       <div class="group-label">AI &amp; Technology</div>
       <div class="books-row">
         <a href="https://www.amazon.co.uk/dp/B0DTQS552F" target="_blank" class="book-card">
-          <div class="book-card-thumb" style="background:#0a3d5e;aspect-ratio:2/3;display:flex;align-items:center;justify-content:center;padding:1rem;text-align:center;">
-            <div class="book-card-thumb-text">How to Use AI in Financial Analysis</div>
+          <div class="book-card-thumb" style="background:#0a3d5e;padding:0;overflow:hidden;position:relative;display:block;">
+            <img src="/image/How_to_Use_AI_in_Financial_Analysis.jpg" alt="How to Use AI in Financial Analysis" style="width:100%;height:100%;object-fit:cover;display:block;" onerror="this.style.display='none'">
           </div>
           <div class="book-card-body">
             <div class="book-card-title">How to Use AI in Financial Analysis: Building AI Agents That Actually Work</div>
@@ -641,8 +645,8 @@
           </div>
         </a>
         <a href="https://www.amazon.co.uk/dp/B0FRZJGQPP" target="_blank" class="book-card">
-          <div class="book-card-thumb" style="background:#1a3a5c;aspect-ratio:2/3;display:flex;align-items:center;justify-content:center;padding:1rem;text-align:center;">
-            <div class="book-card-thumb-text">The AI Crossroads</div>
+          <div class="book-card-thumb" style="background:#1a3a5c;padding:0;overflow:hidden;position:relative;display:block;">
+            <img src="/image/The_AI_Crossroads.jpg" alt="The AI Crossroads" style="width:100%;height:100%;object-fit:cover;display:block;" onerror="this.style.display='none'">
           </div>
           <div class="book-card-body">
             <div class="book-card-title">The AI Crossroads: Why the Robot Catastrophe Isn't What You Think</div>
@@ -650,8 +654,8 @@
           </div>
         </a>
         <a href="https://www.amazon.co.uk/dp/B0FRB4RVM7" target="_blank" class="book-card">
-          <div class="book-card-thumb" style="background:#0f4d6b;aspect-ratio:2/3;display:flex;align-items:center;justify-content:center;padding:1rem;text-align:center;">
-            <div class="book-card-thumb-text">The Navigator in the AI Economy</div>
+          <div class="book-card-thumb" style="background:#0f4d6b;padding:0;overflow:hidden;position:relative;display:block;">
+            <img src="/image/The_Navigator_in_the_AI_Economy.jpg" alt="The Navigator in the AI Economy" style="width:100%;height:100%;object-fit:cover;display:block;" onerror="this.style.display='none'">
           </div>
           <div class="book-card-body">
             <div class="book-card-title">The Navigator in the AI Economy: Your Playbook for Thriving</div>
@@ -659,8 +663,8 @@
           </div>
         </a>
         <a href="https://www.amazon.co.uk/dp/B0DL4QY2XJ" target="_blank" class="book-card">
-          <div class="book-card-thumb" style="background:#2a1a5c;aspect-ratio:2/3;display:flex;align-items:center;justify-content:center;padding:1rem;text-align:center;">
-            <div class="book-card-thumb-text">The Shape of a Mind</div>
+          <div class="book-card-thumb" style="background:#2a1a5c;padding:0;overflow:hidden;position:relative;display:block;">
+            <img src="/image/The_Shape_of_a_Mind.jpg" alt="The Shape of a Mind" style="width:100%;height:100%;object-fit:cover;display:block;" onerror="this.style.display='none'">
           </div>
           <div class="book-card-body">
             <div class="book-card-title">The Shape of a Mind: A Race to Understand is a Race to Survive</div>
@@ -668,8 +672,8 @@
           </div>
         </a>
         <a href="https://www.amazon.co.uk/dp/B0H2471L9H" target="_blank" class="book-card">
-          <div class="book-card-thumb" style="background:#1a3a6e;aspect-ratio:2/3;display:flex;align-items:center;justify-content:center;padding:1rem;text-align:center;">
-            <div class="book-card-thumb-text">The Sound of Money</div>
+          <div class="book-card-thumb" style="background:#1a3a6e;padding:0;overflow:hidden;position:relative;display:block;">
+            <img src="/image/THE_SOUND_OF_MONEY.jpg" alt="The Sound of Money" style="width:100%;height:100%;object-fit:cover;display:block;" onerror="this.style.display='none'">
           </div>
           <div class="book-card-body">
             <div class="book-card-title">The Sound of Money: How Media Voice, Tone, and Delivery Shape Financial Decisions</div>
@@ -683,8 +687,8 @@
       <div class="group-label">ESG &amp; Sustainability</div>
       <div class="books-row">
         <a href="https://www.amazon.co.uk/dp/B0FMYS7G37" target="_blank" class="book-card">
-          <div class="book-card-thumb" style="background:#1a4d2e;aspect-ratio:2/3;display:flex;align-items:center;justify-content:center;padding:1rem;text-align:center;">
-            <div class="book-card-thumb-text">The Journey to Net Zero Real Estate</div>
+          <div class="book-card-thumb" style="background:#1a4d2e;padding:0;overflow:hidden;position:relative;display:block;">
+            <img src="/image/The_Journey_to_Net_Zero_Real_Estate.jpg" alt="The Journey to Net Zero Real Estate" style="width:100%;height:100%;object-fit:cover;display:block;" onerror="this.style.display='none'">
           </div>
           <div class="book-card-body">
             <div class="book-card-title">The Journey to Net Zero Real Estate: A Beginner's Guide to Sustainable Property Development and Investment</div>
@@ -692,12 +696,21 @@
           </div>
         </a>
         <a href="https://www.amazon.co.uk/dp/B0DJ3823BQ" target="_blank" class="book-card">
-          <div class="book-card-thumb" style="background:#2d5a1e;aspect-ratio:2/3;display:flex;align-items:center;justify-content:center;padding:1rem;text-align:center;">
-            <div class="book-card-thumb-text">Sustainability in Real Estate</div>
+          <div class="book-card-thumb" style="background:#2d5a1e;padding:0;overflow:hidden;position:relative;display:block;">
+            <img src="/image/Sustainability_in_Real_Estate_Beginners_Guide.jpg" alt="Sustainability in Real Estate" style="width:100%;height:100%;object-fit:cover;display:block;" onerror="this.style.display='none'">
           </div>
           <div class="book-card-body">
             <div class="book-card-title">Sustainability in Real Estate: A Beginner's Guide</div>
             <div class="book-card-tag">For property professionals</div>
+          </div>
+        </a>
+        <a href="https://www.amazon.co.uk/dp/B0H2G95W27" target="_blank" class="book-card">
+          <div class="book-card-thumb" style="background:#1a5c38;padding:0;overflow:hidden;position:relative;display:block;">
+            <img src="/image/ESG_in_Real_Estate.jpg" alt="ESG in Real Estate: Professional Practitioner Handbook" style="width:100%;height:100%;object-fit:cover;display:block;" onerror="this.style.display='none'">
+          </div>
+          <div class="book-card-body">
+            <div class="book-card-title">ESG in Real Estate: Professional Practitioner Handbook (Book 1)</div>
+            <div class="book-card-tag">For fund managers &amp; valuers</div>
           </div>
         </a>
       </div>
@@ -707,8 +720,8 @@
       <div class="group-label">Digital Assets &amp; Tokenisation</div>
       <div class="books-row">
         <a href="https://www.amazon.co.uk/dp/B0FKBX591P" target="_blank" class="book-card">
-          <div class="book-card-thumb" style="background:#0a4d6e;aspect-ratio:2/3;display:flex;align-items:center;justify-content:center;padding:1rem;text-align:center;">
-            <div class="book-card-thumb-text">Fundamentals of Real Estate Tokenisation</div>
+          <div class="book-card-thumb" style="background:#0a4d6e;padding:0;overflow:hidden;position:relative;display:block;">
+            <img src="/image/Fundamentals_of_Real_Estate_Tokenization.jpg" alt="Fundamentals of Real Estate Tokenisation" style="width:100%;height:100%;object-fit:cover;display:block;" onerror="this.style.display='none'">
           </div>
           <div class="book-card-body">
             <div class="book-card-title">Fundamentals of Real Estate Tokenisation</div>
@@ -716,8 +729,8 @@
           </div>
         </a>
         <a href="https://www.amazon.co.uk/dp/B0FPJNF32K" target="_blank" class="book-card">
-          <div class="book-card-thumb" style="background:#134e7a;aspect-ratio:2/3;display:flex;align-items:center;justify-content:center;padding:1rem;text-align:center;">
-            <div class="book-card-thumb-text">How to Make Money from Real Estate Tokenization</div>
+          <div class="book-card-thumb" style="background:#134e7a;padding:0;overflow:hidden;position:relative;display:block;">
+            <img src="/image/How_to_Make_Money_from_Real_Estate_Tokenization.jpg" alt="How to Make Money from Real Estate Tokenization" style="width:100%;height:100%;object-fit:cover;display:block;" onerror="this.style.display='none'">
           </div>
           <div class="book-card-body">
             <div class="book-card-title">How to Make Money from Real Estate Tokenization: A Practical Guide for Everyday Property Investors</div>
@@ -725,8 +738,8 @@
           </div>
         </a>
         <a href="https://www.amazon.co.uk/dp/B0FJ28BDBW" target="_blank" class="book-card">
-          <div class="book-card-thumb" style="background:#3d1a5c;aspect-ratio:2/3;display:flex;align-items:center;justify-content:center;padding:1rem;text-align:center;">
-            <div class="book-card-thumb-text">A Brief History of Stablecoins</div>
+          <div class="book-card-thumb" style="background:#3d1a5c;padding:0;overflow:hidden;position:relative;display:block;">
+            <img src="/image/A_Brief_History_of_Stablecoins.jpg" alt="A Brief History of Stablecoins" style="width:100%;height:100%;object-fit:cover;display:block;" onerror="this.style.display='none'">
           </div>
           <div class="book-card-body">
             <div class="book-card-title">A Brief History of Stablecoins: From Digital Banking to Monetary Evolution</div>
@@ -813,6 +826,34 @@
     <div class="section-label">Writing</div>
     <h2 class="section-title">Practical guides &amp; analysis</h2>
     <p class="section-desc">In-depth articles on AI, ESG, and digital assets in real estate — written for professionals who want substance, not summaries.</p>
+
+    <!-- Featured: one per pillar -->
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:1.25rem;margin-bottom:1.25rem;">
+      <div class="article-card" style="border-top:3px solid var(--green);">
+        <div class="article-pillar">AI in Real Estate · Featured</div>
+        <div class="article-title">How is AI actually being used in real estate right now — and what doesn't work yet?</div>
+        <div class="article-desc">An honest practitioner's map of AI use cases by maturity level — what's production-ready, what's promising, and what's still hype.</div>
+        <a href="/articles/how-ai-is-used-in-real-estate/" class="article-status live">Read article →</a>
+      </div>
+      <div class="article-card" style="border-top:3px solid var(--green);">
+        <div class="article-pillar">ESG &amp; Sustainability · Featured</div>
+        <div class="article-title">MEES compliance for UK landlords: what you actually need to do before 2030</div>
+        <div class="article-desc">A plain-English guide to EPC requirements, timelines, the 2030 deadline, and the October 2029 window most landlords are missing.</div>
+        <a href="/articles/mees-compliance-uk-landlords/" class="article-status live">Read article →</a>
+      </div>
+      <div class="article-card" style="border-top:3px solid var(--green);">
+        <div class="article-pillar">Tokenisation · Featured</div>
+        <div class="article-title">What does it mean to tokenise real estate — how does it actually work?</div>
+        <div class="article-desc">From blockchain basics to SPV ownership structures — a plain-English guide to how real estate tokenisation works in practice.</div>
+        <a href="/articles/what-is-real-estate-tokenisation/" class="article-status live">Read article →</a>
+      </div>
+    </div>
+
+    <!-- All articles -->
+    <details>
+      <summary style="cursor:pointer;font-size:0.875rem;font-weight:500;color:var(--green);padding:0.75rem 0;border-top:1px solid var(--border);margin-bottom:1rem;list-style:none;">
+        ↓ View all articles (13)
+      </summary>
     <div class="articles-grid">
 
       <div class="article-card">
@@ -830,7 +871,7 @@
       </div>
 
       <div class="article-card">
-        <div class="article-pillar">Digital Assets</div>
+        <div class="article-pillar">Tokenisation</div>
         <div class="article-title">What does it mean to tokenise real estate — how does it actually work?</div>
         <div class="article-desc">From blockchain basics to fractional ownership structures — a clear explanation of how real estate tokenisation works in practice.</div>
         <a href="/articles/what-is-real-estate-tokenisation/" class="article-status live">Read article →</a>
@@ -903,7 +944,7 @@
         <div class="article-pillar">AI &amp; Financial Media</div>
         <div class="article-title">Can AI Hear What We Can't?</div>
         <div class="article-desc">Inside the methodology of acoustic sentiment analysis — how AI can decompose broadcast delivery into a financial signal that text alone cannot capture.</div>
-        <a href="/articles/can-AI-hear/" class="article-status live">Read article →</a>
+        <a href="/articles/can-ai-hear/" class="article-status live">Read article →</a>
       </div>
 
     </div>
