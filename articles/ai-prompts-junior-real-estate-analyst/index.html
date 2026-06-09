@@ -1,1 +1,741 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Edge — Launch Content Pack</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
+  :root {
+    --green: #1A5C3A;
+    --green-mid: #2D7A52;
+    --green-light: #E8F3ED;
+    --green-pale: #F2F8F4;
+    --gold: #C8963E;
+    --charcoal: #1C1C1C;
+    --slate: #4A4A4A;
+    --muted: #7A7A7A;
+    --rule: #D8DDD9;
+    --white: #FFFFFF;
+    --bg: #F9FAF8;
+    --serif: 'Georgia', 'Times New Roman', serif;
+    --sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    --mono: 'Courier New', monospace;
+  }
+
+  body {
+    font-family: var(--sans);
+    background: var(--bg);
+    color: var(--charcoal);
+    line-height: 1.7;
+    font-size: 15px;
+  }
+
+  /* ── Navigation ── */
+  nav {
+    position: sticky;
+    top: 0;
+    background: var(--green);
+    z-index: 100;
+    padding: 0 2rem;
+    display: flex;
+    gap: 0;
+    border-bottom: 2px solid var(--gold);
+  }
+  nav a {
+    display: block;
+    padding: 0.85rem 1.2rem;
+    color: rgba(255,255,255,0.75);
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    transition: color 0.15s;
+    border-bottom: 2px solid transparent;
+    margin-bottom: -2px;
+  }
+  nav a:hover, nav a.active { color: #fff; border-bottom-color: var(--gold); }
+  .nav-label {
+    color: rgba(255,255,255,0.4);
+    font-size: 11px;
+    padding: 0 1.2rem;
+    display: flex;
+    align-items: center;
+    letter-spacing: 0.05em;
+    margin-right: auto;
+  }
+
+  /* ── Layout ── */
+  .page-header {
+    background: var(--green);
+    padding: 3rem 2rem 2.5rem;
+    color: white;
+  }
+  .page-header h1 {
+    font-family: var(--serif);
+    font-size: 2rem;
+    font-weight: normal;
+    margin-bottom: 0.4rem;
+  }
+  .page-header p {
+    color: rgba(255,255,255,0.65);
+    font-size: 14px;
+  }
+  .page-header .gold-rule {
+    width: 40px;
+    height: 2px;
+    background: var(--gold);
+    margin: 1rem 0;
+  }
+
+  .container {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 2.5rem 2rem;
+  }
+
+  /* ── Section tabs ── */
+  .section-block {
+    display: none;
+  }
+  .section-block.active {
+    display: block;
+  }
+
+  /* ── Asset card ── */
+  .asset-card {
+    background: var(--white);
+    border: 1px solid var(--rule);
+    border-radius: 10px;
+    margin-bottom: 2rem;
+    overflow: hidden;
+  }
+  .asset-card-header {
+    background: var(--green-pale);
+    border-bottom: 1px solid var(--rule);
+    padding: 1rem 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+  .asset-label {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    color: var(--green-mid);
+    text-transform: uppercase;
+  }
+  .asset-note {
+    font-size: 12px;
+    color: var(--muted);
+  }
+  .asset-body {
+    padding: 1.5rem;
+  }
+
+  /* ── Article styles ── */
+  .article-meta {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-bottom: 1.5rem;
+  }
+  .meta-pill {
+    font-size: 12px;
+    background: var(--green-light);
+    color: var(--green);
+    padding: 3px 10px;
+    border-radius: 20px;
+    font-weight: 500;
+  }
+
+  .article-content h1 {
+    font-family: var(--serif);
+    font-size: 1.75rem;
+    font-weight: normal;
+    color: var(--charcoal);
+    line-height: 1.3;
+    margin-bottom: 0.75rem;
+  }
+  .article-content .deck {
+    font-size: 1.05rem;
+    color: var(--slate);
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+    font-style: italic;
+    border-left: 3px solid var(--gold);
+    padding-left: 1rem;
+  }
+  .article-content h2 {
+    font-family: var(--serif);
+    font-size: 1.2rem;
+    font-weight: normal;
+    color: var(--green);
+    margin: 2rem 0 0.75rem;
+    padding-bottom: 0.4rem;
+    border-bottom: 1px solid var(--rule);
+  }
+  .article-content p {
+    margin-bottom: 1rem;
+    color: var(--slate);
+    font-size: 15px;
+  }
+  .article-content ul, .article-content ol {
+    padding-left: 1.5rem;
+    margin-bottom: 1rem;
+  }
+  .article-content li {
+    color: var(--slate);
+    margin-bottom: 0.4rem;
+    font-size: 15px;
+  }
+
+  /* Prompt example box inside article */
+  .prompt-example {
+    background: var(--green-pale);
+    border-left: 3px solid var(--green-mid);
+    border-radius: 0 6px 6px 0;
+    padding: 1rem 1.25rem;
+    margin: 1.25rem 0;
+    font-family: var(--mono);
+    font-size: 13px;
+    color: var(--charcoal);
+    line-height: 1.7;
+  }
+  .prompt-example .ph {
+    background: #D4EDDF;
+    color: var(--green);
+    border-radius: 3px;
+    padding: 0 4px;
+    font-family: var(--sans);
+    font-size: 12px;
+    font-weight: 600;
+  }
+
+  /* CTA box inside article */
+  .article-cta {
+    background: var(--green);
+    border-radius: 10px;
+    padding: 1.5rem 1.75rem;
+    margin: 2rem 0;
+    color: white;
+  }
+  .article-cta h3 {
+    font-family: var(--serif);
+    font-size: 1.1rem;
+    font-weight: normal;
+    margin-bottom: 0.5rem;
+  }
+  .article-cta p {
+    color: rgba(255,255,255,0.75);
+    font-size: 14px;
+    margin-bottom: 1rem;
+  }
+  .cta-button {
+    display: inline-block;
+    background: var(--gold);
+    color: white;
+    padding: 0.6rem 1.4rem;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  .author-bio {
+    background: var(--green-pale);
+    border: 1px solid var(--rule);
+    border-radius: 8px;
+    padding: 1.25rem 1.5rem;
+    margin-top: 2rem;
+    font-size: 13px;
+    color: var(--slate);
+  }
+  .author-bio strong { color: var(--charcoal); }
+
+  /* ── HTML meta fields ── */
+  .meta-fields {
+    background: #FFFBF2;
+    border: 1px solid #EDD89A;
+    border-radius: 8px;
+    padding: 1rem 1.25rem;
+    margin-bottom: 1.5rem;
+  }
+  .meta-fields h4 {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: #8B6914;
+    margin-bottom: 0.75rem;
+  }
+  .meta-row {
+    display: grid;
+    grid-template-columns: 120px 1fr;
+    gap: 0.3rem 1rem;
+    font-size: 13px;
+    align-items: baseline;
+  }
+  .meta-row dt {
+    color: #8B6914;
+    font-weight: 600;
+  }
+  .meta-row dd {
+    color: var(--charcoal);
+    font-family: var(--mono);
+    font-size: 12.5px;
+  }
+
+  /* ── LinkedIn post ── */
+  .li-post {
+    background: #F3F6FB;
+    border: 1px solid #C8D8EE;
+    border-radius: 10px;
+    padding: 1.5rem;
+    font-size: 14.5px;
+    color: var(--charcoal);
+    line-height: 1.75;
+    white-space: pre-wrap;
+    font-family: var(--sans);
+  }
+  .li-post-b { font-size: 13px; margin-top: 1.25rem; }
+  .li-note {
+    font-size: 12px;
+    color: var(--muted);
+    margin-top: 0.75rem;
+    padding-top: 0.75rem;
+    border-top: 1px solid var(--rule);
+  }
+
+  /* ── Q&A cards ── */
+  .qa-block {
+    border: 1px solid var(--rule);
+    border-radius: 8px;
+    margin-bottom: 1.5rem;
+    overflow: hidden;
+  }
+  .qa-question {
+    background: var(--green-pale);
+    padding: 0.9rem 1.25rem;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--green);
+    border-bottom: 1px solid var(--rule);
+    display: flex;
+    align-items: flex-start;
+    gap: 0.6rem;
+  }
+  .qa-question-icon {
+    flex-shrink: 0;
+    width: 20px;
+    height: 20px;
+    background: var(--green);
+    color: white;
+    border-radius: 50%;
+    font-size: 11px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 1px;
+  }
+  .qa-answer {
+    padding: 1.25rem;
+    font-size: 14px;
+    color: var(--slate);
+    line-height: 1.75;
+    white-space: pre-wrap;
+  }
+  .qa-answer .link-note {
+    display: inline-block;
+    background: var(--green-light);
+    color: var(--green);
+    border-radius: 4px;
+    padding: 2px 8px;
+    font-size: 12px;
+    font-weight: 600;
+    font-style: normal;
+  }
+  .platform-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    padding: 0.5rem 1rem;
+    margin-bottom: 1rem;
+    display: inline-block;
+    border-radius: 4px;
+  }
+  .quora-label { background: #FCEEED; color: #B52E2E; }
+  .reddit-label { background: #FEF0E7; color: #CC4C00; }
+
+  /* ── SEO chars count ── */
+  .char-count {
+    font-size: 11px;
+    color: var(--muted);
+    font-family: var(--mono);
+  }
+  .char-ok { color: #2D7A52; }
+  .char-warn { color: #C8963E; }
+</style>
+</head>
+<body>
+
+<nav>
+  <span class="nav-label">AI Edge — Launch Content</span>
+  <a href="#" class="active" onclick="show('article',this)">Article</a>
+  <a href="#" onclick="show('linkedin',this)">LinkedIn</a>
+  <a href="#" onclick="show('quora',this)">Quora</a>
+  <a href="#" onclick="show('reddit',this)">Reddit</a>
+</nav>
+
+<div class="page-header">
+  <h1>AI Edge — Launch Content Pack</h1>
+  <div class="gold-rule"></div>
+  <p>Four ready-to-publish assets · Article · LinkedIn post · Quora templates · Reddit templates</p>
+</div>
+
+<div class="container">
+
+<!-- ══════════════════════════════════════════════
+     ASSET 1: ARTICLE
+══════════════════════════════════════════════ -->
+<div id="article" class="section-block active">
+
+  <div class="asset-card">
+    <div class="asset-card-header">
+      <span class="asset-label">HTML meta fields</span>
+      <span class="asset-note">Copy these exactly into your page &lt;head&gt; — respects Bing character limits</span>
+    </div>
+    <div class="asset-body">
+      <div class="meta-fields">
+        <h4>Page metadata</h4>
+        <dl class="meta-row">
+          <dt>title tag</dt>
+          <dd>How to use AI as a junior real estate analyst <span class="char-count char-ok">(51 chars ✓)</span></dd>
+          <dt>meta description</dt>
+          <dd>36 copy-paste AI prompt templates for real estate analysts, associates, and graduate trainees — IC papers, AM reports, market research, and ESG. <span class="char-count char-ok">(148 chars ✓)</span></dd>
+          <dt>URL slug</dt>
+          <dd>/articles/ai-prompts-junior-real-estate-analyst/</dd>
+          <dt>H1 on page</dt>
+          <dd>How to use AI as a junior real estate analyst (and actually get useful output)</dd>
+        </dl>
+      </div>
+    </div>
+  </div>
+
+  <div class="asset-card">
+    <div class="asset-card-header">
+      <span class="asset-label">Full article — sherryxu.com</span>
+      <span class="asset-note">~1,400 words · Paste directly into your CMS</span>
+    </div>
+    <div class="asset-body">
+      <div class="article-content">
+
+        <div class="article-meta">
+          <span class="meta-pill">AI in real estate</span>
+          <span class="meta-pill">Career</span>
+          <span class="meta-pill">Investment analysis</span>
+        </div>
+
+        <h1>How to use AI as a junior real estate analyst (and actually get useful output)</h1>
+        <p class="deck">Most junior analysts are already using AI. Very few are using it well. The difference is not which tool you use — it is how precisely you tell it what you need.</p>
+
+        <h2>The problem with generic prompts</h2>
+        <p>If you type "write an investment committee memo for this deal" into an AI tool and paste some numbers, you will get something back. It will be structured. It will use the right headings. And it will be obviously, visibly generic — the kind of output that tells your manager you used AI without thinking about it.</p>
+        <p>The analysts who get noticed for using AI well are not the ones who use it most. They are the ones who give it enough context, structure, and specificity that the output reads like it came from someone who knows the deal. That requires a different kind of prompt.</p>
+        <p>This article explains the framework. At the end, there is a link to a prompt playbook I have built specifically for real estate investment and asset management work — 36 templates you can copy, fill in, and run today.</p>
+
+        <h2>What a good real estate prompt actually looks like</h2>
+        <p>A well-structured prompt for professional real estate work has four components:</p>
+        <ol>
+          <li><strong>Role:</strong> Tell the AI who it is. "You are a real estate investment analyst" produces better output than no instruction at all.</li>
+          <li><strong>Context:</strong> Give it the specifics — asset class, location, strategy, key numbers. The more precise the input, the more precise the output.</li>
+          <li><strong>Task:</strong> State exactly what you want, including format, length, and tone. "Write a 150-word downside scenario narrative in the style of an experienced fund manager" is far better than "write about the risks."</li>
+          <li><strong>Constraints:</strong> Tell it what not to do. "No bullet points — flowing prose only" or "do not overstate the sustainability credentials" are instructions that prevent the most common AI failure modes in professional documents.</li>
+        </ol>
+        <p>Here is the difference in practice. A weak prompt:</p>
+        <div class="prompt-example">"Write an IC memo for a logistics acquisition in the Midlands."</div>
+        <p>A strong prompt:</p>
+        <div class="prompt-example">Draft a two-page investment committee memo for the following acquisition. Property: <span class="ph">[property name and address]</span>. Asset class: logistics. Vendor: <span class="ph">[vendor name]</span>. Purchase price: <span class="ph">[£X]</span>. NIY: <span class="ph">[X%]</span>. Strategy: core-plus. Investment rationale: <span class="ph">[2–3 sentences]</span>. Key risks: <span class="ph">[list]</span>. Target IRR: <span class="ph">[X%]</span>. Hold period: <span class="ph">[X years]</span>. Structure the memo with: Executive summary, Market context, Asset description, Financial summary, Key risks and mitigants, Recommendation. Use formal institutional tone.</div>
+        <p>The second prompt takes thirty seconds longer to fill in. The output is a genuine first draft rather than a structural skeleton you still have to write from scratch.</p>
+
+        <h2>The four task areas where AI saves the most time</h2>
+        <p>Based on where junior analysts and associates spend the most hours, these are the four areas where well-constructed AI prompts deliver the clearest productivity gain:</p>
+        <p><strong>Investment analysis and underwriting.</strong> IM summaries, assumption sense-checks, downside scenario narratives, IC memo drafts, comparable evidence summaries, due diligence question lists, debt structure write-ups, negotiation talking points, and return attribution narratives. These tasks are structurally repetitive — the same sections appear in every deal — which makes them ideal for template-based prompting.</p>
+        <p><strong>Asset management and reporting.</strong> Quarterly AM reports, tenancy schedule summaries, investor update letters, board-level commentary, lease event action plans, capex programme summaries, hold/sell recommendation memos, void management notes, and annual business plan sections. This is where most of the recurring writing load sits in an AM role, and where a strong first draft saves the most calendar time.</p>
+        <p><strong>Market research and data gathering.</strong> Submarket overviews, sector outlooks, news-to-brief synthesis, macro briefing notes, occupier demand analyses, competitor benchmarking, data table narratives, location assessments, and executive summaries. The specific challenge here is turning scattered inputs — news articles, data points, agent reports — into a coherent, confident analytical view. Good prompts structure that synthesis.</p>
+        <p><strong>ESG and sustainability tasks.</strong> ESG framework explainers, EPC implication assessments, sustainability sections for IC papers, net zero narratives, ESG due diligence question lists, TCFD climate risk summaries, and annual report ESG sections. ESG literacy is now a baseline expectation in institutional real estate, not a specialism. Prompts in this area help you be conversant and credible without needing to be a compliance expert.</p>
+
+        <h2>What AI cannot do — and why that matters</h2>
+        <p>Two caveats that belong in any honest article about AI and professional work.</p>
+        <p>First, AI produces a first draft, not a finished document. The deal-specific intelligence — the local market knowledge you have built from calls and site visits, the nuance in the tenant relationship, the judgment about whether this is actually a good deal — that is yours to add. An AI-assisted analyst who edits intelligently will always outperform one who pastes unchecked output.</p>
+        <p>Second, AI market data has a knowledge cutoff and should never be treated as a live source. Any yield, rent, vacancy rate, or macro statistic that comes from an AI prompt must be verified against CoStar, MSCI, JLL Research, or equivalent before appearing in any client-facing document. The prompt gives you the structure; the numbers are your responsibility.</p>
+
+        <h2>A practical starting point</h2>
+        <p>If you want to apply this approach immediately, the most useful single prompt for a junior analyst to start with is the IC memo template above. Run it on your current deal or a recent transaction you know well. Compare the output against what you would have written from scratch. The gap — in time saved and in structural quality — is where the value sits.</p>
+        <p>For a complete set of tested, copy-paste ready templates across all four areas, I have put together a prompt playbook specifically for early-career real estate professionals.</p>
+
+        <div class="article-cta">
+          <h3>AI Edge — Prompt Playbook for Early-Career Real Estate Professionals</h3>
+          <p>36 prompt templates across investment analysis, asset management, market research, and ESG. Each one copy-paste ready with placeholders. Instant download, £29.</p>
+          <span class="cta-button">Get the playbook — £29</span>
+          <p style="margin-top:0.75rem;font-size:12px;color:rgba(255,255,255,0.5);">gumroad.com/l/[your-link] &nbsp;·&nbsp; Instant PDF download</p>
+        </div>
+
+        <div class="author-bio">
+          <strong>Sherry Xu</strong> is a real estate academic at the University of Manchester and co-author of <em>PropTech Innovations in Real Estate Investment and Finance: Sustainable Futures</em> (Routledge, 2026). She writes on AI, ESG, and digital transformation in real estate at <strong>sherryxu.com</strong>.
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════
+     ASSET 2: LINKEDIN
+══════════════════════════════════════════════ -->
+<div id="linkedin" class="section-block">
+
+  <div class="asset-card">
+    <div class="asset-card-header">
+      <span class="asset-label">LinkedIn post — Version A</span>
+      <span class="asset-note">Lead with the problem · links to article in comments</span>
+    </div>
+    <div class="asset-body">
+      <div class="li-post">Most junior real estate analysts are already using AI.
+
+Almost none of them are using it well.
+
+The tell is the output. It looks structured, uses the right headings — but reads like no one who knows the deal wrote it. Managers notice this immediately.
+
+The problem is not the tool. It is the prompt.
+
+A weak prompt: "Write an IC memo for this logistics deal."
+
+A strong prompt tells the AI: who it is, the asset class and location, the specific financial metrics, the structure you want, the tone you need, and what NOT to do.
+
+The second takes 30 seconds longer to type. The output is a genuine first draft rather than a skeleton you still have to fill.
+
+I have been researching and teaching AI applications in real estate for years. The four areas where structured prompting saves junior analysts the most time are:
+
+→ Investment analysis and underwriting
+→ Asset management and reporting
+→ Market research and data synthesis
+→ ESG and sustainability sections
+
+I wrote a full article on the framework, with a worked example of a weak vs strong IC memo prompt.
+
+Link in comments.
+
+#RealEstate #PropTech #AIinRealEstate #CareerDevelopment</div>
+      <div class="li-note">Post the article link as the first comment, not in the post body. LinkedIn suppresses reach on posts with external links. Pin the comment immediately after posting.</div>
+    </div>
+  </div>
+
+  <div class="asset-card">
+    <div class="asset-card-header">
+      <span class="asset-label">LinkedIn post — Version B</span>
+      <span class="asset-note">Lead with the career angle · use 2–3 weeks after Version A</span>
+    </div>
+    <div class="asset-body">
+      <div class="li-post">The analysts who get promoted fastest are not the ones who work hardest.
+
+They are the ones who produce senior-looking output earlier than anyone expects.
+
+I spent a lot of time thinking about what that actually means in practice for someone in their first two years in real estate investment or asset management.
+
+The answer is not "use AI more." It is: know exactly what to ask for.
+
+There is a specific difference between a junior analyst who types "summarise this IM" and one who gives the AI a structured brief — role, asset class, financial metrics, output format, tone, constraints — and gets a first draft they can actually send to a manager with minimal editing.
+
+That second analyst looks like they have been doing this for years.
+
+I wrote about the framework, with examples from IC memos, AM reports, market research, and ESG sections.
+
+If you are early in a real estate career and already using AI, or want to start — the article is worth reading.
+
+Link in comments.
+
+#RealEstate #JuniorAnalyst #PropTech #AIinRealEstate</div>
+      <div class="li-note">Same mechanic — link in first comment. This version will resonate more with people who share it to their own networks of graduates and early-career professionals, which is your best source of organic reach.</div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════
+     ASSET 3: QUORA
+══════════════════════════════════════════════ -->
+<div id="quora" class="section-block">
+
+  <p style="color:var(--slate);font-size:14px;margin-bottom:1.5rem;">Three answer templates for the Quora questions your target audience is most likely to be asking. Each answer stands on its own as genuinely useful — the article link appears once, naturally, near the end.</p>
+
+  <span class="platform-label quora-label">Quora</span>
+
+  <div class="qa-block">
+    <div class="qa-question">
+      <span class="qa-question-icon">Q</span>
+      How can I use ChatGPT or AI tools effectively as a junior real estate analyst?
+    </div>
+    <div class="qa-answer">The short answer: the quality of your output depends almost entirely on the quality of your prompt. Most junior analysts treat AI like a search engine — type a vague question, get a vague answer. The ones who get genuinely useful output treat it more like briefing a very capable but completely uninformed colleague.
+
+A well-structured prompt for real estate work has four components:
+
+1. Role — tell the AI what kind of expert it is. "You are a real estate investment analyst" produces noticeably better output than no instruction.
+
+2. Context — give it the specifics. Asset class, location, strategy, key financial metrics. Vague input reliably produces vague output.
+
+3. Task — state exactly what you want, including format, length, and tone. "Write a 150-word downside scenario narrative in the style of an experienced fund manager presenting risk objectively, not alarmingly" is far more useful than "write about the risks."
+
+4. Constraints — tell it what NOT to do. "No bullet points — flowing prose only" and "do not overstate the sustainability credentials" prevent the most common failure modes in professional documents.
+
+The areas where this pays off most quickly for a junior analyst are IC memo drafting, AM report writing, market research synthesis, and ESG sections — all tasks that are structurally repetitive and time-consuming.
+
+One important caveat: always verify any market statistics AI generates (yields, rents, vacancy rates) against a live source before they appear in any client document. AI has a knowledge cutoff and should not be treated as a data source.
+
+I wrote a more detailed breakdown of this framework with a worked example at sherryxu.com — search "how to use AI as a junior real estate analyst" and it should come up. <span class="link-note">→ article link</span></div>
+  </div>
+
+  <div class="qa-block">
+    <div class="qa-question">
+      <span class="qa-question-icon">Q</span>
+      What AI tools are useful for real estate investment analysis?
+    </div>
+    <div class="qa-answer">Most real estate professionals overestimate the importance of which AI tool they use and underestimate the importance of how they use it. GPT-4, Claude, and Gemini all produce broadly similar quality output for the kind of writing tasks that take up most of a junior analyst's time — IC memos, AM reports, market research summaries, ESG sections. The tool matters far less than the prompt.
+
+That said, for real estate investment analysis specifically, here is what actually helps:
+
+For writing tasks (IC papers, investor letters, AM reports): any of the major chat-based models work well if you structure your prompt properly — role, context, task format, and constraints. The output from a well-structured prompt is dramatically better than from a vague one.
+
+For data analysis: Excel's Copilot integration is useful if your firm has it. Python with OpenAI API works for more complex modelling, but that is probably beyond most junior analyst roles.
+
+For market research synthesis: pasting multiple sources (broker notes, news articles, data tables) into a chat model with a structured synthesis prompt — "identify the dominant narrative across these sources and any contradictions" — is faster and often clearer than reading each source separately.
+
+For ESG framework questions: AI is genuinely useful for explaining frameworks like GRESB, TCFD, and MEES in plain language before a meeting where they are likely to come up. Not as a compliance source, but as a preparation tool.
+
+The practical constraint everyone runs into is knowing what to type. I covered this in more depth — including worked prompt examples — in an article at sherryxu.com. <span class="link-note">→ article link</span></div>
+  </div>
+
+  <div class="qa-block">
+    <div class="qa-question">
+      <span class="qa-question-icon">Q</span>
+      How do I write a good investment committee memo as a junior analyst?
+    </div>
+    <div class="qa-answer">The IC memo is probably the highest-stakes piece of writing a junior analyst produces regularly, so it is worth getting the structure right before thinking about AI.
+
+The standard structure that reads well in most institutional contexts:
+
+1. Executive summary — the recommendation and the headline numbers up front. One paragraph. Senior people read this and sometimes stop there.
+
+2. Market context — why this submarket, why now. Keep it tight — 150-200 words. You are not writing a research report.
+
+3. Asset description — what you are buying, in factual terms. Grade, tenure, size, location, condition.
+
+4. Financial summary — the deal economics: price, NIY, target IRR, hold period, exit assumptions. This section should be crisp. The detail is in the model; the memo explains the story.
+
+5. Key risks and mitigants — two or three real risks with a genuine mitigant for each. Not a risk register — a honest assessment of what could go wrong and why you have thought about it.
+
+6. Recommendation — clear, unambiguous. "We recommend proceeding to exclusivity" or "we do not recommend proceeding at this price."
+
+On AI: once you have the deal numbers, a structured AI prompt can produce a very good first draft of this memo in under a minute. The key is giving it enough context — asset class, location, all the financial metrics, the strategy, and explicit instructions on tone and format. Vague prompt, vague output.
+
+I wrote about this with a worked example of a weak prompt vs a strong prompt for IC memos. The article is at sherryxu.com — search "how to use AI as a junior real estate analyst." <span class="link-note">→ article link</span></div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════
+     ASSET 4: REDDIT
+══════════════════════════════════════════════ -->
+<div id="reddit" class="section-block">
+
+  <p style="color:var(--slate);font-size:14px;margin-bottom:0.75rem;">Reddit is the most sensitive channel — communities flag self-promotion immediately. These replies are written to be genuinely useful first, with the article mentioned only where it is naturally relevant. Suggested subreddits are listed with each template.</p>
+  <p style="color:var(--muted);font-size:13px;margin-bottom:1.5rem;"><strong>Key rule:</strong> Never post the article link as a new thread. Only use these as replies to existing questions. Check the subreddit's self-promotion rules before linking — some require account age or karma thresholds. When in doubt, omit the link entirely and let the answer stand alone.</p>
+
+  <span class="platform-label reddit-label">Reddit</span>
+
+  <div class="qa-block">
+    <div class="qa-question">
+      <span class="qa-question-icon">Q</span>
+      Any tips for using AI in CRE / real estate analyst work? (r/CommercialRealEstate, r/realestateinvesting)
+    </div>
+    <div class="qa-answer">The biggest mistake I see is treating AI like a search engine. You type something vague, you get something vague back, it's not useful, you give up.
+
+What actually works is treating it like briefing a very capable colleague who knows nothing about your specific deal. Give it the role ("you are a real estate investment analyst"), the context (asset class, location, key financial metrics), the exact task (format, length, tone), and the constraints (what NOT to do — "no bullet points", "do not overstate the sustainability credentials").
+
+The areas where this pays off most for analyst-level work:
+
+- IC memo drafting — once you have the deal numbers, a structured prompt produces a solid first draft in under a minute. You still edit it, add the deal-specific insight, verify the numbers — but you are not starting from a blank page.
+
+- AM reports — quarterly reports have the same structure every time, which makes them ideal for template-based prompting. Fill in the asset-specific data, run the prompt, edit the output.
+
+- Market research synthesis — pasting multiple sources (broker notes, news items, data tables) with a synthesis instruction ("identify the dominant narrative and any contradictions between sources") is faster than reading everything separately and often clearer.
+
+- ESG sections — useful for explaining frameworks like GRESB or TCFD in plain language before a meeting, or drafting the sustainability section of an IC paper from basic EPC and certification data.
+
+One hard rule: never use AI-generated market statistics (yields, rents, vacancy rates) in a client document without verifying them against a live source. AI has a knowledge cutoff. Structure is what AI is good at; current data is your responsibility.
+
+Happy to share a specific prompt example if useful — just say which task.</div>
+  </div>
+
+  <div class="qa-block">
+    <div class="qa-question">
+      <span class="qa-question-icon">Q</span>
+      First year in real estate / just started as a graduate trainee — any advice? (r/CommercialRealEstate, r/realestateinvesting, r/careerguidance)
+    </div>
+    <div class="qa-answer">One thing that is not talked about enough: the analysts who stand out early are not the ones who work the most hours — they are the ones who produce senior-looking output earlier than expected.
+
+A few practical things that help with that:
+
+Learn the structure of every document before you write one. IC memos, AM reports, investor letters — each has a standard architecture. Once you know the structure cold, you can fill it in quickly rather than working out the format at the same time as the content.
+
+Get comfortable with AI as a drafting tool. Not a thinking replacement — a first-draft engine. If you structure your prompts well (role, context, task, constraints), you can produce a solid first draft of most recurring documents in a fraction of the time. That time goes into editing, verifying, and adding the deal-specific insight that actually makes the document useful.
+
+Verify every number yourself. Regardless of where a number came from — model, AI, a colleague's summary — if your name is on the document, you own the number. Managers notice errors; they also notice the analysts who never have errors.
+
+On the AI point specifically — the main barrier most people hit is not knowing what to type. I put together some notes on how to structure prompts for the most common real estate analyst tasks, including worked examples. Happy to share if it would help — or just DM.</div>
+  </div>
+
+  <div class="qa-block">
+    <div class="qa-question">
+      <span class="qa-question-icon">Q</span>
+      How do you write a downside scenario / bear case in a real estate IC paper? (r/CommercialRealEstate, r/realestateinvesting)
+    </div>
+    <div class="qa-answer">The bear case is the section most junior analysts write worst, because it is the section they are most tempted to minimise.
+
+A credible downside scenario has three components:
+
+1. A plausible risk event — not "the economy gets worse" but something specific to the asset class and location. For logistics: tenant covenant risk on a long lease, oversupply in that submarket, rates repricing on refinancing. For office: lease break at year 5 exercised by a major tenant, occupier demand structural decline in that grade. One or two risks, specific, plausible.
+
+2. A cascade — how does that risk event flow through your model? If the main tenant exercises a break, what happens to occupancy, income, void costs, and then exit yield? Walk through the mechanics.
+
+3. An IRR impact — what does your model show under a stressed scenario? A concrete number ("IRR falls from 12% to 6% if exit yield widens 75bps and ERV growth is zero") is far more credible than a qualitative statement.
+
+The tone matters too. The best IC downside narratives read like an experienced fund manager presenting risk objectively — not trying to bury it, but not catastrophising either. Committees respond better to "here is the risk and here is why we think the upside justifies it" than to either minimising the risk or making it sound like the deal is doomed.
+
+If you want a practical shortcut — a well-structured AI prompt can produce a very solid first draft of this section once you have your model numbers. The key is giving it the specific stressed assumptions rather than asking it to invent the scenario.</div>
+  </div>
+
+</div>
+
+</div><!-- end container -->
+
+<script>
+function show(id, link) {
+  document.querySelectorAll('.section-block').forEach(b => b.classList.remove('active'));
+  document.querySelectorAll('nav a').forEach(a => a.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  link.classList.add('active');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+  return false;
+}
+</script>
+
+</body>
+</html>
