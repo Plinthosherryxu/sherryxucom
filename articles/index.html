@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ML for Predicting Corporate Carbon Emissions</title>
+<meta name="description" content="New research shows XGBoost outperforms other ML models for forecasting carbon emissions — and governance metrics can fill the gap when disclosure data is missing.">
+<link rel="canonical" href="https://sherryxu.com/articles/ml-carbon-emissions-governance/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Article","headline":"Can Machine Learning Predict Corporate Carbon Emissions?","description":"New research shows XGBoost outperforms other ML models for forecasting carbon emissions — and governance metrics can fill the gap when disclosure data is missing.","author":{"@type":"Person","name":"Yishuang Xu","url":"https://sherryxu.com"},"datePublished":"2026-06-16","publisher":{"@type":"Organization","name":"Sherry Xu"},"mainEntityOfPage":"https://sherryxu.com/articles/ml-carbon-emissions-governance/"}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Can machine learning predict corporate carbon emissions?","acceptedAnswer":{"@type":"Answer","text":"Yes. Research testing multiple ML models on publicly listed firms shows that XGBoost, a non-linear ensemble model, outperforms other algorithms in predicting carbon emission intensity across both pre-pandemic and post-pandemic periods."}},{"@type":"Question","name":"What can investors use when emissions data is missing?","acceptedAnswer":{"@type":"Answer","text":"Corporate governance metrics — including board characteristics, oversight structures, and management quality — can serve as meaningful proxies for environmental performance when direct emissions data are unavailable or unreliable."}},{"@type":"Question","name":"Why does corporate governance predict carbon performance?","acceptedAnswer":{"@type":"Answer","text":"Firms with better board oversight and stronger governance structures tend to be more disciplined about monitoring emissions, responding to climate risks, and implementing environmental controls. Management quality reflects broader operational discipline that includes environmental performance."}},{"@type":"Question","name":"Which machine learning model is best for carbon emission forecasting?","acceptedAnswer":{"@type":"Answer","text":"XGBoost consistently outperformed other algorithms tested, including linear models. This suggests carbon emissions are shaped by complex, non-linear relationships that ensemble models capture better than simpler approaches."}}]}
+</script>
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{--navy:#1a2332;--teal:#2a9d8f;--teal-light:#e8f5f3;--sand:#f8f6f1;--text:#2c2c2c;--text-light:#5a5a5a;--border:#e2ddd5;--white:#ffffff}
+body{font-family:'DM Sans',sans-serif;color:var(--text);background:var(--white);line-height:1.7;font-weight:300}
+h1,h2,h3{font-family:'Playfair Display',serif;font-weight:500;line-height:1.3}
+
+/* Nav */
+.nav{background:var(--navy);padding:1rem 2rem;display:flex;align-items:center;justify-content:space-between}
+.nav-brand{font-family:'Playfair Display',serif;color:var(--white);font-size:1.25rem;text-decoration:none;font-weight:500}
+.nav-links{display:flex;gap:1.5rem;flex-wrap:wrap}
+.nav-links a{color:rgba(255,255,255,.8);text-decoration:none;font-size:.9rem;transition:color .2s}
+.nav-links a:hover{color:var(--white)}
+
+/* Article header */
+.article-header{max-width:760px;margin:0 auto;padding:3rem 1.5rem 1rem}
+.article-pillar{display:inline-block;background:var(--teal-light);color:var(--teal);padding:.25rem .75rem;border-radius:4px;font-size:.8rem;font-weight:500;letter-spacing:.03em;margin-bottom:1rem}
+.article-header h1{font-size:2.2rem;margin-bottom:1rem;color:var(--navy)}
+.article-subtitle{font-size:1.15rem;color:var(--text-light);margin-bottom:1.5rem}
+
+/* Paper badge */
+.paper-badge{background:var(--sand);border-left:3px solid var(--teal);padding:1rem 1.25rem;border-radius:0 6px 6px 0;margin-bottom:2rem;font-size:.9rem}
+.paper-badge strong{color:var(--navy)}
+.paper-badge a{color:var(--teal);text-decoration:none}
+.paper-badge a:hover{text-decoration:underline}
+
+/* Video */
+.video-container{max-width:760px;margin:0 auto 2rem;padding:0 1.5rem}
+.video-container .video-wrap{position:relative;padding-bottom:56.25%;height:0;overflow:hidden;border-radius:8px}
+.video-container .video-wrap iframe{position:absolute;top:0;left:0;width:100%;height:100%;border:0}
+
+/* Content */
+.article-content{max-width:760px;margin:0 auto;padding:0 1.5rem 3rem}
+.article-content h2{font-size:1.5rem;color:var(--navy);margin:2.5rem 0 1rem}
+.article-content p{margin-bottom:1.25rem;color:var(--text)}
+.article-content ul{margin:0 0 1.25rem 1.5rem;color:var(--text)}
+.article-content ul li{margin-bottom:.5rem}
+
+/* Callout */
+.callout{background:var(--teal-light);border-radius:8px;padding:1.5rem;margin:2rem 0}
+.callout-title{font-family:'Playfair Display',serif;color:var(--teal);font-size:1.05rem;margin-bottom:.5rem;font-weight:600}
+.callout p{margin-bottom:.5rem;font-size:.95rem}
+
+/* Table */
+.article-content table{width:100%;border-collapse:collapse;margin:1.5rem 0;font-size:.92rem}
+.article-content th{background:var(--navy);color:var(--white);text-align:left;padding:.75rem 1rem;font-weight:500}
+.article-content td{padding:.75rem 1rem;border-bottom:1px solid var(--border)}
+.article-content tr:last-child td{border-bottom:none}
+
+/* CTA */
+.article-cta{background:var(--sand);border-radius:8px;padding:2rem;margin:2.5rem 0;text-align:center}
+.article-cta h3{color:var(--navy);margin-bottom:.75rem;font-size:1.2rem}
+.article-cta p{color:var(--text-light);margin-bottom:1.25rem;font-size:.95rem}
+.cta-buttons{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
+.cta-btn{display:inline-block;padding:.7rem 1.5rem;border-radius:6px;text-decoration:none;font-size:.9rem;font-weight:500;transition:opacity .2s}
+.cta-btn.primary{background:var(--teal);color:var(--white)}
+.cta-btn.secondary{background:var(--navy);color:var(--white)}
+.cta-btn:hover{opacity:.85}
+
+/* FAQ */
+.faq{margin:2.5rem 0}
+.faq h2{font-size:1.5rem;color:var(--navy);margin-bottom:1.25rem}
+.faq-item{border-bottom:1px solid var(--border);padding:1rem 0}
+.faq-item:last-child{border-bottom:none}
+.faq-q{font-weight:500;color:var(--navy);margin-bottom:.4rem}
+.faq-a{color:var(--text-light);font-size:.95rem}
+
+/* Footer */
+.footer{background:var(--navy);color:rgba(255,255,255,.6);text-align:center;padding:2rem;font-size:.85rem}
+.footer a{color:var(--teal);text-decoration:none}
+
+@media(max-width:600px){
+  .article-header h1{font-size:1.6rem}
+  .nav{flex-direction:column;gap:.75rem}
+  .nav-links{justify-content:center}
+  .cta-buttons{flex-direction:column;align-items:center}
+}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <a href="/" class="nav-brand">Sherry Xu</a>
+  <div class="nav-links">
+    <a href="/#about">About</a>
+    <a href="/#book">Book</a>
+    <a href="/#books">Books</a>
+    <a href="/#tools">Tools</a>
+    <a href="/#articles">Articles</a>
+    <a href="/#research">Research</a>
+  </div>
+</nav>
+
+<header class="article-header">
+  <span class="article-pillar">Research · AI & ESG</span>
+  <h1>Can Machine Learning Predict Corporate Carbon Emissions?</h1>
+  <p class="article-subtitle">New research shows XGBoost outperforms other models for forecasting carbon emissions — and corporate governance metrics can fill the gap when disclosure data is missing.</p>
+
+  <div class="paper-badge">
+    <strong>Published paper:</strong> Yishuang Xu, Peng Wei, Yinze Ji — "Machine learning for predicting corporate carbon emissions: The role of corporate governance," <em>Journal of Digital Economy</em>, Volume 5, 2026, pp. 1–16.<br>
+    <a href="https://doi.org/10.1016/j.jdec.2025.11.008" target="_blank" rel="noopener">Read the full paper →</a>
+  </div>
+</header>
+
+<div class="video-container">
+  <div class="video-wrap">
+    <iframe src="https://www.youtube.com/embed/CMlzIbV65xA" title="Can Machine Learning Predict Corporate Carbon Emissions?" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+  </div>
+</div>
+
+<article class="article-content">
+
+  <p>ESG data remains remarkably inconsistent across companies and markets. Some firms report detailed carbon emissions. Others give partial figures. Some barely report anything at all. That creates a real problem for investors who want to compare companies on climate risk, efficiency, and sustainability.</p>
+
+  <p>This paper asks a direct question: can machine learning fill the gap? The answer is yes — and the way it does so reveals something important about the relationship between how companies are governed and how they manage their environmental footprint.</p>
+
+  <h2>The study: what the researchers tested</h2>
+
+  <p>The authors tested multiple machine learning models to forecast carbon emission intensity for publicly listed firms. The models were evaluated across both pre-pandemic and post-pandemic periods to check whether they hold up when the business environment fundamentally changes.</p>
+
+  <p>The key result: <strong>XGBoost</strong>, a non-linear ensemble model, consistently outperformed other algorithms. This isn't just a statistical win — it means that carbon emissions are shaped by complex, non-linear relationships that simpler linear approaches miss. And the model remains robust across different economic regimes, which matters for real-world deployment.</p>
+
+  <h2>Governance as a proxy for emissions</h2>
+
+  <p>The most striking finding is what happens when direct emissions data are unavailable. The authors found that corporate governance metrics can serve as powerful proxies for environmental performance.</p>
+
+  <p>The governance variables that stood out:</p>
+  <ul>
+    <li><strong>Board characteristics</strong> — composition, independence, and expertise</li>
+    <li><strong>Oversight structures</strong> — how environmental risks are monitored at board level</li>
+    <li><strong>Management quality</strong> — broader operational discipline reflected in governance scores</li>
+  </ul>
+
+  <p>These variables carry meaningful signals about a firm's likely carbon profile. In other words, the way a company is structured and managed tells you something about how it handles its carbon footprint — even before you see the emissions data.</p>
+
+  <div class="callout">
+    <div class="callout-title">Why this matters for investors</div>
+    <p>If emissions data are missing or unreliable, you don't have to stop your ESG analysis. Governance data can serve as a meaningful signal, combined with ML models that predict likely emission intensity. This is especially valuable in markets where disclosure standards are weak or inconsistent.</p>
+  </div>
+
+  <h2>Why management quality predicts carbon performance</h2>
+
+  <p>Firms with better board oversight and stronger governance structures tend to be more disciplined about monitoring emissions, responding to climate risks, and implementing environmental controls. Management quality isn't just about decision-making — it reflects broader operational discipline that extends to environmental performance.</p>
+
+  <p>This confirms an intuition many ESG practitioners share: governance is not a box-ticking exercise. It actually reflects how well a company manages its environmental footprint.</p>
+
+  <h2>Who should pay attention</h2>
+
+  <table>
+    <thead><tr><th>Audience</th><th>What this means for you</th></tr></thead>
+    <tbody>
+      <tr><td><strong>ESG fund managers</strong></td><td>Use governance data to screen companies when emissions disclosure is incomplete — don't wait for perfect data</td></tr>
+      <tr><td><strong>Climate-risk analysts</strong></td><td>XGBoost models can benchmark likely emission intensity across portfolios with uneven disclosure</td></tr>
+      <tr><td><strong>Credit teams</strong></td><td>Governance metrics add a predictive layer to credit assessments for climate-exposed sectors</td></tr>
+      <tr><td><strong>Policymakers</strong></td><td>AI-based methods can identify firms needing closer scrutiny and support sustainable finance regulation</td></tr>
+    </tbody>
+  </table>
+
+  <h2>The bigger picture</h2>
+
+  <p>This research points toward a more sophisticated view of sustainability analysis — one that is data-driven, adaptive, and predictive. Instead of treating emissions as a single number, you can think about the systems and structures that shape them.</p>
+
+  <p>Machine learning won't solve every disclosure problem. But it can help investors and policymakers make better judgments in a world where carbon data are often incomplete. And as reporting standards improve, these models will become even more accurate.</p>
+
+  <p>The combination of machine learning, governance data, and carbon analysis is where ESG is heading. Not just reporting better numbers — but building smarter systems that work with imperfect data.</p>
+
+  <div class="article-cta">
+    <h3>Explore more on AI and ESG in real estate</h3>
+    <p>Sherry Xu's books cover the practical intersection of AI, sustainability, and real estate investment.</p>
+    <div class="cta-buttons">
+      <a href="https://www.amazon.co.uk/dp/B0DQ3MKWMQ" class="cta-btn primary" target="_blank" rel="noopener">The Journey to Net Zero Real Estate →</a>
+      <a href="https://www.amazon.co.uk/dp/B0DPZXM6CJ" class="cta-btn secondary" target="_blank" rel="noopener">Sustainability in Real Estate →</a>
+    </div>
+  </div>
+
+  <div class="faq">
+    <h2>Frequently asked questions</h2>
+
+    <div class="faq-item">
+      <div class="faq-q">Can machine learning predict corporate carbon emissions?</div>
+      <div class="faq-a">Yes. Research testing multiple ML models on publicly listed firms shows that XGBoost, a non-linear ensemble model, outperforms other algorithms in predicting carbon emission intensity across both pre-pandemic and post-pandemic periods.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">What can investors use when emissions data is missing?</div>
+      <div class="faq-a">Corporate governance metrics — including board characteristics, oversight structures, and management quality — can serve as meaningful proxies for environmental performance when direct emissions data are unavailable or unreliable.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">Why does corporate governance predict carbon performance?</div>
+      <div class="faq-a">Firms with better board oversight and stronger governance structures tend to be more disciplined about monitoring emissions, responding to climate risks, and implementing environmental controls. Management quality reflects broader operational discipline that includes environmental performance.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">Which machine learning model is best for carbon emission forecasting?</div>
+      <div class="faq-a">XGBoost consistently outperformed other algorithms tested, including linear models. This suggests carbon emissions are shaped by complex, non-linear relationships that ensemble models capture better than simpler approaches.</div>
+    </div>
+  </div>
+
+</article>
+
+<footer class="footer">
+  <p>&copy; 2026 Yishuang (Sherry) Xu · <a href="/">sherryxu.com</a> · <a href="https://www.linkedin.com/in/yishuang-sherry-xu" target="_blank" rel="noopener">LinkedIn</a></p>
+</footer>
+
+</body>
+</html>
