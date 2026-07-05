@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Training &amp; Workshops — Sherry Xu</title>
+  <meta name="description" content="Practitioner training on AI, ESG compliance, and real estate tokenisation. Half-day and full-day workshops for property firms, fund managers, and professional bodies." />
+  <link rel="canonical" href="https://sherryxu.com/training/" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
+
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      color: #1a1a2e;
+      background: #fff;
+      line-height: 1.7;
+    }
+
+    /* ── Navigation ── */
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.2rem 2rem;
+      max-width: 960px;
+      margin: 0 auto;
+      font-size: 0.95rem;
+    }
+    nav a { color: #1a1a2e; text-decoration: none; }
+    nav a:hover { color: #0d7377; }
+
+    /* ── Page header ── */
+    .page-header {
+      max-width: 720px;
+      margin: 3rem auto 2.5rem;
+      padding: 0 2rem;
+    }
+    .page-header .eyebrow {
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      font-size: 0.85rem;
+      color: #0d7377;
+      margin-bottom: 0.5rem;
+    }
+    .page-header h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: #1a1a2e;
+      margin-bottom: 1rem;
+      line-height: 1.3;
+    }
+    .page-header .intro {
+      font-size: 1.1rem;
+      color: #333;
+      max-width: 620px;
+    }
+
+    /* ── Content sections ── */
+    .content {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+    .content h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem;
+      color: #1a1a2e;
+      margin: 2.5rem 0 1rem;
+    }
+    .content p {
+      font-size: 1rem;
+      color: #333;
+      margin-bottom: 1rem;
+    }
+
+    /* ── Workshop cards ── */
+    .workshop-card {
+      border: 1px solid #e0e0e0;
+      border-radius: 8px;
+      padding: 1.5rem;
+      margin-bottom: 1.5rem;
+      background: #f9fafb;
+    }
+    .workshop-card .tag {
+      display: inline-block;
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      padding: 0.2rem 0.6rem;
+      border-radius: 3px;
+      margin-bottom: 0.8rem;
+    }
+    .tag-ai { background: #e8f4f5; color: #0d7377; }
+    .tag-esg { background: #e8f0e8; color: #2d6a2e; }
+    .tag-token { background: #f0e8f5; color: #6a2d8e; }
+    .workshop-card h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.2rem;
+      color: #1a1a2e;
+      margin-bottom: 0.6rem;
+    }
+    .workshop-card p {
+      font-size: 0.95rem;
+      color: #555;
+      margin-bottom: 0.5rem;
+    }
+    .workshop-card .topics {
+      font-size: 0.9rem;
+      color: #555;
+      margin-top: 0.8rem;
+      padding-top: 0.8rem;
+      border-top: 1px solid #e8e8e8;
+    }
+
+    /* ── Format section ── */
+    .format-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+      margin: 1.5rem 0;
+    }
+    .format-item {
+      padding: 1.2rem;
+      border: 1px solid #e0e0e0;
+      border-radius: 6px;
+      text-align: center;
+    }
+    .format-item .label {
+      font-weight: 600;
+      font-size: 1rem;
+      color: #1a1a2e;
+      margin-bottom: 0.3rem;
+    }
+    .format-item .detail {
+      font-size: 0.85rem;
+      color: #777;
+    }
+
+    /* ── CTA ── */
+    .cta-section {
+      margin: 3rem 0;
+      padding: 2rem;
+      background: #f0f7f7;
+      border-radius: 8px;
+      text-align: center;
+    }
+    .cta-section h2 {
+      margin-top: 0;
+      margin-bottom: 0.5rem;
+    }
+    .cta-section p {
+      text-align: center;
+      max-width: 520px;
+      margin: 0 auto 1.2rem;
+    }
+    .cta-section a.btn {
+      display: inline-block;
+      padding: 0.7rem 2rem;
+      background: #0d7377;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 5px;
+      font-size: 0.95rem;
+    }
+    .cta-section a.btn:hover { background: #0a5f62; }
+
+    /* ── Credentials ── */
+    .credentials {
+      margin: 2rem 0;
+      padding: 1.5rem;
+      border-top: 1px solid #e0e0e0;
+    }
+    .credentials p {
+      font-size: 0.9rem;
+      color: #777;
+    }
+
+    /* ── Footer ── */
+    footer {
+      max-width: 720px;
+      margin: 3rem auto 2rem;
+      padding: 2rem 2rem 0;
+      border-top: 1px solid #e0e0e0;
+      font-size: 0.85rem;
+      color: #999;
+      text-align: center;
+    }
+    footer a { color: #0d7377; text-decoration: none; }
+  </style>
+
+  <!-- JSON-LD: Service -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "name": "AI, ESG & Tokenisation Training for Real Estate Professionals",
+    "description": "Practitioner training workshops on AI implementation, ESG compliance, and real estate tokenisation for property firms, fund managers, and professional bodies.",
+    "provider": {
+      "@type": "Person",
+      "name": "Yishuang (Sherry) Xu",
+      "jobTitle": "Associate Professor",
+      "affiliation": {
+        "@type": "Organization",
+        "name": "University of Manchester"
+      },
+      "url": "https://sherryxu.com"
+    },
+    "areaServed": "GB",
+    "serviceType": "Professional Training"
+  }
+  </script>
+</head>
+<body>
+
+  <!-- ── Nav ── -->
+  <nav>
+    <a href="https://sherryxu.com/" style="font-family: 'Playfair Display', serif; font-weight: 600;">Sherry Xu</a>
+    <a href="https://sherryxu.com/#articles">← All articles</a>
+  </nav>
+
+  <!-- ── Page Header ── -->
+  <div class="page-header">
+    <p class="eyebrow">Training &amp; workshops</p>
+    <h1>Practitioner training on AI, ESG, and tokenisation in real estate</h1>
+    <p class="intro">
+      Half-day and full-day workshops for property firms, fund managers,
+      and professional bodies — delivered by a researcher who also builds
+      the tools. Theory grounded in peer-reviewed research; exercises
+      grounded in real deals and real data.
+    </p>
+  </div>
+
+  <!-- ── Content ── -->
+  <div class="content">
+
+    <h2>Workshop topics</h2>
+
+    <!-- AI Workshop -->
+    <div class="workshop-card">
+      <span class="tag tag-ai">AI</span>
+      <h3>AI for Real Estate Professionals</h3>
+      <p>
+        How to evaluate, implement, and govern AI tools in property
+        investment and management — from automated valuations and
+        portfolio analytics to the RICS mandatory standard on responsible
+        AI use.
+      </p>
+      <div class="topics">
+        <strong>Covers:</strong> AI readiness assessment for your firm ·
+        prompt engineering for IC memos, AM reports, and ESG analysis ·
+        evaluating third-party AI tools · RICS AI standard compliance ·
+        building an internal AI governance policy
+      </div>
+    </div>
+
+    <!-- ESG Workshop -->
+    <div class="workshop-card">
+      <span class="tag tag-esg">ESG</span>
+      <h3>ESG Compliance for UK Real Estate</h3>
+      <p>
+        Navigating the reporting landscape from MEES and EPC compliance
+        through Scope 3 measurement to UK SRS and GRESB submission —
+        with practical exercises using real portfolio data.
+      </p>
+      <div class="topics">
+        <strong>Covers:</strong> MEES 2030 deadlines and cost caps ·
+        Scope 3 data hierarchy and estimation methods ·
+        UK SRS disclosure requirements · GRESB scoring optimisation ·
+        building an ESG data collection framework · assurance readiness
+      </div>
+    </div>
+
+    <!-- Tokenisation Workshop -->
+    <div class="workshop-card">
+      <span class="tag tag-token">Tokenisation</span>
+      <h3>Real Estate Tokenisation: From Concept to Structure</h3>
+      <p>
+        How real estate tokenisation works in practice — the legal
+        structures, regulatory requirements, and due diligence frameworks
+        that separate viable projects from white papers.
+      </p>
+      <div class="topics">
+        <strong>Covers:</strong> How tokenisation works (SPVs, smart
+        contracts, custody) · UK regulatory landscape and FCA
+        considerations · deal evaluation and structuring ·
+        fractional ownership models · investor communications ·
+        secondary market considerations
+      </div>
+    </div>
+
+    <h2>Format</h2>
+
+    <div class="format-grid">
+      <div class="format-item">
+        <div class="label">Half-day</div>
+        <div class="detail">3–4 hours · single topic · introductory or intermediate</div>
+      </div>
+      <div class="format-item">
+        <div class="label">Full-day</div>
+        <div class="detail">6–7 hours · deep dive · includes exercises</div>
+      </div>
+      <div class="format-item">
+        <div class="label">Bespoke</div>
+        <div class="detail">Tailored to your firm · any combination of topics</div>
+      </div>
+    </div>
+
+    <p>
+      All workshops can be delivered in-person (UK-wide) or virtually.
+      Content is tailored to your team's experience level and the specific
+      challenges your firm faces. CPD certificates available on request.
+    </p>
+
+    <h2>Who books these</h2>
+
+    <p>
+      Property companies preparing for RICS AI standard compliance.
+      Fund managers building ESG reporting capability ahead of UK SRS
+      deadlines. Professional bodies running CPD programmes. Graduate
+      training schemes looking for practitioner-led AI sessions.
+    </p>
+
+    <!-- ── CTA ── -->
+    <div class="cta-section">
+      <h2>Enquire about a workshop</h2>
+      <p>
+        Tell me about your team, the topic, and the timeframe. I'll come
+        back with a tailored outline and a quote.
+      </p>
+      <a href="mailto:yishuang.xu@manchester.ac.uk" class="btn">
+        Get in touch →
+      </a>
+    </div>
+
+    <!-- ── Credentials ── -->
+    <div class="credentials">
+      <p>
+        <strong>Yishuang (Sherry) Xu</strong> · Associate Professor,
+        University of Manchester · Co-author, <em>PropTech Innovations in
+        Real Estate Investment and Finance</em> (Routledge, 2026) ·
+        Founder, Plinthos (AI-powered ESG compliance platform) ·
+        Creator of the RICS AI Assessment Workbook and practitioner tools
+        used by analysts and fund managers in the UK.
+      </p>
+    </div>
+
+    <!-- ── Email capture ── -->
+    <div style="margin: 2rem auto; max-width: 620px; padding: 2rem; border: 1px solid #e0e0e0; border-radius: 8px; background: #f9fafb; text-align: center;">
+      <p style="font-family: 'Playfair Display', serif; font-size: 1.3rem; color: #1a1a2e; margin-bottom: 0.5rem;">
+        Get notified when I publish new work
+      </p>
+      <p style="font-size: 0.95rem; color: #555; line-height: 1.6; margin-bottom: 1.2rem;">
+        New research, books, and practitioner tools on AI, ESG, and
+        real estate — straight to your inbox. No fixed schedule, no spam.
+      </p>
+      <a href="https://sherryxucom.substack.com/"
+         target="_blank" rel="noopener"
+         style="display: inline-block; padding: 0.7rem 2rem; background: #0d7377; color: #fff; font-size: 0.95rem; text-decoration: none; border-radius: 5px;">
+        Subscribe (free) →
+      </a>
+    </div>
+
+  </div>
+
+  <!-- ── Footer ── -->
+  <footer>
+    <p>© 2026 Yishuang (Sherry) Xu · <a href="https://sherryxu.com/">sherryxu.com</a> · <a href="https://sherryxu.com/#articles">All articles</a></p>
+  </footer>
+
+</body>
+</html>
