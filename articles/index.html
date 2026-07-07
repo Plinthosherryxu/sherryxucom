@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Carbon Trading vs Clean Energy in China</title>
+<meta name="description" content="Panel data across 30 Chinese provinces shows clean energy substitution consistently cuts emissions, while carbon trading only works where regional pilots exist.">
+<link rel="canonical" href="https://sherryxu.com/articles/carbon-trading-sustainable-energy-china/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Article","headline":"What Actually Works to Cut Carbon Emissions in China?","description":"Panel data across 30 Chinese provinces shows clean energy substitution consistently cuts emissions, while carbon trading only works where regional pilots exist.","author":{"@type":"Person","name":"Yishuang Xu","url":"https://sherryxu.com"},"datePublished":"2026-07-07","publisher":{"@type":"Organization","name":"Sherry Xu"},"mainEntityOfPage":"https://sherryxu.com/articles/carbon-trading-sustainable-energy-china/"}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Does carbon emissions trading actually reduce emissions in China?","acceptedAnswer":{"@type":"Answer","text":"It depends on location. Provinces with regional ETS pilots saw meaningful reductions, but provinces without local pilots did not benefit significantly from the national-level carbon trading policy alone. Carbon credit trading tends to happen locally rather than across provincial borders."}},{"@type":"Question","name":"Is switching to renewable energy effective at reducing carbon emissions?","acceptedAnswer":{"@type":"Answer","text":"Yes. Across all tests in this study, substituting fossil fuels with sustainable energy resources was consistently and significantly associated with lower CO2 emissions. The sustainable energy strategy was confirmed as effective across 30 Chinese provinces from 2009 to 2019."}},{"@type":"Question","name":"Why does carbon trading work locally but not nationally in China?","acceptedAnswer":{"@type":"Answer","text":"Firms prefer to trade carbon credits within their own province. Without a local ETS pilot, the national-level carbon trading announcement acts only as a signal of future financial rewards — not a direct incentive strong enough to change behaviour."}},{"@type":"Question","name":"What is the fossil fuel substitution effect?","acceptedAnswer":{"@type":"Answer","text":"The fossil fuel substitution effect (SUB) measures the proportion of electricity generated from sustainable energy sources (hydro, nuclear, wind, solar) relative to total electricity generation. A higher SUB indicates greater adoption of clean energy and lower dependence on fossil fuels."}}]}
+</script>
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{--navy:#1a2332;--teal:#2a9d8f;--teal-light:#e8f5f3;--sand:#f8f6f1;--text:#2c2c2c;--text-light:#5a5a5a;--border:#e2ddd5;--white:#ffffff}
+body{font-family:'DM Sans',sans-serif;color:var(--text);background:var(--white);line-height:1.7;font-weight:300}
+h1,h2,h3{font-family:'Playfair Display',serif;font-weight:500;line-height:1.3}
+
+.nav{background:var(--navy);padding:1rem 2rem;display:flex;align-items:center;justify-content:space-between}
+.nav-brand{font-family:'Playfair Display',serif;color:var(--white);font-size:1.25rem;text-decoration:none;font-weight:500}
+.nav-links{display:flex;gap:1.5rem;flex-wrap:wrap}
+.nav-links a{color:rgba(255,255,255,.8);text-decoration:none;font-size:.9rem;transition:color .2s}
+.nav-links a:hover{color:var(--white)}
+
+.article-header{max-width:760px;margin:0 auto;padding:3rem 1.5rem 1rem}
+.article-pillar{display:inline-block;background:var(--teal-light);color:var(--teal);padding:.25rem .75rem;border-radius:4px;font-size:.8rem;font-weight:500;letter-spacing:.03em;margin-bottom:1rem}
+.article-header h1{font-size:2.2rem;margin-bottom:1rem;color:var(--navy)}
+.article-subtitle{font-size:1.15rem;color:var(--text-light);margin-bottom:1.5rem}
+
+.paper-badge{background:var(--sand);border-left:3px solid var(--teal);padding:1rem 1.25rem;border-radius:0 6px 6px 0;margin-bottom:2rem;font-size:.9rem}
+.paper-badge strong{color:var(--navy)}
+.paper-badge a{color:var(--teal);text-decoration:none}
+.paper-badge a:hover{text-decoration:underline}
+
+.video-container{max-width:760px;margin:0 auto 2rem;padding:0 1.5rem}
+.video-container .video-wrap{position:relative;padding-bottom:56.25%;height:0;overflow:hidden;border-radius:8px}
+.video-container .video-wrap iframe{position:absolute;top:0;left:0;width:100%;height:100%;border:0}
+
+.article-content{max-width:760px;margin:0 auto;padding:0 1.5rem 3rem}
+.article-content h2{font-size:1.5rem;color:var(--navy);margin:2.5rem 0 1rem}
+.article-content p{margin-bottom:1.25rem;color:var(--text)}
+.article-content ul{margin:0 0 1.25rem 1.5rem;color:var(--text)}
+.article-content ul li{margin-bottom:.5rem}
+
+.callout{background:var(--teal-light);border-radius:8px;padding:1.5rem;margin:2rem 0}
+.callout-title{font-family:'Playfair Display',serif;color:var(--teal);font-size:1.05rem;margin-bottom:.5rem;font-weight:600}
+.callout p{margin-bottom:.5rem;font-size:.95rem}
+
+.article-content table{width:100%;border-collapse:collapse;margin:1.5rem 0;font-size:.92rem}
+.article-content th{background:var(--navy);color:var(--white);text-align:left;padding:.75rem 1rem;font-weight:500}
+.article-content td{padding:.75rem 1rem;border-bottom:1px solid var(--border)}
+.article-content tr:last-child td{border-bottom:none}
+
+.article-cta{background:var(--sand);border-radius:8px;padding:2rem;margin:2.5rem 0;text-align:center}
+.article-cta h3{color:var(--navy);margin-bottom:.75rem;font-size:1.2rem}
+.article-cta p{color:var(--text-light);margin-bottom:1.25rem;font-size:.95rem}
+.cta-buttons{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
+.cta-btn{display:inline-block;padding:.7rem 1.5rem;border-radius:6px;text-decoration:none;font-size:.9rem;font-weight:500;transition:opacity .2s}
+.cta-btn.primary{background:var(--teal);color:var(--white)}
+.cta-btn.secondary{background:var(--navy);color:var(--white)}
+.cta-btn:hover{opacity:.85}
+
+.faq{margin:2.5rem 0}
+.faq h2{font-size:1.5rem;color:var(--navy);margin-bottom:1.25rem}
+.faq-item{border-bottom:1px solid var(--border);padding:1rem 0}
+.faq-item:last-child{border-bottom:none}
+.faq-q{font-weight:500;color:var(--navy);margin-bottom:.4rem}
+.faq-a{color:var(--text-light);font-size:.95rem}
+
+.footer{background:var(--navy);color:rgba(255,255,255,.6);text-align:center;padding:2rem;font-size:.85rem}
+.footer a{color:var(--teal);text-decoration:none}
+
+@media(max-width:600px){
+  .article-header h1{font-size:1.6rem}
+  .nav{flex-direction:column;gap:.75rem}
+  .nav-links{justify-content:center}
+  .cta-buttons{flex-direction:column;align-items:center}
+}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <a href="/" class="nav-brand">Sherry Xu</a>
+  <div class="nav-links">
+    <a href="/#about">About</a>
+    <a href="/#book">Book</a>
+    <a href="/#books">Books</a>
+    <a href="/#tools">Tools</a>
+    <a href="/#articles">Articles</a>
+    <a href="/#research">Research</a>
+  </div>
+</nav>
+
+<header class="article-header">
+  <span class="article-pillar">Research · ESG & Sustainability</span>
+  <h1>What Actually Works to Cut Carbon Emissions in China?</h1>
+  <p class="article-subtitle">Panel data across 30 Chinese provinces reveals that clean energy substitution consistently reduces emissions — but carbon trading only works where regional pilots are in place.</p>
+
+  <div class="paper-badge">
+    <strong>Published paper:</strong> Yue Yu, Yishuang Xu — "The Roles of Carbon Trading System and Sustainable Energy Strategies in Reducing Carbon Emissions — An Empirical Study in China with Panel Data," <em>International Journal of Environmental Research and Public Health</em>, 2023, 20(8), 5549.<br>
+    <a href="https://doi.org/10.3390/ijerph20085549" target="_blank" rel="noopener">Read the full paper →</a>
+  </div>
+</header>
+
+<div class="video-container">
+  <div class="video-wrap">
+    <iframe src="https://www.youtube.com/embed/VJNEs-glD3o" title="What Actually Works to Cut Carbon Emissions in China?" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+  </div>
+</div>
+
+<article class="article-content">
+
+  <p>Carbon emission reduction is one of the most discussed policy goals in the world. But which methods actually work? This study tests two of the most prominent approaches — carbon emissions trading systems (ETS) and sustainable energy strategies — using panel data across 30 provinces in China from 2009 to 2019.</p>
+
+  <p>The results are clear on one front and nuanced on the other. Substituting fossil fuels with clean energy consistently reduces emissions. Carbon trading, meanwhile, only works under specific conditions.</p>
+
+  <h2>Two approaches, very different results</h2>
+
+  <p>The study tests both methods simultaneously, controlling for population, GDP, and total energy consumption. The <strong>sustainable energy strategy</strong> — measured by the fossil fuel substitution effect (SUB), which captures the share of electricity generated from hydro, nuclear, wind, and solar — is significantly and consistently associated with lower CO2 emissions across all model specifications.</p>
+
+  <p>The <strong>carbon emissions trading system</strong> tells a more complicated story. The researchers separate ETS into two variables: a national-level signal (was carbon trading active anywhere in China?) and a regional-level variable (did this province have its own ETS pilot?). The regional ETS pilot reduces emissions locally. But the national-level signal alone has limited impact — it only shows statistical significance when the regional variable is excluded.</p>
+
+  <div class="callout">
+    <div class="callout-title">Why does ETS work locally but not nationally?</div>
+    <p>Firms prefer to trade carbon credits within their own province. Without a local ETS pilot, the national-level policy acts as a signal of future rewards — but not a direct incentive strong enough to change behaviour. The implication: rolling out more regional pilots would be more effective than relying on a top-down announcement alone.</p>
+  </div>
+
+  <h2>The fossil fuel substitution effect across China</h2>
+
+  <p>The geographical variation is striking. By 2019, provinces like Yunnan had reached a SUB of over 90%, essentially free from fossil fuel dependence for electricity. Meanwhile, heavily urbanised provinces like Shanghai and Tianjin started from near zero in 2009 and only gradually increased their clean energy share — often catalysed by the introduction of local ETS pilots.</p>
+
+  <p>The data shows an interesting synergy: in provinces where ETS pilots were introduced, the adoption of sustainable energy also accelerated. Tianjin's SUB jumped from 0% in 2012 to 3.6% in 2013, the year carbon trading was introduced. Neighbouring Hebei's SUB rose from 0.33% to over 15% during the decade, partly driven by spillover from Beijing and Tianjin's ETS activity.</p>
+
+  <h2>Economic structure matters</h2>
+
+  <p>Provinces with productive, diversified economies can reduce emissions while maintaining growth. But provinces whose economies depend heavily on energy-intensive industries face a harder trade-off — financial incentives from ETS may not be enough to offset the economic cost of reducing energy use.</p>
+
+  <p>This is exactly where the sustainable energy strategy becomes critical. By substituting fossil fuels rather than simply reducing energy consumption, provinces can cut emissions without sacrificing economic output.</p>
+
+  <h2>Who should pay attention</h2>
+
+  <table>
+    <thead><tr><th>Audience</th><th>What this means for you</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Policymakers</strong></td><td>National ETS announcements need regional implementation to be effective — expand local pilots rather than relying on top-down signals</td></tr>
+      <tr><td><strong>ESG investors</strong></td><td>When assessing carbon exposure in Chinese assets, check whether the province has an active ETS pilot and what its clean energy substitution rate looks like</td></tr>
+      <tr><td><strong>Climate-risk analysts</strong></td><td>The fossil fuel substitution effect (SUB) is a useful metric for comparing provincial decarbonisation progress beyond headline emissions figures</td></tr>
+      <tr><td><strong>International observers</strong></td><td>China's provincial variation offers a natural experiment: the lessons on local vs national carbon trading apply to any country designing an ETS</td></tr>
+    </tbody>
+  </table>
+
+  <h2>The bigger picture</h2>
+
+  <p>This research shows that the two most prominent carbon reduction strategies work through different mechanisms and at different scales. Clean energy substitution is a reliable, province-level lever that works across the board. Carbon trading is effective but conditional — it needs local infrastructure, local markets, and local enforcement to deliver results.</p>
+
+  <p>For countries designing their own carbon reduction frameworks, the lesson is practical: don't rely on a single instrument. Build local trading ecosystems alongside national policy, and prioritise the transition to sustainable energy sources — especially in regions where fossil fuels still dominate economic production.</p>
+
+  <div class="article-cta">
+    <h3>Explore more on ESG and sustainability</h3>
+    <p>Sherry Xu's books cover the practical intersection of sustainability, investment, and the built environment.</p>
+    <div class="cta-buttons">
+      <a href="https://www.amazon.co.uk/dp/B0DQ3MKWMQ" class="cta-btn primary" target="_blank" rel="noopener">The Journey to Net Zero Real Estate →</a>
+      <a href="https://www.amazon.co.uk/dp/B0DPZXM6CJ" class="cta-btn secondary" target="_blank" rel="noopener">Sustainability in Real Estate →</a>
+    </div>
+  </div>
+
+  <div class="faq">
+    <h2>Frequently asked questions</h2>
+
+    <div class="faq-item">
+      <div class="faq-q">Does carbon emissions trading actually reduce emissions in China?</div>
+      <div class="faq-a">It depends on location. Provinces with regional ETS pilots saw meaningful reductions, but provinces without local pilots did not benefit significantly from the national-level carbon trading policy alone. Carbon credit trading tends to happen locally rather than across provincial borders.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">Is switching to renewable energy effective at reducing carbon emissions?</div>
+      <div class="faq-a">Yes. Across all tests in this study, substituting fossil fuels with sustainable energy resources was consistently and significantly associated with lower CO2 emissions. The sustainable energy strategy was confirmed as effective across 30 Chinese provinces from 2009 to 2019.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">Why does carbon trading work locally but not nationally in China?</div>
+      <div class="faq-a">Firms prefer to trade carbon credits within their own province. Without a local ETS pilot, the national-level carbon trading announcement acts only as a signal of future financial rewards — not a direct incentive strong enough to change behaviour.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">What is the fossil fuel substitution effect?</div>
+      <div class="faq-a">The fossil fuel substitution effect (SUB) measures the proportion of electricity generated from sustainable energy sources (hydro, nuclear, wind, solar) relative to total electricity generation. A higher SUB indicates greater adoption of clean energy and lower dependence on fossil fuels.</div>
+    </div>
+  </div>
+
+</article>
+
+<footer class="footer">
+  <p>&copy; 2026 Yishuang (Sherry) Xu · <a href="/">sherryxu.com</a> · <a href="https://www.linkedin.com/in/yishuang-sherry-xu" target="_blank" rel="noopener">LinkedIn</a></p>
+</footer>
+
+</body>
+</html>
