@@ -3,199 +3,1175 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Board Gender Diversity and REIT Sustainability</title>
-<meta name="description" content="A study of 375 global REITs finds gender-diverse boards adopt stronger sustainability policies — but the link to immediate emissions cuts is more complex.">
-<link rel="canonical" href="https://sherryxu.com/articles/board-gender-diversity-reit-sustainability/">
+<title>Sherry Xu — AI, ESG & Real Estate</title>
+<meta name="description" content="Practical guides, tools, and books on AI, ESG, and real estate — by Yishuang (Sherry) Xu. Routledge author. University of Manchester. Plinthos founder.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
-<script type="application/ld+json">
-{"@context":"https://schema.org","@type":"Article","headline":"Do Women on REIT Boards Actually Improve Sustainability?","description":"A study of 375 global REITs finds gender-diverse boards adopt stronger sustainability policies — but the link to immediate emissions cuts is more complex.","author":{"@type":"Person","name":"Yishuang Xu","url":"https://sherryxu.com"},"datePublished":"2026-07-14","publisher":{"@type":"Organization","name":"Sherry Xu"},"mainEntityOfPage":"https://sherryxu.com/articles/board-gender-diversity-reit-sustainability/"}
-</script>
-<script type="application/ld+json">
-{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Do women on REIT boards improve sustainability outcomes?","acceptedAnswer":{"@type":"Answer","text":"Gender-diverse boards are significantly more likely to adopt pro-environmental policies such as waste reduction and renewable energy use. However, the direct link to immediate GHG emissions reductions is weaker — diversity appears to work through strategy and policy adoption rather than instant operational change."}},{"@type":"Question","name":"How does board gender diversity affect environmental policy in REITs?","acceptedAnswer":{"@type":"Answer","text":"The study of 375 global REITs from 2017 to 2023 found that boards with greater gender diversity are more likely to implement sustainability initiatives. The influence operates through more complex, indirect mechanisms — shaping strategy, culture, and priorities rather than directly cutting emissions."}},{"@type":"Question","name":"Is board diversity enough to improve REIT sustainability?","acceptedAnswer":{"@type":"Answer","text":"No. Board diversity is one piece of the puzzle. Meaningful sustainability improvement also requires energy transition, better policy enforcement, and structural changes in how assets are operated. Diversity shapes strategic direction but is not a standalone solution."}},{"@type":"Question","name":"What is the relationship between corporate governance and environmental performance in real estate?","acceptedAnswer":{"@type":"Answer","text":"Governance shapes environmental outcomes indirectly. Better board composition — including gender diversity — is associated with stronger sustainability policies, but emissions reductions depend on many additional factors including operational changes, market conditions, and regulatory enforcement."}}]}
-</script>
 <style>
-*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
-:root{--navy:#1a2332;--teal:#2a9d8f;--teal-light:#e8f5f3;--sand:#f8f6f1;--text:#2c2c2c;--text-light:#5a5a5a;--border:#e2ddd5;--white:#ffffff}
-body{font-family:'DM Sans',sans-serif;color:var(--text);background:var(--white);line-height:1.7;font-weight:300}
-h1,h2,h3{font-family:'Playfair Display',serif;font-weight:500;line-height:1.3}
+  :root {
+    --bg:       #f0f5f8;
+    --surface:  #ffffff;
+    --ink:      #0d1f35;
+    --ink-2:    #2e4a62;
+    --ink-3:    #7a90a4;
+    --teal:     #1a6b45;
+    --teal-lt:  #e4f2ec;
+    --gold:     #1a4a8a;
+    --gold-lt:  #e8f0fb;
+    --border:   #ccd9e4;
+    --serif:    'Playfair Display', Georgia, serif;
+    --sans:     'DM Sans', system-ui, sans-serif;
+    --max:      1080px;
+    --r:        12px;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: var(--sans);
+    background: var(--bg);
+    color: var(--ink);
+    font-size: 16px;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: inherit; text-decoration: none; }
+  img { display: block; max-width: 100%; }
 
-.nav{background:var(--navy);padding:1rem 2rem;display:flex;align-items:center;justify-content:space-between}
-.nav-brand{font-family:'Playfair Display',serif;color:var(--white);font-size:1.25rem;text-decoration:none;font-weight:500}
-.nav-links{display:flex;gap:1.5rem;flex-wrap:wrap}
-.nav-links a{color:rgba(255,255,255,.8);text-decoration:none;font-size:.9rem;transition:color .2s}
-.nav-links a:hover{color:var(--white)}
+  /* ── NAV ─────────────────────────────────────────── */
+  nav {
+    position: sticky; top: 0; z-index: 100;
+    background: rgba(240,245,248,0.94);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    padding: 0 2rem;
+  }
+  .nav-inner {
+    max-width: var(--max); margin: 0 auto;
+    display: flex; align-items: center; justify-content: space-between;
+    height: 60px;
+  }
+  .nav-logo {
+    font-family: var(--serif);
+    font-size: 1.1rem; font-weight: 500;
+    letter-spacing: 0.01em;
+  }
+  .nav-links {
+    display: flex; gap: 2rem; list-style: none;
+  }
+  .nav-links a {
+    font-size: 0.875rem; font-weight: 400;
+    color: var(--ink-2); transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--teal); }
 
-.article-header{max-width:760px;margin:0 auto;padding:3rem 1.5rem 1rem}
-.article-pillar{display:inline-block;background:var(--teal-light);color:var(--teal);padding:.25rem .75rem;border-radius:4px;font-size:.8rem;font-weight:500;letter-spacing:.03em;margin-bottom:1rem}
-.article-header h1{font-size:2.2rem;margin-bottom:1rem;color:var(--navy)}
-.article-subtitle{font-size:1.15rem;color:var(--text-light);margin-bottom:1.5rem}
+  /* ── HERO ─────────────────────────────────────────── */
+  .hero {
+    max-width: var(--max); margin: 0 auto;
+    padding: 7rem 2rem 5rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+  }
+  .hero-tag {
+    display: inline-block;
+    font-size: 0.75rem; font-weight: 500;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--teal);
+    margin-bottom: 1.5rem;
+  }
+  .hero h1 {
+    font-family: var(--serif);
+    font-size: clamp(2.8rem, 5vw, 4.2rem);
+    font-weight: 400; line-height: 1.12;
+    letter-spacing: -0.02em;
+    margin-bottom: 1.5rem;
+  }
+  .hero h1 em { font-style: italic; color: var(--teal); }
+  .hero-desc {
+    font-size: 1.05rem; color: var(--ink-2);
+    max-width: 420px; margin-bottom: 2.5rem;
+    line-height: 1.75;
+  }
+  .hero-creds {
+    display: flex; flex-direction: column; gap: 0.6rem;
+    margin-bottom: 2.5rem;
+  }
+  .cred {
+    display: flex; align-items: center; gap: 0.75rem;
+    font-size: 0.875rem; color: var(--ink-2);
+  }
+  .cred-dot {
+    width: 6px; height: 6px; border-radius: 50%;
+    background: var(--teal); flex-shrink: 0;
+  }
+  .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
+  .btn {
+    display: inline-flex; align-items: center;
+    padding: 0.75rem 1.5rem;
+    border-radius: 6px;
+    font-family: var(--sans); font-size: 0.875rem; font-weight: 500;
+    transition: all 0.2s; cursor: pointer;
+  }
+  .btn-primary {
+    background: var(--teal); color: #fff;
+    border: 1.5px solid var(--teal);
+  }
+  .btn-primary:hover { background: #085549; border-color: #085549; }
+  .btn-outline {
+    background: transparent; color: var(--ink);
+    border: 1.5px solid var(--border);
+  }
+  .btn-outline:hover { border-color: var(--ink-2); }
 
-.paper-badge{background:var(--sand);border-left:3px solid var(--teal);padding:1rem 1.25rem;border-radius:0 6px 6px 0;margin-bottom:2rem;font-size:.9rem}
-.paper-badge strong{color:var(--navy)}
-.paper-badge a{color:var(--teal);text-decoration:none}
-.paper-badge a:hover{text-decoration:underline}
+  .hero-visual {
+    display: flex; justify-content: center; align-items: center;
+  }
+  .hero-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--r);
+    padding: 2rem;
+    width: 100%; max-width: 360px;
+    box-shadow: 0 4px 32px rgba(13,45,74,0.08);
+  }
+  .hero-card-label {
+    font-size: 0.7rem; text-transform: uppercase;
+    letter-spacing: 0.1em; color: var(--teal);
+    font-weight: 500; margin-bottom: 1rem;
+  }
+  .hero-card-title {
+    font-family: var(--serif);
+    font-size: 1.15rem; line-height: 1.4;
+    margin-bottom: 0.75rem;
+  }
+  .hero-card-meta {
+    font-size: 0.8rem; color: var(--ink-3);
+    margin-bottom: 1.5rem;
+  }
+  .hero-card-divider {
+    height: 1px; background: var(--border); margin: 1.25rem 0;
+  }
+  .hero-card-stat {
+    display: flex; justify-content: space-between;
+    font-size: 0.8rem;
+  }
+  .hero-card-stat span:first-child { color: var(--ink-3); }
+  .hero-card-stat span:last-child { font-weight: 500; color: var(--teal); }
 
-.video-container{max-width:760px;margin:0 auto 2rem;padding:0 1.5rem}
-.video-container .video-wrap{position:relative;padding-bottom:56.25%;height:0;overflow:hidden;border-radius:8px}
-.video-container .video-wrap iframe{position:absolute;top:0;left:0;width:100%;height:100%;border:0}
+  /* ── SECTION WRAPPER ─────────────────────────────── */
+  section { padding: 5rem 2rem; }
+  .section-inner { max-width: var(--max); margin: 0 auto; }
+  .section-label {
+    font-size: 0.72rem; text-transform: uppercase;
+    letter-spacing: 0.12em; color: var(--ink-3);
+    font-weight: 500; margin-bottom: 0.6rem;
+  }
+  .section-title {
+    font-family: var(--serif);
+    font-size: clamp(1.6rem, 3vw, 2.2rem);
+    font-weight: 400; letter-spacing: -0.01em;
+    margin-bottom: 1rem;
+  }
+  .section-desc {
+    font-size: 1rem; color: var(--ink-2);
+    max-width: 560px; margin-bottom: 3rem;
+    line-height: 1.75;
+  }
+  .divider { height: 1px; background: var(--border); }
 
-.article-content{max-width:760px;margin:0 auto;padding:0 1.5rem 3rem}
-.article-content h2{font-size:1.5rem;color:var(--navy);margin:2.5rem 0 1rem}
-.article-content p{margin-bottom:1.25rem;color:var(--text)}
-.article-content ul{margin:0 0 1.25rem 1.5rem;color:var(--text)}
-.article-content ul li{margin-bottom:.5rem}
+  /* ── ABOUT ─────────────────────────────────────────── */
+  #about { background: var(--surface); }
+  .about-grid {
+    display: block;
+  }
+  .about-aside {}
+  .about-photo {
+    width: 100%; aspect-ratio: 3/4; object-fit: cover;
+    border-radius: var(--r); background: var(--teal-lt);
+    display: flex; align-items: center; justify-content: center;
+    color: var(--teal); font-size: 0.85rem;
+    border: 1px solid var(--border);
+  }
+  .about-photo-placeholder {
+    width: 100%; aspect-ratio: 3/4;
+    border-radius: var(--r);
+    background: var(--teal-lt);
+    border: 1px solid var(--border);
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    gap: 0.5rem; color: var(--teal);
+  }
+  .about-photo-placeholder span { font-size: 0.8rem; }
+  .about-body { max-width: 680px; }
+  .about-body p {
+    color: var(--ink-2); margin-bottom: 1.25rem; line-height: 1.8;
+  }
+  .about-body p:last-of-type { margin-bottom: 2rem; }
+  .affil-row {
+    display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 2rem;
+  }
+  .affil-tag {
+    font-size: 0.8rem; font-weight: 500;
+    padding: 0.35rem 0.9rem;
+    border-radius: 20px;
+    border: 1px solid var(--border);
+    color: var(--ink-2);
+    background: var(--bg);
+  }
 
-.callout{background:var(--teal-light);border-radius:8px;padding:1.5rem;margin:2rem 0}
-.callout-title{font-family:'Playfair Display',serif;color:var(--teal);font-size:1.05rem;margin-bottom:.5rem;font-weight:600}
-.callout p{margin-bottom:.5rem;font-size:.95rem}
+  /* ── FEATURED BOOK ─────────────────────────────────── */
+  #book { background: var(--gold-lt); border-top: 1px solid #b8cfe8; border-bottom: 1px solid #b8cfe8; }
+  .book-grid {
+    display: grid; grid-template-columns: auto 1fr; gap: 4rem; align-items: center;
+  }
+  .book-cover {
+    width: 200px; height: 280px;
+    background: #0d2d4a;
+    border-radius: 4px 10px 10px 4px;
+    box-shadow: 6px 6px 24px rgba(0,0,0,0.18), 2px 2px 0 rgba(0,0,0,0.08);
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    padding: 1.5rem; text-align: center;
+    position: relative; overflow: hidden;
+  }
+  .book-cover::before {
+    content: '';
+    position: absolute; top: 0; left: 0;
+    width: 8px; height: 100%;
+    background: rgba(255,255,255,0.06);
+  }
+  .book-cover-spine {
+    font-family: var(--serif);
+    color: rgba(255,255,255,0.45);
+    font-size: 0.65rem; letter-spacing: 0.12em;
+    text-transform: uppercase; margin-bottom: 1.5rem;
+  }
+  .book-cover-title {
+    font-family: var(--serif);
+    color: #fff; font-size: 0.95rem;
+    line-height: 1.35; margin-bottom: 1rem;
+  }
+  .book-cover-accent {
+    width: 32px; height: 2px; background: #4aaa78; margin: 0 auto 1rem;
+  }
+  .book-cover-author {
+    font-size: 0.7rem; color: rgba(255,255,255,0.55);
+    letter-spacing: 0.05em;
+  }
+  .book-publisher-badge {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    font-size: 0.75rem; font-weight: 500;
+    color: var(--gold);
+    border: 1px solid #a8c0e8;
+    padding: 0.3rem 0.8rem; border-radius: 4px;
+    background: rgba(255,255,255,0.7);
+    margin-bottom: 1.25rem;
+    letter-spacing: 0.04em; text-transform: uppercase;
+  }
+  .book-title {
+    font-family: var(--serif);
+    font-size: clamp(1.4rem, 2.5vw, 2rem);
+    font-weight: 400; line-height: 1.3;
+    letter-spacing: -0.01em; margin-bottom: 1rem;
+  }
+  .book-desc {
+    color: var(--ink-2); margin-bottom: 2rem; line-height: 1.75;
+  }
+  .book-meta { display: flex; gap: 2rem; margin-bottom: 2rem; }
+  .book-meta-item { font-size: 0.82rem; }
+  .book-meta-item strong { display: block; color: var(--ink); font-weight: 500; }
+  .book-meta-item span { color: var(--ink-3); }
 
-.article-content table{width:100%;border-collapse:collapse;margin:1.5rem 0;font-size:.92rem}
-.article-content th{background:var(--navy);color:var(--white);text-align:left;padding:.75rem 1rem;font-weight:500}
-.article-content td{padding:.75rem 1rem;border-bottom:1px solid var(--border)}
-.article-content tr:last-child td{border-bottom:none}
+  /* ── BOOKS GRID ─────────────────────────────────────── */
+  #books { background: var(--bg); }
+  .books-group { margin-bottom: 3.5rem; }
+  .books-group:last-child { margin-bottom: 0; }
+  .group-label {
+    font-size: 0.75rem; text-transform: uppercase;
+    letter-spacing: 0.1em; color: var(--ink-3); font-weight: 500;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 0.6rem; margin-bottom: 1.5rem;
+  }
+  .books-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 1.25rem;
+  }
+  .book-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--r); overflow: hidden;
+    transition: box-shadow 0.2s, transform 0.2s;
+  }
+  .book-card:hover { box-shadow: 0 8px 28px rgba(0,0,0,0.08); transform: translateY(-2px); }
+  .book-card-thumb {
+    aspect-ratio: 2/3; background: var(--teal);
+    display: flex; align-items: center; justify-content: center;
+    padding: 1rem; text-align: center; overflow: hidden; position: relative;
+  }
+  .book-card-thumb img {
+    position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;
+  }
+  .book-card-thumb img.loaded + .book-card-thumb-text { display:none; }
+  .book-card-thumb-text {
+    font-family: var(--serif); color: rgba(255,255,255,0.9);
+    font-size: 0.85rem; line-height: 1.35;
+  }
+  .book-card-body { padding: 0.9rem; }
+  .book-card-title { font-size: 0.82rem; font-weight: 500; line-height: 1.4; margin-bottom: 0.4rem; }
+  .book-card-tag {
+    font-size: 0.7rem; color: var(--teal); font-weight: 500;
+  }
+  /* Colour variants for book thumbs */
+  .thumb-1 { background: #1a4a8a; }
+  .thumb-2 { background: #0d2d4a; }
+  .thumb-3 { background: #1a6b45; }
+  .thumb-4 { background: #6b3a1a; }
 
-.article-cta{background:var(--sand);border-radius:8px;padding:2rem;margin:2.5rem 0;text-align:center}
-.article-cta h3{color:var(--navy);margin-bottom:.75rem;font-size:1.2rem}
-.article-cta p{color:var(--text-light);margin-bottom:1.25rem;font-size:.95rem}
-.cta-buttons{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
-.cta-btn{display:inline-block;padding:.7rem 1.5rem;border-radius:6px;text-decoration:none;font-size:.9rem;font-weight:500;transition:opacity .2s}
-.cta-btn.primary{background:var(--teal);color:var(--white)}
-.cta-btn.secondary{background:var(--navy);color:var(--white)}
-.cta-btn:hover{opacity:.85}
+  /* ── TOOLS ─────────────────────────────────────────── */
+  #tools { background: var(--surface); }
+  .tools-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.25rem;
+  }
+  .tool-card {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: var(--r); padding: 1.5rem;
+    transition: box-shadow 0.2s, transform 0.2s;
+    display: flex; flex-direction: column;
+  }
+  .tool-card:hover { box-shadow: 0 8px 28px rgba(0,0,0,0.07); transform: translateY(-2px); }
+  .tool-card-top {
+    display: flex; align-items: flex-start;
+    justify-content: space-between; margin-bottom: 0.75rem;
+  }
+  .tool-tag {
+    font-size: 0.7rem; font-weight: 500;
+    text-transform: uppercase; letter-spacing: 0.08em;
+    padding: 0.25rem 0.6rem; border-radius: 4px;
+  }
+  .tag-workspace { background: var(--teal-lt); color: var(--teal); }
+  .tag-prompts { background: #e8f0fe; color: #1a56a0; }
+  .tag-tool { background: #fce8f3; color: #8b1a5e; }
+  .tag-subscription { background: #ddeeff; color: #1a4a8a; }
+  .tool-price { font-size: 0.9rem; font-weight: 500; color: var(--ink); }
+  .tool-card-title {
+    font-family: var(--serif); font-size: 1.1rem;
+    font-weight: 400; margin-bottom: 0.6rem;
+  }
+  .tool-card-desc { font-size: 0.875rem; color: var(--ink-2); line-height: 1.65; flex-grow: 1; }
+  .tool-card-footer { margin-top: 1.25rem; }
+  .tool-link {
+    font-size: 0.82rem; font-weight: 500; color: var(--teal);
+    display: inline-flex; align-items: center; gap: 0.35rem;
+  }
+  .tool-link::after { content: '→'; }
 
-.faq{margin:2.5rem 0}
-.faq h2{font-size:1.5rem;color:var(--navy);margin-bottom:1.25rem}
-.faq-item{border-bottom:1px solid var(--border);padding:1rem 0}
-.faq-item:last-child{border-bottom:none}
-.faq-q{font-weight:500;color:var(--navy);margin-bottom:.4rem}
-.faq-a{color:var(--text-light);font-size:.95rem}
+  /* ── ARTICLES ─────────────────────────────────────── */
+  #articles { background: var(--bg); }
+  .articles-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.25rem;
+  }
+  .article-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--r); padding: 1.75rem;
+    transition: box-shadow 0.2s;
+  }
+  .article-card:hover { box-shadow: 0 8px 28px rgba(0,0,0,0.07); }
+  .article-pillar {
+    font-size: 0.7rem; font-weight: 500;
+    text-transform: uppercase; letter-spacing: 0.08em;
+    color: var(--teal); margin-bottom: 0.75rem;
+  }
+  .article-title {
+    font-family: var(--serif); font-size: 1.05rem;
+    font-weight: 400; line-height: 1.45;
+    margin-bottom: 0.75rem;
+  }
+  .article-desc { font-size: 0.85rem; color: var(--ink-2); line-height: 1.65; }
+  .article-status {
+    display: inline-block; margin-top: 1rem;
+    font-size: 0.72rem; font-weight: 500;
+    padding: 0.2rem 0.6rem; border-radius: 4px;
+    background: #f0f0f0; color: var(--ink-3);
+  }
+  .article-status.live { background: var(--teal-lt); color: var(--teal); }
 
-.footer{background:var(--navy);color:rgba(255,255,255,.6);text-align:center;padding:2rem;font-size:.85rem}
-.footer a{color:var(--teal);text-decoration:none}
+  /* ── SUBSTACK ─────────────────────────────────────── */
+  #substack {
+    background: #0d2540;
+    color: #fff;
+  }
+  #substack .section-label { color: rgba(255,255,255,0.45); }
+  #substack .section-title { color: #fff; }
+  #substack .section-desc { color: rgba(255,255,255,0.65); max-width: 500px; }
+  .substack-inner {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center;
+  }
+  .substack-features { display: flex; flex-direction: column; gap: 1.25rem; }
+  .substack-feat {
+    display: flex; gap: 1rem; align-items: flex-start;
+  }
+  .substack-feat-icon {
+    width: 36px; height: 36px; flex-shrink: 0;
+    background: rgba(74,170,120,0.15);
+    border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 0.9rem;
+  }
+  .substack-feat-text h4 { font-size: 0.9rem; font-weight: 500; margin-bottom: 0.25rem; }
+  .substack-feat-text p { font-size: 0.82rem; color: rgba(255,255,255,0.5); line-height: 1.6; }
+  .substack-cta {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: var(--r); padding: 2rem;
+  }
+  .substack-cta p { color: rgba(255,255,255,0.7); font-size: 0.9rem; margin-bottom: 1.25rem; }
+  .btn-substack {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    background: #fff; color: var(--ink);
+    padding: 0.8rem 1.5rem; border-radius: 6px;
+    font-weight: 500; font-size: 0.875rem;
+    transition: background 0.2s;
+    width: 100%; justify-content: center;
+  }
+  .btn-substack:hover { background: #f0eeea; }
 
-@media(max-width:600px){
-  .article-header h1{font-size:1.6rem}
-  .nav{flex-direction:column;gap:.75rem}
-  .nav-links{justify-content:center}
-  .cta-buttons{flex-direction:column;align-items:center}
-}
+  /* ── RESEARCH ─────────────────────────────────────── */
+  #research { background: var(--surface); }
+  .research-row {
+    display: flex; gap: 1rem; align-items: flex-start;
+    padding: 1.25rem 0; border-bottom: 1px solid var(--border);
+  }
+  .research-row:first-child { border-top: 1px solid var(--border); }
+  .research-year { font-size: 0.78rem; color: var(--ink-3); min-width: 44px; padding-top: 0.1rem; }
+  .research-body {}
+  .research-title { font-size: 0.95rem; font-weight: 500; margin-bottom: 0.25rem; }
+  .research-venue { font-size: 0.82rem; color: var(--ink-3); font-style: italic; }
+
+  /* ── FOOTER ─────────────────────────────────────────── */
+  footer {
+    padding: 3rem 2rem;
+    background: #e4edf5;
+    border-top: 1px solid var(--border);
+  }
+  .footer-inner {
+    max-width: var(--max); margin: 0 auto;
+    display: flex; justify-content: space-between; align-items: center;
+    flex-wrap: wrap; gap: 1.5rem;
+  }
+  .footer-name {
+    font-family: var(--serif); font-size: 1rem;
+  }
+  .footer-links {
+    display: flex; gap: 1.5rem; list-style: none;
+  }
+  .footer-links a {
+    font-size: 0.82rem; color: var(--ink-3);
+    transition: color 0.2s;
+  }
+  .footer-links a:hover { color: var(--teal); }
+  .footer-copy { font-size: 0.78rem; color: var(--ink-3); }
+
+  /* ── ANIMATIONS ──────────────────────────────────── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(18px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  .fade-up { animation: fadeUp 0.65s ease both; }
+  .delay-1 { animation-delay: 0.1s; }
+  .delay-2 { animation-delay: 0.22s; }
+  .delay-3 { animation-delay: 0.34s; }
+  .delay-4 { animation-delay: 0.46s; }
+
+  /* ── RESPONSIVE ────────────────────────────────────── */
+  @media (max-width: 768px) {
+    .hero { grid-template-columns: 1fr; gap: 3rem; padding: 4rem 1.25rem 3rem; }
+    .hero-visual { display: none; }
+    .about-grid { grid-template-columns: 1fr; }
+  
+    .book-grid { grid-template-columns: 1fr; gap: 2rem; }
+    .book-cover { display: none; }
+    .substack-inner { grid-template-columns: 1fr; gap: 2.5rem; }
+    .nav-links { display: none; }
+    section { padding: 3.5rem 1.25rem; }
+  }
 </style>
 </head>
 <body>
 
-<nav class="nav">
-  <a href="/" class="nav-brand">Sherry Xu</a>
-  <div class="nav-links">
-    <a href="/#about">About</a>
-    <a href="/#book">Book</a>
-    <a href="/#books">Books</a>
-    <a href="/#tools">Tools</a>
-    <a href="/#articles">Articles</a>
-    <a href="/#research">Research</a>
+<!-- ── NAV ──────────────────────────────────────── -->
+<nav>
+  <div class="nav-inner">
+    <a href="#" class="nav-logo">Sherry Xu</a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#book">Featured Book</a></li>
+      <li><a href="#books">Books</a></li>
+      <li><a href="#tools">Tools</a></li>
+      <li><a href="#consulting">Consulting</a></li>
+      <li><a href="/training/">Training</a></li>
+      <li><a href="#articles">Articles</a></li>
+      <li><a href="#substack">Newsletter</a></li>
+      <li><a href="#research">Research</a></li>
+    </ul>
   </div>
 </nav>
 
-<header class="article-header">
-  <span class="article-pillar">Research · ESG & Governance</span>
-  <h1>Do Women on REIT Boards Actually Improve Sustainability?</h1>
-  <p class="article-subtitle">A study of 375 global REITs finds that gender-diverse boards adopt stronger sustainability policies — but the relationship with immediate emissions reductions is more nuanced than you might expect.</p>
-
-  <div class="paper-badge">
-    <strong>Published paper:</strong> Voraprapa Nakavachara, Yishuang Xu — "Board Gender Diversity and Environmental Practice in Global REITs: Examining the Impact on Policies and Outcomes," <em>Journal of Sustainable Real Estate</em>, 2025.<br>
-    <a href="https://doi.org/10.1080/19498276.2025.2519978" target="_blank" rel="noopener">Read the full paper →</a>
+<!-- ── HERO ─────────────────────────────────────── -->
+<section style="padding: 0;">
+  <div class="hero">
+    <div>
+      <span class="hero-tag fade-up">AI · ESG · Real Estate</span>
+      <h1 class="fade-up delay-1">
+        AI, ESG &amp; real estate —<br><em>practical, not theoretical.</em>
+      </h1>
+      <p class="hero-desc fade-up delay-2">
+        Practical guides, tools, and books for real estate professionals navigating AI, ESG compliance, and digital assets. Written by a researcher who also builds things.
+      </p>
+      <div class="hero-creds fade-up delay-3">
+        <div class="cred"><span class="cred-dot"></span><span>Routledge author — PropTech Innovations in Real Estate Investment and Finance (2026)</span></div>
+        <div class="cred"><span class="cred-dot"></span><span>Associate Professor, University of Manchester</span></div>
+        <div class="cred"><span class="cred-dot"></span><span>Founder, Plinthos — AI-powered ESG compliance platform for UK real estate funds and UK valuers</span></div>
+      </div>
+      <div class="hero-actions fade-up delay-4">
+        <a href="#book" class="btn btn-primary">See my book</a>
+        <a href="#tools" class="btn btn-outline">Explore tools</a>
+        <a href="https://sherryxucom.substack.com/" class="btn-primary" target="_blank" rel="noopener">
+  Get notified — new research, tools &amp; books
+</a>
+<a href="#tools" class="btn-secondary">
+  Explore tools &amp; guides
+</a>
+      </div>
+    </div>
+    <div class="hero-visual fade-up delay-2">
+      <div class="hero-card">
+        <div class="hero-card-label">Latest release</div>
+        <div class="hero-card-title">PropTech Innovations in Real Estate Investment and Finance</div>
+        <div class="hero-card-meta">Routledge · 2026</div>
+        <div class="hero-card-divider"></div>
+        <div class="hero-card-stat"><span>Publisher</span><span>Routledge</span></div>
+        <div class="hero-card-stat" style="margin-top:0.5rem"><span>Focus</span><span>Sustainable futures</span></div>
+        <div class="hero-card-stat" style="margin-top:0.5rem"><span>Available</span><span>Now</span></div>
+        <div style="margin-top:1.5rem">
+          <a href="https://www.taylorfrancis.com/books/mono/10.1201/9781003504436/proptech-innovations-real-estate-investment-finance-yishuang-xu-leo-ming-yan-lo-andy-king-man-yiu" target="_blank" class="btn btn-primary" style="width:100%;justify-content:center;font-size:0.82rem">
+            Buy from Routledge →
+          </a>
+        </div>
+      </div>
+    </div>
   </div>
-</header>
+</section>
 
-<div class="video-container">
-  <div class="video-wrap">
-    <iframe src="https://www.youtube.com/embed/j0VE3_JiTSE" title="Do Women on REIT Boards Actually Improve Sustainability?" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+<div class="divider"></div>
+
+<!-- ── ABOUT ─────────────────────────────────────── -->
+<section id="about">
+  <div class="section-inner">
+    <div class="about-grid">
+      <div class="about-body">
+        <div class="section-label">About</div>
+        <h2 class="section-title">Yishuang (Sherry) Xu</h2>
+        <p>I work at the intersection of AI, sustainability, and real estate — as a researcher, author, and founder. My academic work focuses on how emerging technologies reshape real estate investment and the built environment. My practical work turns that research into tools that professionals can actually use.</p>
+        <p>At the University of Manchester, where I am an Associate Professor, I research PropTech, digital assets, and ESG in real estate. As founder of <strong>Plinthos</strong>, I build an AI-powered ESG compliance platform for UK real estate funds and UK valuers. My writing spans academic journals, practical guides, and self-published books read by analysts and investors worldwide.</p>
+        <p>My most recent book, <em>PropTech Innovations in Real Estate Investment and Finance: Sustainable Futures</em> (Routledge, 2026), explores how technology is reshaping real estate investment across global markets.</p>
+        <p style="color: var(--ink-2); font-size:0.9rem;">For advisory or collaboration enquiries, <a href="mailto:yishuang.xu@manchester.ac.uk" style="color:var(--teal); border-bottom:1px solid var(--teal);">get in touch</a>.</p>
+        <div class="affil-row">
+          <span class="affil-tag">University of Manchester</span>
+          <span class="affil-tag">Plinthos — AI ESG platform</span>
+          <span class="affil-tag">Routledge</span>
+          <span class="affil-tag">ESG</span>
+          <span class="affil-tag">PropTech</span>
+          <span class="affil-tag">AI</span>
+        </div>
+      </div>
+    </div>
   </div>
+</section>
+
+<div class="divider"></div>
+
+<p style="font-family: 'DM Sans', sans-serif; font-size: 0.95rem; color: #555; margin-top: 1rem;">
+  Recent writing:
+  <a href="/articles/rics-ai-standard-how-to-comply/" style="color: #0d7377;">How to comply with the RICS AI standard</a> ·
+  <a href="/articles/mees-compliance-uk-landlords/" style="color: #0d7377;">MEES compliance before 2030</a> ·
+  <a href="/articles/scope3-landlords/" style="color: #0d7377;">Scope 3 for landlords</a>
+</p>
+<!-- ── FEATURED BOOK ──────────────────────────────── -->
+<section id="book">
+  <div class="section-inner">
+    <div class="book-grid">
+      <div>
+        <div class="book-cover">
+          <div class="book-cover-spine">Routledge · 2026</div>
+          <div class="book-cover-accent"></div>
+          <div class="book-cover-title">PropTech Innovations in Real Estate Investment and Finance</div>
+          <div class="book-cover-accent"></div>
+          <div class="book-cover-author">Yishuang Xu</div>
+        </div>
+      </div>
+      <div>
+        <div class="section-label" style="margin-bottom:0.75rem;">Featured Book</div>
+        <div class="book-publisher-badge">Routledge · Taylor &amp; Francis Group</div>
+        <h2 class="book-title">PropTech Innovations in Real Estate Investment and Finance:<br>Sustainable Futures</h2>
+        <p class="book-desc">A comprehensive examination of how property technology is transforming real estate investment and finance across global markets — from ESG integration and digital assets to AI-driven analytics and sustainable infrastructure.</p>
+        <div class="book-meta">
+          
+          <div class="book-meta-item"><strong>Publisher</strong><span>Routledge</span></div>
+          <div class="book-meta-item"><strong>Published</strong><span>2026</span></div>
+        </div>
+        <div style="display:flex; gap:1rem; flex-wrap:wrap;">
+          <a href="https://www.taylorfrancis.com/books/mono/10.1201/9781003504436/proptech-innovations-real-estate-investment-finance-yishuang-xu-leo-ming-yan-lo-andy-king-man-yiu" target="_blank" class="btn btn-primary">Buy from Routledge</a>
+          <a href="https://www.amazon.co.uk/dp/1032840080" target="_blank" class="btn btn-outline">Find on Amazon UK</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ── BOOKS ─────────────────────────────────────── -->
+<section id="books">
+  <div class="section-inner">
+    <div class="section-label">KDP titles · Available on Amazon</div>
+    <h2 class="section-title">Practical guides &amp; handbooks</h2>
+    <p class="section-desc">Practical guides on AI, ESG, and digital assets — written for investors, analysts, and professionals navigating the transformation of real estate.</p>
+
+    <div class="books-group">
+      <div class="group-label">AI &amp; Technology</div>
+      <div class="books-row">
+        <a href="https://www.amazon.co.uk/dp/B0DTQS552F" target="_blank" class="book-card">
+          <div class="book-card-thumb" style="background:#0a3d5e;padding:0;overflow:hidden;position:relative;display:block;">
+            <img src="/image/How_to_Use_AI_in_Financial_Analysis.jpg" alt="How to Use AI in Financial Analysis" style="width:100%;height:100%;object-fit:cover;display:block;" onerror="this.style.display='none'">
+          </div>
+          <div class="book-card-body">
+            <div class="book-card-title">How to Use AI in Financial Analysis: Building AI Agents That Actually Work</div>
+            <div class="book-card-tag">For analysts &amp; finance professionals</div>
+          </div>
+        </a>
+        <a href="https://www.amazon.co.uk/dp/B0FRZJGQPP" target="_blank" class="book-card">
+          <div class="book-card-thumb" style="background:#1a3a5c;padding:0;overflow:hidden;position:relative;display:block;">
+            <img src="/image/The_AI_Crossroads.jpg" alt="The AI Crossroads" style="width:100%;height:100%;object-fit:cover;display:block;" onerror="this.style.display='none'">
+          </div>
+          <div class="book-card-body">
+            <div class="book-card-title">The AI Crossroads: Why the Robot Catastrophe Isn't What You Think</div>
+            <div class="book-card-tag">AI &amp; the future of work</div>
+          </div>
+        </a>
+        <a href="https://www.amazon.co.uk/dp/B0FRB4RVM7" target="_blank" class="book-card">
+          <div class="book-card-thumb" style="background:#0f4d6b;padding:0;overflow:hidden;position:relative;display:block;">
+            <img src="/image/The_Navigator_in_the_AI_Economy.jpg" alt="The Navigator in the AI Economy" style="width:100%;height:100%;object-fit:cover;display:block;" onerror="this.style.display='none'">
+          </div>
+          <div class="book-card-body">
+            <div class="book-card-title">The Navigator in the AI Economy: Your Playbook for Thriving</div>
+            <div class="book-card-tag">For professionals navigating AI</div>
+          </div>
+        </a>
+        <a href="https://www.amazon.co.uk/dp/B0DL4QY2XJ" target="_blank" class="book-card">
+          <div class="book-card-thumb" style="background:#2a1a5c;padding:0;overflow:hidden;position:relative;display:block;">
+            <img src="/image/The_Shape_of_a_Mind.jpg" alt="The Shape of a Mind" style="width:100%;height:100%;object-fit:cover;display:block;" onerror="this.style.display='none'">
+          </div>
+          <div class="book-card-body">
+            <div class="book-card-title">The Shape of a Mind: A Race to Understand is a Race to Survive</div>
+            <div class="book-card-tag">AI &amp; intelligence</div>
+          </div>
+        </a>
+        <a href="https://www.amazon.co.uk/dp/B0H2471L9H" target="_blank" class="book-card">
+          <div class="book-card-thumb" style="background:#1a3a6e;padding:0;overflow:hidden;position:relative;display:block;">
+            <img src="/image/THE_SOUND_OF_MONEY.jpg" alt="The Sound of Money" style="width:100%;height:100%;object-fit:cover;display:block;" onerror="this.style.display='none'">
+          </div>
+          <div class="book-card-body">
+            <div class="book-card-title">The Sound of Money: How Media Voice, Tone, and Delivery Shape Financial Decisions</div>
+            <div class="book-card-tag">AI &amp; financial media</div>
+          </div>
+        </a>
+      </div>
+    </div>
+
+    <div class="books-group">
+      <div class="group-label">ESG &amp; Sustainability</div>
+      <div class="books-row">
+        <a href="https://www.amazon.co.uk/dp/B0FMYS7G37" target="_blank" class="book-card">
+          <div class="book-card-thumb" style="background:#1a4d2e;padding:0;overflow:hidden;position:relative;display:block;">
+            <img src="/image/The_Journey_to_Net_Zero_Real_Estate.jpg" alt="The Journey to Net Zero Real Estate" style="width:100%;height:100%;object-fit:cover;display:block;" onerror="this.style.display='none'">
+          </div>
+          <div class="book-card-body">
+            <div class="book-card-title">The Journey to Net Zero Real Estate: A Beginner's Guide to Sustainable Property Development and Investment</div>
+            <div class="book-card-tag">For landlords &amp; developers</div>
+          </div>
+        </a>
+        <a href="https://www.amazon.co.uk/dp/B0DJ3823BQ" target="_blank" class="book-card">
+          <div class="book-card-thumb" style="background:#2d5a1e;padding:0;overflow:hidden;position:relative;display:block;">
+            <img src="/image/Sustainability_in_Real_Estate_Beginners_Guide.jpg" alt="Sustainability in Real Estate" style="width:100%;height:100%;object-fit:cover;display:block;" onerror="this.style.display='none'">
+          </div>
+          <div class="book-card-body">
+            <div class="book-card-title">Sustainability in Real Estate: A Beginner's Guide</div>
+            <div class="book-card-tag">For property professionals</div>
+          </div>
+        </a>
+        <a href="https://www.amazon.co.uk/dp/B0H2G95W27" target="_blank" class="book-card">
+          <div class="book-card-thumb" style="background:#1a5c38;padding:0;overflow:hidden;position:relative;display:block;">
+            <img src="/image/ESG_in_Real_Estate.jpg" alt="ESG in Real Estate: Professional Practitioner Handbook" style="width:100%;height:100%;object-fit:cover;display:block;" onerror="this.style.display='none'">
+          </div>
+          <div class="book-card-body">
+            <div class="book-card-title">ESG in Real Estate: Professional Practitioner Handbook (Book 1)</div>
+            <div class="book-card-tag">For fund managers &amp; valuers</div>
+          </div>
+        </a>
+      </div>
+    </div>
+
+    <div class="books-group">
+      <div class="group-label">Digital Assets &amp; Tokenisation</div>
+      <div class="books-row">
+        <a href="https://www.amazon.co.uk/dp/B0FKBX591P" target="_blank" class="book-card">
+          <div class="book-card-thumb" style="background:#0a4d6e;padding:0;overflow:hidden;position:relative;display:block;">
+            <img src="/image/Fundamentals_of_Real_Estate_Tokenization.jpg" alt="Fundamentals of Real Estate Tokenisation" style="width:100%;height:100%;object-fit:cover;display:block;" onerror="this.style.display='none'">
+          </div>
+          <div class="book-card-body">
+            <div class="book-card-title">Fundamentals of Real Estate Tokenisation</div>
+            <div class="book-card-tag">RWA Tokenization Series · Book 1</div>
+          </div>
+        </a>
+        <a href="https://www.amazon.co.uk/dp/B0FPJNF32K" target="_blank" class="book-card">
+          <div class="book-card-thumb" style="background:#134e7a;padding:0;overflow:hidden;position:relative;display:block;">
+            <img src="/image/How_to_Make_Money_from_Real_Estate_Tokenization.jpg" alt="How to Make Money from Real Estate Tokenization" style="width:100%;height:100%;object-fit:cover;display:block;" onerror="this.style.display='none'">
+          </div>
+          <div class="book-card-body">
+            <div class="book-card-title">How to Make Money from Real Estate Tokenization: A Practical Guide for Everyday Property Investors</div>
+            <div class="book-card-tag">RWA Tokenization Series · Book 2</div>
+          </div>
+        </a>
+        <a href="https://www.amazon.co.uk/dp/B0FJ28BDBW" target="_blank" class="book-card">
+          <div class="book-card-thumb" style="background:#3d1a5c;padding:0;overflow:hidden;position:relative;display:block;">
+            <img src="/image/A_Brief_History_of_Stablecoins.jpg" alt="A Brief History of Stablecoins" style="width:100%;height:100%;object-fit:cover;display:block;" onerror="this.style.display='none'">
+          </div>
+          <div class="book-card-body">
+            <div class="book-card-title">A Brief History of Stablecoins: From Digital Banking to Monetary Evolution</div>
+            <div class="book-card-tag">Digital finance &amp; monetary history</div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ── TOOLS ─────────────────────────────────────── -->
+<section id="tools">
+  <div class="section-inner">
+    <div class="section-label">Gumroad tools</div>
+    <h2 class="section-title">Tools you can use today</h2>
+    <p class="section-desc">Practical workspaces, frameworks, and prompt libraries for real estate professionals. Open it on Monday, use it on a real problem by Monday afternoon.</p>
+    <div class="tools-grid">
+      <div class="tool-card">
+        <div class="tool-card-top">
+          <span class="tool-tag tag-tool">Compliance tool</span>
+          <span class="tool-price">$60</span>
+        </div>
+        <div class="tool-card-title">RICS AI Assessment Workbook</div>
+        <div class="tool-card-desc">The offline Excel workbook that satisfies the RICS "Responsible Use of AI" mandatory standard. Fill in the Assessment, get a print-ready material-impact record and auditable sign-off trail — your data never leaves your device.</div>
+        <div class="tool-card-footer"><a href="https://sherryxu.gumroad.com/l/vreobx" target="_blank" class="tool-link">Get on Gumroad</a></div>
+      </div>
+      <div class="tool-card">
+        <div class="tool-card-top">
+          <span class="tool-tag tag-workspace">Notion workspace</span>
+          <span class="tool-price">£99</span>
+        </div>
+        <div class="tool-card-title">Token Ready</div>
+        <div class="tool-card-desc">A pre-built Notion workspace for real estate tokenisation due diligence. Structure your analysis, track legal readiness, and evaluate deals — no setup required.</div>
+        <div class="tool-card-footer"><a href="https://sherryxu.gumroad.com/l/token-ready" class="tool-link">Get on Gumroad</a></div>
+      </div>
+      <div class="tool-card">
+        <div class="tool-card-top">
+          <span class="tool-tag tag-prompts">UK business guide</span>
+          <span class="tool-price">£19</span>
+        </div>
+        <div class="tool-card-title">AI for Your Small Business</div>
+        <div class="tool-card-desc">A UK owner's guide to Claude for Small Business — VAT, GDPR, Making Tax Digital, and step-by-step workflows that save 5–10 hours a month on admin. Written for UK founders, not a US audience.</div>
+        <div class="tool-card-footer"><a href="https://sherryxu.gumroad.com/l/claude-uk-small-business-guide" class="tool-link">Get on Gumroad</a></div>
+      </div>
+      <div class="tool-card">
+        <div class="tool-card-top">
+          <span class="tool-tag tag-prompts">Prompt library</span>
+          <span class="tool-price">£29</span>
+        </div>
+        <div class="tool-card-title">AI Edge — Prompt Playbook</div>
+        <div class="tool-card-desc">36 copy-paste AI prompt templates for junior analysts, graduate trainees, and early-career investment and asset management professionals. IC memos, AM reports, market research, and ESG — ready to use today.</div>
+        <div class="tool-card-footer"><a href="https://sherryxu.gumroad.com/l/lkbrnk" class="tool-link">Get on Gumroad</a></div>
+      </div>
+      <div class="tool-card">
+        <div class="tool-card-top">
+          <span class="tool-tag tag-tool">Decision tool</span>
+          <span class="tool-price">£49</span>
+        </div>
+        <div class="tool-card-title">Deal Tester</div>
+        <div class="tool-card-desc">Enter your deal inputs — purchase price, yield, financing, exit assumptions — and get a structured go/no-go output with commentary. A decision framework, not a spreadsheet to build.</div>
+        <div class="tool-card-footer"><a href="https://sherryxu.gumroad.com/l/token-ready" class="tool-link">Get on Gumroad</a></div>
+      </div>
+      <div class="tool-card">
+        <div class="tool-card-top">
+          <span class="tool-tag tag-subscription">Monthly</span>
+          <span class="tool-price">£9/mo</span>
+        </div>
+        <div class="tool-card-title">PropTech AI Radar</div>
+        <div class="tool-card-desc">Monthly curated intelligence on AI tools, regulatory shifts, and use cases relevant to real estate professionals. I read everything so you don't have to.</div>
+        <div class="tool-card-footer"><a href="https://YOUR-GUMROAD-LINK" class="tool-link">Subscribe on Gumroad</a> <!-- ✏️ EDIT: Replace with your Gumroad subscription URL --></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+  <!-- ═══ Work with Sherry ═══ -->
+<section id="consulting" style="padding: 4rem 2rem; max-width: 720px; margin: 0 auto;">
+  <p style="font-family: 'DM Sans', sans-serif; text-transform: uppercase; letter-spacing: 0.1em; font-size: 0.85rem; color: #0d7377; margin-bottom: 0.5rem;">
+    Advisory &amp; consulting
+  </p>
+  <h2 style="font-family: 'Playfair Display', serif; font-size: 1.8rem; color: #1a1a2e; margin-bottom: 1rem;">
+    Work with Sherry
+  </h2>
+  <p style="font-family: 'DM Sans', sans-serif; font-size: 1.05rem; line-height: 1.7; color: #333;">
+    I advise real estate firms, fund managers, and property companies on
+    AI implementation, ESG compliance strategy, and real estate tokenisation
+    — drawing on peer-reviewed research and hands-on experience building
+    tools in each area.
+  </p>
+  <p style="font-family: 'DM Sans', sans-serif; font-size: 1.05rem; line-height: 1.7; color: #333; margin-top: 1rem;">
+    Typical engagements include AI readiness assessments and RICS AI standard
+    compliance, ESG reporting strategy (UK SRS, GRESB, Scope&nbsp;3), and
+    tokenisation feasibility and structuring. I also deliver practitioner
+    training workshops on AI for real estate professionals.
+  </p>
+  <p style="margin-top: 1.5rem;">
+    <a href="mailto:yishuang.xu@manchester.ac.uk"
+       style="font-family: 'DM Sans', sans-serif; font-size: 1rem; color: #0d7377; text-decoration: underline;">
+      Get in touch →
+    </a>
+  </p>
+</section>
+
+<!-- ── ARTICLES ─────────────────────────────────── -->
+<section id="articles">
+  <div class="section-inner">
+    <div class="section-label">Writing</div>
+    <h2 class="section-title">Practical guides &amp; analysis</h2>
+    <p class="section-desc">In-depth articles on AI, ESG, and digital assets in real estate — written for professionals who want substance, not summaries.</p>
+
+    <div style="display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:1rem;background:var(--ink);color:#dfe7ef;border-radius:var(--r);padding:1.2rem 1.5rem;margin-bottom:1.75rem;">
+      <div style="font-size:0.92rem;max-width:34rem;"><strong style="color:#fff;">Free download — The AI Output Review.</strong> A one-page checklist for interrogating any AI output (AVM, forecast, AI-drafted report) before you rely on it — aligned to the RICS AI standard.</div>
+      <a href="/download/ai-output-review.pdf" download class="btn btn-primary" style="white-space:nowrap;background:var(--teal);border-color:var(--teal);">Download the framework (PDF)</a>
+    </div>
+
+    <!-- Featured: one per pillar -->
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:1.25rem;margin-bottom:1.25rem;">
+      <div class="article-card" style="border-top:3px solid var(--teal);">
+        <div class="article-pillar">AI in Real Estate · New</div>
+        <div class="article-title">The RICS AI standard is now in force: what it requires and how to comply</div>
+        <div class="article-desc">The responsible-use-of-AI standard became mandatory on 9 March 2026. What it asks of surveyors and firms — plus a free one-page review framework to download.</div>
+        <a href="/articles/rics-ai-standard-how-to-comply/" class="article-status live">Read article →</a>
+      </div>
+      <div class="article-card" style="border-top:3px solid var(--teal);">
+        <div class="article-pillar">AI in Real Estate · Featured</div>
+        <div class="article-title">How is AI actually being used in real estate right now — and what doesn't work yet?</div>
+        <div class="article-desc">An honest practitioner's map of AI use cases by maturity level — what's production-ready, what's promising, and what's still hype.</div>
+        <a href="/articles/how-ai-is-used-in-real-estate/" class="article-status live">Read article →</a>
+      </div>
+      <div class="article-card" style="border-top:3px solid var(--teal);">
+        <div class="article-pillar">ESG &amp; Sustainability · Featured</div>
+        <div class="article-title">MEES compliance for UK landlords: what you actually need to do before 2030</div>
+        <div class="article-desc">A plain-English guide to EPC requirements, timelines, the 2030 deadline, and the October 2029 window most landlords are missing.</div>
+        <a href="/articles/mees-compliance-uk-landlords/" class="article-status live">Read article →</a>
+      </div>
+      <div class="article-card" style="border-top:3px solid var(--teal);">
+        <div class="article-pillar">Tokenisation · Featured</div>
+        <div class="article-title">What does it mean to tokenise real estate — how does it actually work?</div>
+        <div class="article-desc">From blockchain basics to SPV ownership structures — a plain-English guide to how real estate tokenisation works in practice.</div>
+        <a href="/articles/what-is-real-estate-tokenisation/" class="article-status live">Read article →</a>
+      </div>
+    </div>
+
+    <!-- All articles -->
+    <details>
+      <summary style="cursor:pointer;font-size:0.875rem;font-weight:500;color:var(--teal);padding:0.75rem 0;border-top:1px solid var(--border);margin-bottom:1rem;list-style:none;">
+        ↓ View all articles (15)
+      </summary>
+    <div class="articles-grid">
+
+      <div class="article-card">
+        <div class="article-pillar">AI in Real Estate</div>
+        <div class="article-title">The RICS AI standard is now in force: what it requires and how to comply</div>
+        <div class="article-desc">The responsible-use-of-AI standard became mandatory on 9 March 2026 for all RICS members and firms. What it requires — and how to comply, with a free framework.</div>
+        <a href="/articles/rics-ai-standard-how-to-comply/" class="article-status live">Read article →</a>
+      </div>
+
+      <div class="article-card">
+        <div class="article-pillar">AI in Real Estate</div>
+        <div class="article-title">How is AI actually being used in real estate right now — and what doesn't work yet?</div>
+        <div class="article-desc">An honest practitioner's map of AI use cases by maturity level — what's production-ready, what's promising, and what's still hype.</div>
+        <a href="/articles/how-ai-is-used-in-real-estate/" class="article-status live">Read article →</a>
+      </div>
+
+      <div class="article-card">
+        <div class="article-pillar">AI Agents</div>
+        <div class="article-title">What can AI agents actually do in real estate — and what can't they do yet?</div>
+        <div class="article-desc">A researcher-practitioner's assessment of agent capabilities across data aggregation, ESG scoring, lease abstraction, and more.</div>
+        <a href="/articles/what-ai-agents-can-do-in-real-estate/" class="article-status live">Read article →</a>
+      </div>
+
+      <div class="article-card">
+        <div class="article-pillar">Tokenisation</div>
+        <div class="article-title">What does it mean to tokenise real estate — how does it actually work?</div>
+        <div class="article-desc">From blockchain basics to fractional ownership structures — a clear explanation of how real estate tokenisation works in practice.</div>
+        <a href="/articles/what-is-real-estate-tokenisation/" class="article-status live">Read article →</a>
+      </div>
+
+          <div class="article-card">
+        <div class="article-pillar">Tokenisation · Research</div>
+        <div class="article-title">How New Land Releases Shape Virtual Property Values in The Sandbox Metaverse</div>
+        <div class="article-desc">New research on 9,920 blockchain transactions shows proximity capitalisation in virtual land — driven by attention and network externalities, not physical access. Includes video.</div>
+        <a href="/articles/sandbox-virtual-land-value/" class="article-status live">Read article →</a>
+      </div>
+ 
+      <div class="article-card">
+        <div class="article-pillar">Research</div>
+        <div class="article-title">Environmental Performance and Profitability in Global REITs: What the Data Shows</div>
+        <div class="article-desc">New peer-reviewed research on 375 global REITs. Being green boosts profits — but the effect is stronger outside major cities. Includes video.</div>
+        <a href="/articles/reit-green-profitability-urban/" class="article-status live">Read article →</a>
+      </div>
+      <div class="article-card">
+        <div class="article-pillar">ESG &amp; Sustainability</div>
+        <div class="article-title">MEES compliance for UK landlords: what you actually need to do before 2030</div>
+        <div class="article-desc">A plain-English guide to EPC requirements, timelines, and what landlords actually need to do before the deadlines arrive.</div>
+        <a href="/articles/mees-compliance-uk-landlords/" class="article-status live">Read article →</a>
+      </div>
+
+      <div class="article-card">
+        <div class="article-pillar">ESG &amp; Sustainability</div>
+        <div class="article-title">UK SRS for Real Estate: How AI Can (and Can't) Help You Comply</div>
+        <div class="article-desc">What property companies must disclose under UK SRS, where AI genuinely helps, and where human judgement remains essential.</div>
+        <a href="/articles/uk-srs-ai-real-estate/" class="article-status live">Read article →</a>
+      </div>
+
+      <div class="article-card">
+        <div class="article-pillar">ESG &amp; Sustainability</div>
+        <div class="article-title">GRESB 2026: What Changed and How AI Can Help You Score Higher</div>
+        <div class="article-desc">GRESB is aligning with UK SRS. Here's what changed, where most firms lose points, and how AI can improve your submission.</div>
+        <a href="/articles/gresb-2026-ai/" class="article-status live">Read article →</a>
+      </div>
+
+      <div class="article-card">
+        <div class="article-pillar">ESG &amp; Sustainability</div>
+        <div class="article-title">Scope 3 for Landlords: A Practical Guide to Measuring What You Can't See</div>
+        <div class="article-desc">Data hierarchy, estimation methods, and how to make your Scope 3 methodology defensible for UK SRS.</div>
+        <a href="/articles/scope3-landlords/" class="article-status live">Read article →</a>
+      </div>
+
+      <div class="article-card">
+        <div class="article-pillar">ESG &amp; Sustainability</div>
+        <div class="article-title">The UK SRS Assurance Gap: Is Your Sustainability Data Audit-Ready?</div>
+        <div class="article-desc">Third-party assurance is coming. Where property firms typically fail, and what to do before the auditors arrive.</div>
+        <a href="/articles/uk-srs-assurance-gap/" class="article-status live">Read article →</a>
+      </div>
+
+      <div class="article-card">
+        <div class="article-pillar">ESG &amp; Sustainability</div>
+        <div class="article-title">From EPC to Net Zero: Using AI to Build a Property Transition Plan</div>
+        <div class="article-desc">How to use AI to build a transition plan grounded in actual portfolio data — not just aspirations.</div>
+        <a href="/articles/epc-to-net-zero/" class="article-status live">Read article →</a>
+      </div>
+      
+      <div class="article-card">
+  <div class="article-pillar">ESG & Behavioural Design</div>
+  <div class="article-title">How Ant Forest turns gamification into carbon-neutral behaviour</div>
+  <div class="article-desc">Research on 473 Alipay users shows how gamification, social interaction, and behavioural psychology turn low-carbon actions into lasting habits. Includes video.</div>
+  <a href="/articles/ant-forest-gamification-carbon-behaviour/" class="article-status live">Read article →</a>
 </div>
 
-<article class="article-content">
+      <div class="article-card">
+  <div class="article-pillar">ESG & Sustainability</div>
+  <div class="article-title">What really drives building energy efficiency?</div>
+  <div class="article-desc">A study of 50,000+ LEED-certified projects reveals why climate, density, codes, and regional development matter more than any single design feature. Includes video.</div>
+  <a href="/articles/building-energy-efficiency-leed/" class="article-status live">Read article →</a>
+</div>
 
-  <p>Does board composition really affect sustainability outcomes? It is a question that comes up constantly in ESG discussions — and one where the answer is often oversimplified in both directions. Some people treat board diversity as a silver bullet. Others dismiss it as irrelevant.</p>
+      <div class="article-card">
+        <div class="article-pillar">ESG &amp; Sustainability</div>
+        <div class="article-title">5 Data Gaps That Will Sink Your First UK SRS Disclosure</div>
+        <div class="article-desc">The five data gaps causing the most pain for UK property firms — and what to do about each one before the deadline.</div>
+        <a href="/articles/five-data-gaps-uk-srs/" class="article-status live">Read article →</a>
+      </div>
+<div class="article-card">
+  <div class="article-pillar">ESG & Sustainability</div>
+  <div class="article-title">What actually works to cut carbon emissions in China?</div>
+  <div class="article-desc">Clean energy substitution consistently reduces emissions across 30 provinces — but carbon trading only works where regional pilots exist. Includes video.</div>
+  <a href="/articles/carbon-trading-sustainable-energy-china/" class="article-status live">Read article →</a>
+</div>
+      <div class="article-card">
+        <div class="article-pillar">AI in Real Estate</div>
+        <div class="article-title">How to use AI as a junior real estate analyst (and actually get useful output)</div>
+        <div class="article-desc">Why most junior analysts get generic output from AI — and the four-part prompt structure that fixes it. Covers IC memos, AM reports, market research, and ESG sections.</div>
+        <a href="/articles/ai-prompts-junior-real-estate-analyst/" class="article-status live">Read article →</a>
+      </div>
 
-  <p>This paper avoids both extremes. It examines 375 REITs worldwide from 2017 to 2023, looking at whether having more women on boards is linked to stronger environmental practices. The findings are useful precisely because they are nuanced.</p>
+      <div class="article-card">
+        <div class="article-pillar">AI &amp; Financial Media</div>
+        <div class="article-title">Does Jim Cramer's Voice Move Markets?</div>
+        <div class="article-desc">The way financial broadcasters deliver news may influence trading behaviour independently of the content. Introducing the Acoustic-Textual Divergence Score.</div>
+        <a href="/articles/voice-to-market/" class="article-status live">Read article →</a>
+      </div>
 
-  <h2>What the research found</h2>
+      <div class="article-card">
+        <div class="article-pillar">AI &amp; Financial Media</div>
+        <div class="article-title">What Your Lender Is Really Hearing</div>
+        <div class="article-desc">ESG media tone shapes property lending decisions. How coverage is entering its high-arousal phase — and what that means for valuations and capital allocation.</div>
+        <a href="/articles/lender-is-hearing/" class="article-status live">Read article →</a>
+      </div>
 
-  <p>The study tests two things separately: whether gender-diverse boards adopt more sustainability <em>policies</em>, and whether that translates into measurable emissions <em>reductions</em>.</p>
-
-  <p>On policies, the answer is clear. <strong>Gender-diverse boards are significantly more likely to implement pro-environmental initiatives</strong> — waste reduction programmes, renewable energy adoption, and formal sustainability commitments. The statistical relationship is robust across the full sample.</p>
-
-  <p>On emissions, the picture is more complex. There is less direct evidence linking board gender diversity to immediate GHG reductions. The influence of women on boards appears to operate through <strong>more complex, indirect mechanisms</strong> — shaping strategy, culture, and priorities rather than flipping a switch on operational emissions.</p>
-
-  <div class="callout">
-    <div class="callout-title">Why this distinction matters</div>
-    <p>Policy adoption and emissions reduction are different outcomes with different timelines. A board that commits to renewable energy today will not show emissions results until the procurement, installation, and operational changes take effect. Treating governance as a direct emissions lever misunderstands how organisations actually change.</p>
-  </div>
-
-  <h2>Governance is not a simple lever</h2>
-
-  <p>This is perhaps the most important takeaway. Governance shapes strategy, culture, and priorities in ways that are more indirect than a straightforward cause-and-effect. Board diversity works through policy adoption and strategic direction — not through instant emissions cuts.</p>
-
-  <p>That does not make it unimportant. It makes it one part of a broader system. If you want to improve sustainability in REITs, board diversity is one piece of the puzzle. But you also need energy transition, better policy enforcement, and structural changes in how assets are operated.</p>
-
-  <h2>What this means for practitioners</h2>
-
-  <table>
-    <thead><tr><th>Audience</th><th>What this means for you</th></tr></thead>
-    <tbody>
-      <tr><td><strong>ESG fund managers</strong></td><td>Use board diversity as a signal for sustainability commitment — but don't use it as a proxy for actual emissions performance without checking operational data</td></tr>
-      <tr><td><strong>REIT boards</strong></td><td>Gender diversity strengthens policy adoption, but boards also need to ensure those policies translate into operational change and measurable outcomes</td></tr>
-      <tr><td><strong>Governance analysts</strong></td><td>The indirect mechanism matters — diversity influences strategy and culture, which eventually shapes environmental outcomes, but on a longer timeline than one reporting cycle</td></tr>
-      <tr><td><strong>Policymakers</strong></td><td>Mandating board diversity can improve sustainability commitment, but pairing it with operational accountability and disclosure requirements is essential</td></tr>
-    </tbody>
-  </table>
-
-  <h2>The bigger picture</h2>
-
-  <p>Board composition matters. But the impact is more nuanced than people often assume. This research supports a view of governance as part of a system — not a standalone solution.</p>
-
-  <p>Gender diversity on boards is associated with stronger sustainability policies. That is a real and meaningful finding. But emissions reductions depend on many additional factors: energy markets, technology adoption, regulatory enforcement, and operational discipline at the asset level.</p>
-
-  <p>The practical conclusion is not that diversity does not matter — it clearly does. The conclusion is that diversity works best when it is part of a comprehensive approach that connects governance decisions to operational outcomes. Strategy without execution is just a policy document.</p>
-
-  <div class="article-cta">
-    <h3>Explore more on ESG and real estate governance</h3>
-    <p>Sherry Xu's research and books cover the intersection of sustainability, governance, and investment strategy in real estate.</p>
-    <div class="cta-buttons">
-      <a href="https://www.amazon.co.uk/dp/B0DQ3MKWMQ" class="cta-btn primary" target="_blank" rel="noopener">The Journey to Net Zero Real Estate →</a>
-      <a href="https://www.amazon.co.uk/dp/B0DPZXM6CJ" class="cta-btn secondary" target="_blank" rel="noopener">Sustainability in Real Estate →</a>
+      <div class="article-card">
+        <div class="article-pillar">AI &amp; Financial Media</div>
+        <div class="article-title">Can AI Hear What We Can't?</div>
+        <div class="article-desc">Inside the methodology of acoustic sentiment analysis — how AI can decompose broadcast delivery into a financial signal that text alone cannot capture.</div>
+        <a href="/articles/can-ai-hear/" class="article-status live">Read article →</a>
+      </div>
+<div class="article-card">
+  <div class="article-pillar">AI & ESG</div>
+  <div class="article-title">Can machine learning predict corporate carbon emissions?</div>
+  <div class="article-desc">XGBoost outperforms other ML models for forecasting emissions — and governance metrics fill the gap when disclosure data is missing. Includes video.</div>
+  <a href="/articles/ml-carbon-emissions-governance/" class="article-status live">Read article →</a>
+</div>
+      
     </div>
   </div>
+</section>
 
-  <div class="faq">
-    <h2>Frequently asked questions</h2>
+<div class="divider"></div>
 
-    <div class="faq-item">
-      <div class="faq-q">Do women on REIT boards improve sustainability outcomes?</div>
-      <div class="faq-a">Gender-diverse boards are significantly more likely to adopt pro-environmental policies such as waste reduction and renewable energy use. However, the direct link to immediate GHG emissions reductions is weaker — diversity appears to work through strategy and policy adoption rather than instant operational change.</div>
-    </div>
-
-    <div class="faq-item">
-      <div class="faq-q">How does board gender diversity affect environmental policy in REITs?</div>
-      <div class="faq-a">The study of 375 global REITs from 2017 to 2023 found that boards with greater gender diversity are more likely to implement sustainability initiatives. The influence operates through more complex, indirect mechanisms — shaping strategy, culture, and priorities rather than directly cutting emissions.</div>
-    </div>
-
-    <div class="faq-item">
-      <div class="faq-q">Is board diversity enough to improve REIT sustainability?</div>
-      <div class="faq-a">No. Board diversity is one piece of the puzzle. Meaningful sustainability improvement also requires energy transition, better policy enforcement, and structural changes in how assets are operated. Diversity shapes strategic direction but is not a standalone solution.</div>
-    </div>
-
-    <div class="faq-item">
-      <div class="faq-q">What is the relationship between corporate governance and environmental performance in real estate?</div>
-      <div class="faq-a">Governance shapes environmental outcomes indirectly. Better board composition — including gender diversity — is associated with stronger sustainability policies, but emissions reductions depend on many additional factors including operational changes, market conditions, and regulatory enforcement.</div>
+<!-- ── SUBSTACK ──────────────────────────────────── -->
+<section id="substack">
+  <div class="section-inner">
+    <div class="substack-inner">
+      <div>
+        <div class="section-label">Newsletter</div>
+        <h2 class="section-title" style="color:#fff;">AI and ESG — a fortnightly briefing</h2>
+        <p class="section-desc">Thinking at the intersection of artificial intelligence and sustainable real estate. For practitioners who want analysis, not announcements.</p>
+        <div class="substack-features">
+          <div class="substack-feat">
+            <div class="substack-feat-icon">✦</div>
+            <div class="substack-feat-text">
+              <h4>Practitioner-first</h4>
+              <p>Written from inside real estate — not from the outside looking in.</p>
+            </div>
+          </div>
+          <div class="substack-feat">
+            <div class="substack-feat-icon">✦</div>
+            <div class="substack-feat-text">
+              <h4>Research-grounded</h4>
+              <p>Academic rigour with practical application. No fluff, no filler.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="substack-cta">
+        <p>Join readers who want to understand where AI and ESG are actually taking the real estate industry — before it arrives.</p>
+        <a href="https://sherryxucom.substack.com/" target="_blank" class="btn-substack" <!-- ✏️ EDIT: Replace with your Substack URL -->>
+          Subscribe on Substack →
+        </a>
+        <p style="font-size:0.75rem; text-align:center; margin-top:1rem; margin-bottom:0; color:rgba(255,255,255,0.3);">Free · Fortnightly · Unsubscribe anytime</p>
+      </div>
     </div>
   </div>
+</section>
 
-</article>
+<div class="divider"></div>
 
-<footer class="footer">
-  <p>&copy; 2026 Yishuang (Sherry) Xu · <a href="/">sherryxu.com</a> · <a href="https://www.linkedin.com/in/yishuang-sherry-xu" target="_blank" rel="noopener">LinkedIn</a></p>
+<!-- ── RESEARCH ──────────────────────────────────── -->
+<section id="research">
+  <div class="section-inner">
+    <div class="section-label">Academic work</div>
+    <h2 class="section-title">Research &amp; publications</h2>
+    <p class="section-desc">Peer-reviewed research in PropTech, ESG, digital assets, and AI in real estate. University of Manchester.</p>
+
+    <div class="research-row">
+      <div class="research-year">2026</div>
+      <div class="research-body">
+        <div class="research-title">PropTech Innovations in Real Estate Investment and Finance: Sustainable Futures</div>
+        <div class="research-venue">Routledge · Book</div>
+      </div>
+    </div>
+    <div class="research-row">
+      <div class="research-year">2025</div>
+      <div class="research-body">
+        <div class="research-title">Board Gender Diversity and Environmental Practice in Global REITs: Examining the Impact on Policies and Outcomes</div>
+        <div class="research-venue">Journal of Sustainable Finance and Investment</div>
+      </div>
+    </div>
+    <div class="research-row">
+      <div class="research-year">2025</div>
+      <div class="research-body">
+        <div class="research-title">Automated Machine Learning for Real Estate Valuation</div>
+        <div class="research-venue">University of Manchester Research · AI valuation system</div>
+      </div>
+    </div>
+    <div class="research-row">
+      <div class="research-year">2023</div>
+      <div class="research-body">
+        <div class="research-title">Capitalising the Network Externalities of New Land Supply in the Metaverse</div>
+        <div class="research-venue">Working Paper · University of Manchester</div>
+      </div>
+    </div>
+    <div class="research-row">
+      <div class="research-year">2022</div>
+      <div class="research-body">
+        <div class="research-title">Retail Tenant Mix Effect on Shopping Mall's Performance</div>
+        <div class="research-venue">Journal of Property Investment and Finance</div>
+      </div>
+    </div>
+    <div class="research-row">
+      <div class="research-year">2020</div>
+      <div class="research-body">
+        <div class="research-title">Imagining a Post-Covid-19 World of Real Estate</div>
+        <div class="research-venue">Town Planning Review · with Carson, Nanda, Thanos, Valtonen</div>
+      </div>
+    </div>
+    <div class="research-row">
+      <div class="research-year">2020</div>
+      <div class="research-body">
+        <div class="research-title">Forced Homeward: The Covid-19 Implications for Housing</div>
+        <div class="research-venue">Town Planning Review · with Nanda, Thanos, Valtonen, Zandieh</div>
+      </div>
+    </div>
+        <div style="margin-top:2rem;">
+      <a href="https://scholar.google.com/citations?user=OMMQwx0AAAAJ&hl=en" target="_blank" class="btn btn-outline">Google Scholar profile</a>
+      <a href="https://www.linkedin.com/in/yishuang-sherry-xu/" target="_blank" class="btn btn-outline">LinkedIn profile</a>
+    </div>
+  </div>
+</section>
+
+<!-- ── FOOTER ─────────────────────────────────────── -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-name">Sherry Xu</div>
+    <ul class="footer-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#book">Featured Book</a></li>
+      <li><a href="#tools">Tools</a></li>
+      <li><a href="#articles">Articles</a></li>
+      <li><a href="https://substack.com/@sherryxucom" target="_blank">Newsletter</a></li> <!-- ✏️ EDIT: Replace with your Substack URL -->
+      <li><a href="https://www.linkedin.com/in/yishuang-sherry-xu/" target="_blank">LinkedIn <!-- ✏️ EDIT: LinkedIn URL --></a></li>
+    </ul>
+    <div class="footer-copy">© 2026 Yishuang (Sherry) Xu</div>
+  </div>
 </footer>
 
 </body>
