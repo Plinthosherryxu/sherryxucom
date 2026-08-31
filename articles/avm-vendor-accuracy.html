@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Most AVM accuracy figures are curated, not fabricated. Five ways vendor numbers flatter themselves, and five questions to ask before you sign.">
+  <link rel="canonical" href="https://sherryxu.com/articles/avm-vendor-accuracy/">
+  <title>Your AVM Vendor's Accuracy Numbers Are Probably Wrong</title>
+</head>
+<body>
+
+<nav>
+  <a href="https://sherryxu.com/">Sherry Xu</a>
+  <a href="https://sherryxu.com/#articles">← All articles</a>
+</nav>
+
+<article>
+
+<p class="topic-tag">AI in Real Estate · Practitioner Guide</p>
+
+<h1>Your AVM Vendor's Accuracy Numbers Are Probably Wrong</h1>
+
+<p class="byline">By Yishuang (Sherry) Xu · September 2026 · 5 min read</p>
+
+<!-- Replace YOUR_VIDEO_ID with the YouTube video ID after uploading your NotebookLM video -->
+<div class="video-embed">
+  <iframe width="100%" height="400" src="https://www.youtube.com/embed/YOUR_VIDEO_ID" title="Your AVM Vendor's Accuracy Numbers Are Probably Wrong — Video Overview" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</div>
+
+<p>You are about to sign a contract with an AVM provider. The pitch deck is polished. The headline accuracy figure is impressive: a median absolute percentage error of six per cent, or a hit rate north of ninety per cent. You feel reassured.</p>
+
+<p>You should not be.</p>
+
+<p>Those numbers are almost certainly correct in the narrow, technical sense that they were computed from real data using real formulas. They are also almost certainly misleading, because the conditions under which they were produced bear little resemblance to the conditions under which you will actually use the product. Understanding why requires knowing what the metrics mean, how they can be gamed, and what questions to ask before you trust them.</p>
+
+<h2>The metrics that matter (and the ones that don't)</h2>
+
+<p>Three metrics form the backbone of serious AVM evaluation, and any vendor conversation that avoids them is a conversation you should leave.</p>
+
+<p><strong>MdAPE</strong> (median absolute percentage error) measures the typical error across a portfolio. It tells you the point at which half the valuations are more accurate and half less accurate. The median, not the mean, is the right central tendency measure here, because property value distributions are heavily right-skewed: a handful of catastrophic mispricings on high-value properties would distort a mean-based metric beyond usefulness. A production-quality residential AVM should achieve an MdAPE below seven to eight per cent on off-market properties. If the vendor is quoting you a mean error, ask why.</p>
+
+<p><strong>PPE10</strong> (percentage of predictions within ten per cent of the transaction price) tells you how often the AVM is close enough to be useful. It answers the question lenders actually care about: what proportion of these valuations can I rely on? High-quality AVMs achieve a PPE10 above eighty-five per cent. Below seventy per cent, you should be suppressing rather than trusting.</p>
+
+<p><strong>FSD</strong> (Forecast Standard Deviation) is the metric most vendors would prefer you never heard of. It operates at the individual property level, quantifying how confident the model is in a specific valuation, not across a portfolio but for the particular property you are making a lending decision about right now. An FSD below 0.10 suggests reasonable confidence. Above 0.15, the uncertainty is wide enough that you should be ordering a human appraisal instead. If your AVM provider cannot deliver a property-level confidence score, their product is not ready for high-stakes decisions, full stop.</p>
+
+<h2>Five ways vendor accuracy figures flatter themselves</h2>
+
+<p>Self-reported accuracy numbers are not fabricated. They are curated. Here is how.</p>
+
+<p><strong>Cherry-picked geographies.</strong> AVMs perform best in dense, actively transacting urban markets with abundant comparable sales. They perform worst in thin rural markets, unusual property types, and areas with limited transaction history. A vendor who reports accuracy across their best-performing metropolitan areas is telling you a true number that will not survive contact with your actual portfolio.</p>
+
+<p><strong>Favourable time windows.</strong> AVM accuracy varies with market conditions. In a stable, rising market with high transaction volumes, any reasonable model looks good. In a volatile, turning, or illiquid market (precisely when you need the AVM most), accuracy degrades. Ask which period the accuracy figures cover, and whether it includes any market stress.</p>
+
+<p><strong>On-market contamination.</strong> Some reported accuracy figures include properties that were listed for sale at the time of valuation. An AVM that knows a property is on the market at a specific asking price, and has access to listing data as a feature, will naturally produce a more accurate "prediction" than one valuing an off-market property cold. The figure that matters for lending and portfolio decisions is off-market accuracy. If the vendor cannot separate the two, their number is meaningless for your use case.</p>
+
+<p><strong>Suppression rate opacity.</strong> Here is the subtlest trick. An AVM can dramatically improve its reported accuracy by simply declining to value difficult properties. If the model suppresses the bottom twenty per cent of its portfolio (the unusual properties, thin markets, and low-confidence cases), its accuracy on the remaining eighty per cent will look excellent. That is not cheating; suppression is a legitimate and important feature. But if the vendor reports accuracy without disclosing the suppression rate, you are comparing the accuracy of their confident valuations against the accuracy of a competitor's entire portfolio. Ask for accuracy at a stated coverage level: "What is your MdAPE at ninety per cent coverage?"</p>
+
+<p><strong>Absence of independent validation.</strong> The most fundamental problem is structural. When a vendor tests their own model on their own data and reports the results, they control every variable. Independent benchmarking (where a third party tests competing AVMs on a common, held-out dataset using standardised metrics) is the only credible basis for comparison. If your vendor has not been independently tested, their accuracy figures are a self-assessment, and you would not accept a self-assessment from a borrower.</p>
+
+<h2>Five questions to ask before you sign</h2>
+
+<ol>
+  <li><strong>What is your MdAPE on off-market properties, disaggregated by region and property type?</strong> A national headline figure is marketing. Regional and segment-level figures are due diligence.</li>
+  <li><strong>What is your suppression rate, and what is your accuracy at ninety per cent coverage?</strong> This forces the vendor to reveal the trade-off between accuracy and coverage, which is where the real performance picture lives.</li>
+  <li><strong>Can you provide a property-level confidence score (FSD or equivalent) for every valuation?</strong> If they cannot, their product treats every property as equally reliable, which it is not.</li>
+  <li><strong>Has your model been independently benchmarked, and can I see the results?</strong> If the answer is no, treat every other number they give you as provisional.</li>
+  <li><strong>How does your model perform in a declining or volatile market?</strong> Accuracy in benign conditions tells you little about the conditions where valuation errors are most costly.</li>
+</ol>
+
+<h2>The professional obligation</h2>
+
+<p>For lenders, asset managers, and valuers, accepting an AVM's output without understanding how its accuracy was measured is a governance failure. The 2025 AVM Quality Control Rule in the US now mandates documented accuracy testing and ongoing performance monitoring. Updated RICS and IAAO standards place the burden of understanding model limitations squarely on the professional who relies on the output. The direction of travel is clear: the days of treating an AVM as a black box that produces a number you can use without scrutiny are ending.</p>
+
+<p>Your AVM vendor's accuracy numbers are probably not wrong. They are probably incomplete. And in a high-stakes valuation context, incomplete is worse than wrong, because wrong gets caught and incomplete gets trusted.</p>
+
+<!-- CTA Block -->
+<div class="cta-block">
+  <p>🎓</p>
+  <h4>Want your team to evaluate AVMs with confidence?</h4>
+  <p>Bespoke corporate training on AVM accuracy metrics, vendor evaluation, and governance frameworks for lenders, asset managers, and valuation professionals.</p>
+  <p><a href="mailto:yishuang.xu@manchester.ac.uk">Enquire about training →</a></p>
+</div>
+
+<!-- Series Cross-Links -->
+<div class="series-links">
+  <h4>More in this series: Automated Valuation Models for Practitioners</h4>
+  <ul>
+    <li><a href="https://sherryxu.com/articles/avm-suppression/">When Your AVM Should Say "I Don't Know"</a></li>
+    <li><a href="https://sherryxu.com/articles/avm-ensemble-stacking/">Why the "Best" AVM Is Actually Three Models in a Trenchcoat</a></li>
+    <li><a href="https://sherryxu.com/articles/valuer-role-avm-governance/">The Valuer Isn't Obsolete. The Job Description Just Changed.</a></li>
+    <li><a href="https://sherryxu.com/articles/avm-bias-discrimination/">AVMs Don't Discriminate on Purpose. They Do Discriminate.</a></li>
+  </ul>
+</div>
+
+</article>
+
+<!-- Newsletter Signup -->
+<div class="newsletter-signup">
+  <p>Get notified when I publish new work</p>
+  <p>New research articles, books, and practitioner tools on AI, ESG, and real estate — straight to your inbox. No fixed schedule, no spam. Written by a researcher who also builds the tools.</p>
+  <p><a href="https://sherryxucom.substack.com/">Subscribe (free) →</a></p>
+</div>
+
+<footer>
+  <p>© 2026 Yishuang (Sherry) Xu · <a href="https://sherryxu.com/">sherryxu.com</a> · <a href="https://sherryxu.com/#articles">All articles</a></p>
+</footer>
+
+</body>
+</html>
