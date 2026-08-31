@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Production AVMs don't use one model. They stack several. Why ensemble methods dominate automated valuation, and what it means for AVM procurement.">
+  <link rel="canonical" href="https://sherryxu.com/articles/avm-ensemble-stacking/">
+  <title>Why the "Best" AVM Is Actually Three Models in a Trenchcoat</title>
+</head>
+<body>
+
+<nav>
+  <a href="https://sherryxu.com/">Sherry Xu</a>
+  <a href="https://sherryxu.com/#articles">← All articles</a>
+</nav>
+
+<article>
+
+<p class="topic-tag">AI in Real Estate · Practitioner Guide</p>
+
+<h1>Why the "Best" AVM Is Actually Three Models in a Trenchcoat</h1>
+
+<p class="byline">By Yishuang (Sherry) Xu · October 2026 · 5 min read</p>
+
+<!-- Replace YOUR_VIDEO_ID with the YouTube video ID after uploading your NotebookLM video -->
+<div class="video-embed">
+  <iframe width="100%" height="400" src="https://www.youtube.com/embed/YOUR_VIDEO_ID" title="Why the Best AVM Is Actually Three Models in a Trenchcoat — Video Overview" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</div>
+
+<p>When organisations evaluate automated valuation models, they almost always ask the same question: which model is the most accurate? It is a reasonable question. It is also the wrong one.</p>
+
+<p>The most accurate production AVMs do not use a single model. They use several, combined through a technique called stacking, where diverse models with different strengths are layered together and a further model learns the optimal way to blend their outputs. The result consistently outperforms any of the individual models on their own. Understanding why this works, and what it means for how you evaluate AVM providers, is worth the five minutes it takes to grasp the principle.</p>
+
+<h2>The estate agent analogy</h2>
+
+<p>Imagine you need to value a property and you have access to three estate agents, each with a different specialism.</p>
+
+<p>Agent A knows the local market intimately. She values properties by identifying the most similar recent sales in the immediate area and adjusting for differences. She is excellent when the property is typical and comparable sales are plentiful, but she struggles when the property is unusual or the market is thin.</p>
+
+<p>Agent B is an analyst. He builds statistical models that capture complex relationships between dozens of property features and price. He is excellent at spotting patterns across large datasets and handles unusual feature combinations well, but he can miss local price dynamics that do not show up in the numbers.</p>
+
+<p>Agent C is a specialist in a particular property type. She is superb within her niche but unreliable outside it.</p>
+
+<p>Now imagine you have a senior partner whose job is not to value properties directly but to listen to all three agents' opinions and decide how much weight to give each one, depending on the type of property and market context. For a typical terraced house in a busy suburb, the senior partner leans heavily on Agent A's comparable sales expertise. For an unusual conversion in a thin market, she gives more weight to Agent B's statistical model. For properties in Agent C's niche, she draws on that specialist knowledge.</p>
+
+<p>This senior partner is the meta-learner. The three agents are the base models. Together, they form a stacking architecture, and the combined opinion is consistently better than any single agent's judgement.</p>
+
+<h2>Why different models make different mistakes</h2>
+
+<p>The principle behind stacking is not mysterious: different modelling approaches have different blind spots, and combining them allows errors to cancel out while correct signals reinforce each other.</p>
+
+<p>A comparable-sales model (the automated equivalent of Agent A) is grounded in actual transactions and mirrors how market participants think about value. It excels in data-rich environments with plenty of recent, similar sales. But it degrades in areas with limited transaction activity, and it struggles to value properties that are genuinely unlike anything that has recently sold.</p>
+
+<p>A gradient boosting model (Agent B's statistical approach) captures complex, non-linear interactions between property features that simpler models miss. It handles the reality that the value of an extra bedroom depends on location, property type, and market conditions, all simultaneously. But it operates at a higher level of abstraction, and its outputs are harder to explain to clients and regulators.</p>
+
+<p>A nearest-neighbour model is highly sensitive to local price clusters, picking up micro-market effects that a broader statistical model might smooth over. But it can be misled by outlier transactions or properties that are superficially similar but fundamentally different.</p>
+
+<p>Each model captures something the others miss. Each model is also wrong in ways the others are not. A stacking architecture exploits this complementarity systematically.</p>
+
+<h2>How stacking actually works</h2>
+
+<p>The mechanics are straightforward, even if the mathematics are not.</p>
+
+<p>In the first layer, each base model is trained independently on the same dataset. They each produce a set of predictions for every property in a validation set. These predictions become the inputs to the second layer.</p>
+
+<p>In the second layer, a meta-learner (often a relatively simple model, such as a ridge regression or a random forest) is trained not on the original property features but on the base models' predictions. Its job is to learn which base model is most reliable in which situations and to weight them accordingly. The meta-learner might learn, for instance, that the comparable-sales model is most trustworthy for properties with many nearby recent transactions, while the gradient boosting model should dominate for unusual properties with sparse comparables.</p>
+
+<p>The result is an ensemble that adapts its strategy to the characteristics of each individual property, drawing on whichever base model is best suited to the task at hand.</p>
+
+<p>Published research bears this out. In one study, a stacked architecture combining a gradient boosting model, a comparable-sales method, and a least-absolute-deviation model achieved a median absolute percentage error of roughly five per cent, outperforming any of the individual models used alone. The meta-learner was doing genuine work: not just averaging, but learning context-dependent weighting that extracted more from the combination than any single approach could deliver.</p>
+
+<h2>What this means for AVM procurement</h2>
+
+<p>If you are evaluating AVM providers, this has practical implications.</p>
+
+<p><strong>Ask about architecture, not just accuracy.</strong> A vendor who tells you their product uses "machine learning" has told you almost nothing. Ask whether the system uses a single model or an ensemble. If it is an ensemble, ask what the base models are, how diverse they are, and how they are combined. A stacking architecture with genuinely different base learners (statistical, comparable-sales, and nearest-neighbour, for instance) is a stronger design than one that stacks five variations of the same gradient boosting model.</p>
+
+<p><strong>Understand the trade-off.</strong> Stacking improves accuracy and robustness, but it also increases complexity. A stacked AVM is harder to explain, harder to audit, and harder to debug when something goes wrong. If your use case demands high explainability (regulated mortgage lending, tax assessment, valuations subject to legal challenge), you need to understand how the vendor handles post-hoc explainability for the ensemble, not just for individual base models. If they cannot explain how the meta-learner weights its inputs for a specific property, the accuracy gain may come at a governance cost you are not prepared to pay.</p>
+
+<p><strong>Do not confuse model count with model quality.</strong> More base models do not automatically produce a better ensemble. The value of stacking comes from diversity: base models that are good at different things and wrong in different ways. Adding a sixth model that largely duplicates what the other five already capture adds complexity without adding performance. Quality of design matters more than quantity of components.</p>
+
+<h2>The bigger picture</h2>
+
+<p>The dominance of ensemble methods in production AVMs reflects a deeper truth about real estate valuation: no single perspective on value is sufficient. The comparable-sales approach is grounded and transparent but limited by data availability. Statistical models are powerful but abstract. Specialist models are precise but narrow. The best valuation systems, whether human or automated, integrate multiple perspectives and weight them by context.</p>
+
+<p>When someone tells you they have found the "best" model for property valuation, the correct response is scepticism. The best system is almost certainly not a single model. It is several models, working together, governed by a layer that knows when to trust each one.</p>
+
+<p>Three models in a trenchcoat, if you like. But the trenchcoat is doing important work.</p>
+
+<!-- CTA Block -->
+<div class="cta-block">
+  <p>🎓</p>
+  <h4>Want your team to understand what's inside the AVM they rely on?</h4>
+  <p>Bespoke corporate training on AVM architecture, ensemble methods, and model evaluation for lenders, asset managers, and valuation professionals.</p>
+  <p><a href="mailto:yishuang.xu@manchester.ac.uk">Enquire about training →</a></p>
+</div>
+
+<!-- Series Cross-Links -->
+<div class="series-links">
+  <h4>More in this series: Automated Valuation Models for Practitioners</h4>
+  <ul>
+    <li><a href="https://sherryxu.com/articles/avm-vendor-accuracy/">Your AVM Vendor's Accuracy Numbers Are Probably Wrong</a></li>
+    <li><a href="https://sherryxu.com/articles/avm-suppression/">When Your AVM Should Say "I Don't Know"</a></li>
+    <li><a href="https://sherryxu.com/articles/valuer-role-avm-governance/">The Valuer Isn't Obsolete. The Job Description Just Changed.</a></li>
+    <li><a href="https://sherryxu.com/articles/avm-bias-discrimination/">AVMs Don't Discriminate on Purpose. They Do Discriminate.</a></li>
+  </ul>
+</div>
+
+</article>
+
+<!-- Newsletter Signup -->
+<div class="newsletter-signup">
+  <p>Get notified when I publish new work</p>
+  <p>New research articles, books, and practitioner tools on AI, ESG, and real estate — straight to your inbox. No fixed schedule, no spam. Written by a researcher who also builds the tools.</p>
+  <p><a href="https://sherryxucom.substack.com/">Subscribe (free) →</a></p>
+</div>
+
+<footer>
+  <p>© 2026 Yishuang (Sherry) Xu · <a href="https://sherryxu.com/">sherryxu.com</a> · <a href="https://sherryxu.com/#articles">All articles</a></p>
+</footer>
+
+</body>
+</html>
