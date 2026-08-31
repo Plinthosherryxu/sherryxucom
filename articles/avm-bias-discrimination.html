@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="AVMs produce systematically higher errors for Black homeowners. The regulatory response is here, and it's heading beyond the US. What practitioners should do now.">
+  <link rel="canonical" href="https://sherryxu.com/articles/avm-bias-discrimination/">
+  <title>AVMs Don't Discriminate on Purpose. They Do Discriminate.</title>
+</head>
+<body>
+
+<nav>
+  <a href="https://sherryxu.com/">Sherry Xu</a>
+  <a href="https://sherryxu.com/#articles">← All articles</a>
+</nav>
+
+<article>
+
+<p class="topic-tag">AI in Real Estate · Practitioner Guide</p>
+
+<h1>AVMs Don't Discriminate on Purpose. They Do Discriminate.</h1>
+
+<p class="byline">By Yishuang (Sherry) Xu · November 2026 · 5 min read</p>
+
+<!-- Replace YOUR_VIDEO_ID with the YouTube video ID after uploading your NotebookLM video -->
+<div class="video-embed">
+  <iframe width="100%" height="400" src="https://www.youtube.com/embed/YOUR_VIDEO_ID" title="AVMs Don't Discriminate on Purpose — Video Overview" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</div>
+
+<p>Automated valuation models do not have intentions. They do not decide to undervalue properties owned by particular demographic groups. They have no concept of race, ethnicity, or neighbourhood history. They are, in the technical sense, neutral.</p>
+
+<p>They also produce systematically higher valuation errors for Black homeowners than for white homeowners, by a margin of approximately 3.4 percentage points, even after controlling for property and neighbourhood characteristics. This is not a disputed finding. It has been documented repeatedly by the Urban Institute across multiple studies and methodologies. The disparity is real, it is measurable, and it persists.</p>
+
+<p>Understanding why this happens, and what it means for practitioners in the UK and Europe as much as in the United States, requires setting aside the comfortable notion that algorithmic neutrality produces fair outcomes.</p>
+
+<h2>How neutral algorithms produce biased results</h2>
+
+<p>Two mechanisms drive the disparity, and both are structural rather than intentional.</p>
+
+<p><strong>Optimisation for the majority.</strong> AVMs are trained to minimise prediction error across the entire dataset. In practice, this means they are optimised for the property types, neighbourhoods, and transaction patterns that are most heavily represented in the training data. Properties and markets that are underrepresented (which, due to historical patterns of segregation and uneven data collection, disproportionately include properties owned by minority homeowners) receive less modelling attention. The model is not trying to be less accurate for these properties. It is simply spending its learning capacity where the data is densest, and the data is densest where the majority population lives and transacts.</p>
+
+<p>The result is an AVM that performs well on average but poorly at the margins, and the margins are not randomly distributed across the population.</p>
+
+<p><strong>Inheritance of historical patterns.</strong> AVMs learn from historical transaction data. That data reflects decades of discriminatory lending, redlining, racially restrictive covenants, and uneven public investment that systematically depressed property values in certain neighbourhoods. An AVM trained on this history does not reproduce discrimination because it has been instructed to. It reproduces discrimination because the patterns of value it has learned were shaped by discrimination, and the model cannot distinguish between legitimate market signals and the legacy of structural inequality embedded in the prices it was trained on.</p>
+
+<p>This is the fundamental challenge: the training data is not a neutral record of market value. It is an artefact of a market that was, and in many respects still is, shaped by policies and practices that produced unequal outcomes. An AVM that learns faithfully from this data will faithfully reproduce those outcomes.</p>
+
+<h2>The regulatory response</h2>
+
+<p>In the United States, this concern has now been translated into binding regulation. The AVM Quality Control Rule, finalised by federal agencies including the Consumer Financial Protection Bureau and the Federal Reserve and effective from 2025, requires institutions using AVMs in mortgage lending to adopt policies that explicitly address non-discrimination. The rule does not simply recommend fairness testing. It mandates it, and it places the burden on the institution to demonstrate that its AVMs do not produce discriminatory outcomes.</p>
+
+<p>This is a significant shift. Before the rule, algorithmic fairness in valuation was a matter of voluntary best practice: something forward-thinking organisations might pursue but were not required to demonstrate. Now, for any institution using AVMs in US mortgage lending, fairness is a regulatory obligation with compliance consequences.</p>
+
+<h2>Why this matters beyond the United States</h2>
+
+<p>If you work in UK or European real estate, you might reasonably ask why a US regulatory development is relevant to you. Three reasons.</p>
+
+<p>First, the underlying problem is not uniquely American. While the specific history of racial segregation and redlining is a US phenomenon, the broader mechanism (AVMs learning from historical data that reflects structural inequalities) operates in any market where past policy or practice has produced uneven outcomes. In the UK, patterns of socioeconomic disadvantage, housing tenure, and neighbourhood investment are not evenly distributed, and an AVM trained on UK transaction data will learn those patterns just as faithfully as a US model learns American ones. The specifics differ; the structural dynamic does not.</p>
+
+<p>Second, the regulatory direction of travel in Europe points the same way. The EU AI Act classifies AI systems used in creditworthiness assessment and credit scoring as "high-risk," subjecting them to requirements for transparency, human oversight, and non-discrimination that parallel, and in some respects exceed, the US AVM Quality Control Rule. As AVMs are increasingly used in European mortgage lending and property assessment, they will fall squarely within these requirements. Organisations that wait for the regulation to arrive before addressing algorithmic fairness will find themselves scrambling to catch up.</p>
+
+<p>Third, the RICS Red Book standards, which apply internationally, have strengthened their emphasis on risk management and transparency in automated valuation. While the Red Book does not yet contain the explicit non-discrimination requirements of the US rule, its direction of travel is towards greater accountability for model-driven valuation outputs. A professional who relies on an AVM without understanding or testing for bias is increasingly exposed, both regulatorily and reputationally.</p>
+
+<h2>What to do now</h2>
+
+<p>For lenders, valuers, and asset managers who use or rely on AVM outputs, four steps are worth taking before the regulatory framework forces them.</p>
+
+<p><strong>Demand disaggregated accuracy reporting.</strong> Portfolio-level accuracy statistics hide disparities. Ask your AVM provider to report accuracy broken down by geography, property type, and (where data permits) demographic characteristics of the neighbourhood. If the model performs well overall but poorly in specific segments, you need to know that before you rely on it for lending or investment decisions in those segments.</p>
+
+<p><strong>Conduct fairness audits.</strong> Test whether the AVM produces systematically different error rates for different population groups or neighbourhood types. This does not require access to the model's internals; it can be done by comparing AVM estimates to subsequent transaction prices across different segments. If disparities emerge, document them and investigate their sources.</p>
+
+<p><strong>Understand the limitations of "debiasing."</strong> There is no simple technical fix for bias that is embedded in the training data itself. Techniques exist to adjust model outputs or reweight training samples, but they involve trade-offs (sometimes reducing accuracy for majority groups, sometimes obscuring rather than resolving the underlying disparity). Be sceptical of any vendor who claims their model is "bias-free." The honest answer is that bias can be measured, monitored, and mitigated, but not eliminated from a model trained on historically biased data.</p>
+
+<p><strong>Document everything.</strong> Regulatory frameworks increasingly require not just that institutions act to address algorithmic fairness, but that they can demonstrate they have acted. Maintain records of the fairness testing you conduct, the results you observe, the actions you take in response, and the rationale for your decisions. When the UK or EU regulatory framework catches up to the US (and it will), documented due diligence will be the difference between compliance and exposure.</p>
+
+<h2>The uncomfortable truth</h2>
+
+<p>The discomfort of this topic is precisely why it matters. AVMs are powerful, efficient, and in many contexts highly accurate. They are also products of the markets they were trained on, and those markets carry histories that no algorithm can neutralise simply by being "objective."</p>
+
+<p>Acknowledging this is not an argument against using AVMs. It is an argument for using them with open eyes, rigorous testing, and the professional humility to recognise that a technically neutral system can produce outcomes that are anything but fair.</p>
+
+<!-- CTA Block -->
+<div class="cta-block">
+  <p>🎓</p>
+  <h4>Does your team know how to test an AVM for bias?</h4>
+  <p>Bespoke corporate training on algorithmic fairness in valuation, regulatory compliance, and bias auditing. Designed for lenders and valuation firms preparing for the next wave of AI governance requirements.</p>
+  <p><a href="mailto:yishuang.xu@manchester.ac.uk">Enquire about training →</a></p>
+</div>
+
+<!-- Series Cross-Links -->
+<div class="series-links">
+  <h4>More in this series: Automated Valuation Models for Practitioners</h4>
+  <ul>
+    <li><a href="https://sherryxu.com/articles/avm-vendor-accuracy/">Your AVM Vendor's Accuracy Numbers Are Probably Wrong</a></li>
+    <li><a href="https://sherryxu.com/articles/avm-suppression/">When Your AVM Should Say "I Don't Know"</a></li>
+    <li><a href="https://sherryxu.com/articles/avm-ensemble-stacking/">Why the "Best" AVM Is Actually Three Models in a Trenchcoat</a></li>
+    <li><a href="https://sherryxu.com/articles/valuer-role-avm-governance/">The Valuer Isn't Obsolete. The Job Description Just Changed.</a></li>
+  </ul>
+</div>
+
+</article>
+
+<!-- Newsletter Signup -->
+<div class="newsletter-signup">
+  <p>Get notified when I publish new work</p>
+  <p>New research articles, books, and practitioner tools on AI, ESG, and real estate — straight to your inbox. No fixed schedule, no spam. Written by a researcher who also builds the tools.</p>
+  <p><a href="https://sherryxucom.substack.com/">Subscribe (free) →</a></p>
+</div>
+
+<footer>
+  <p>© 2026 Yishuang (Sherry) Xu · <a href="https://sherryxu.com/">sherryxu.com</a> · <a href="https://sherryxu.com/#articles">All articles</a></p>
+</footer>
+
+</body>
+</html>
