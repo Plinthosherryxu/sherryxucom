@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="The most important thing an AVM can do is refuse to give you an answer. Why suppression is a design feature, not a failure mode.">
+  <link rel="canonical" href="https://sherryxu.com/articles/avm-suppression/">
+  <title>When Your AVM Should Say "I Don't Know"</title>
+</head>
+<body>
+
+<nav>
+  <a href="https://sherryxu.com/">Sherry Xu</a>
+  <a href="https://sherryxu.com/#articles">← All articles</a>
+</nav>
+
+<article>
+
+<p class="topic-tag">AI in Real Estate · Practitioner Guide</p>
+
+<h1>When Your AVM Should Say "I Don't Know"</h1>
+
+<p class="byline">By Yishuang (Sherry) Xu · September 2026 · 5 min read</p>
+
+<!-- Replace YOUR_VIDEO_ID with the YouTube video ID after uploading your NotebookLM video -->
+<div class="video-embed">
+  <iframe width="100%" height="400" src="https://www.youtube.com/embed/YOUR_VIDEO_ID" title="When Your AVM Should Say I Don't Know — Video Overview" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</div>
+
+<p>The most important thing an automated valuation model can do is refuse to give you an answer.</p>
+
+<p>That sounds counterintuitive. You buy an AVM for speed and coverage. You want a number for every property in your portfolio, instantly, at negligible cost. And the commercial pressure on AVM providers pushes in exactly this direction: broader coverage, higher hit rates, a valuation for every address you throw at it. But this pressure, left unchecked, produces a system that is confident when it should be cautious and silent when it should be shouting a warning.</p>
+
+<p>The technical term is suppression: the decision by an AVM to withhold a valuation when the conditions for reliable automated estimation are not met. Suppression is not a bug. It is, or should be, a core design feature. And if your AVM never declines to value a property, it is lying to you some of the time.</p>
+
+<h2>What makes a property unvaluable (by machine)</h2>
+
+<p>AVMs are pattern-recognition systems. They learn relationships between property characteristics and transaction prices from large volumes of historical data, then apply those learned relationships to estimate the value of properties they have not seen before. This works remarkably well when the property in question resembles properties the model has seen plenty of: a standard three-bedroom semi-detached in a suburb with active transaction volumes and dozens of recent comparable sales.</p>
+
+<p>It works poorly, sometimes dangerously, in several identifiable situations.</p>
+
+<p><strong>Thin markets.</strong> When transaction volumes are low (rural areas, niche property types, markets in prolonged stagnation), the model has insufficient data to learn reliable patterns. A valuation produced in these conditions may look precise but carries wide uncertainty that the headline number conceals.</p>
+
+<p><strong>Unusual properties.</strong> A converted chapel, a property with extensive land, a mixed-use building with a flat above a commercial unit: these properties fall outside the distribution the model was trained on. The model will still produce a number, because that is what models do. But it is extrapolating beyond its experience, and extrapolation is where machine learning fails most spectacularly.</p>
+
+<p><strong>Data gaps.</strong> If the property's records are incomplete (missing floor area, unrecorded extensions, ambiguous tenure), the model is working with corrupted inputs. The old principle applies: garbage in, garbage out. But unlike a human valuer, who would notice the gap and investigate, an AVM will silently impute or ignore the missing data and produce a confident estimate regardless.</p>
+
+<p><strong>Market dislocation.</strong> In rapidly shifting markets (a sudden correction, a localised boom driven by a new infrastructure announcement, a pandemic-era repricing of urban versus rural), historical patterns may no longer hold. The model's learned relationships were calibrated to a world that has just changed, and it has not yet seen enough post-change transactions to recalibrate.</p>
+
+<h2>The metrics that signal unreliability</h2>
+
+<p>A well-designed AVM does not simply produce a point estimate. It also produces a measure of how much it trusts that estimate, and this is where the decision to suppress or proceed should be made.</p>
+
+<p>The key metric is the Forecast Standard Deviation (FSD), which quantifies the model's confidence in a specific valuation. Think of it as a margin of error attached to each individual property, not to the portfolio as a whole. An FSD of 0.05 means the model is reasonably confident the true value is within about five per cent of its estimate. An FSD of 0.18 means the uncertainty band is wide enough that the estimate could be twenty per cent off in either direction. At that point, you are not valuing; you are guessing with mathematical decoration.</p>
+
+<p>Responsible AVM deployment sets clear thresholds. Above a certain FSD (commonly around 0.15), the valuation is suppressed and a human appraisal is triggered instead. Below the threshold, the valuation is released with its confidence score attached, so that downstream users (underwriters, portfolio managers, tax assessors) can make risk-adjusted decisions about how much weight to place on it.</p>
+
+<h2>The commercial pressure to override suppression</h2>
+
+<p>Here is where things get uncomfortable. Every suppressed valuation costs money. If the AVM declines to value a property, someone has to order a traditional appraisal: slower, more expensive, and a bottleneck in the lending process. The commercial incentive is therefore to lower the suppression threshold, to tolerate wider uncertainty, and to push the AVM to produce valuations for properties it should really leave alone.</p>
+
+<p>This pressure is real, and it is rational from a short-term cost perspective. But it creates a specific, measurable risk. The valuations that get produced when suppression thresholds are loosened are precisely the ones most likely to be wrong, and they are wrong in ways that are invisible until a transaction reveals the gap. A lender who overrides suppression to speed up origination is trading visible cost savings now for invisible risk accumulation that will surface later, possibly much later, and possibly all at once when the market turns.</p>
+
+<h2>What good looks like</h2>
+
+<p>A trustworthy AVM should meet several conditions before releasing a valuation. The property should have a validated address with accurate geolocation. The surrounding area should have sufficient data coverage, commonly defined as at least seventy per cent coverage at the local census level. The property-level confidence score should fall below the suppression threshold. And there should be a minimum number of genuinely comparable recent sales available, commonly at least five within the preceding twelve months.</p>
+
+<p>When any of these conditions is not met, the right answer is not a valuation with a caveat. The right answer is no valuation at all, accompanied by a clear signal that human judgement is required.</p>
+
+<p>This is the discipline of suppression: building a system that is not just accurate when it speaks, but honest when it cannot be.</p>
+
+<h2>What to do about it</h2>
+
+<p>If you are a lender, asset manager, or valuation professional who relies on AVM outputs, three steps are worth taking now.</p>
+
+<p>First, ask your AVM provider what their suppression rate is and at what confidence threshold they suppress. If they cannot answer, or if the answer is that they do not suppress, treat that as a red flag, not a selling point.</p>
+
+<p>Second, insist on property-level confidence scores attached to every valuation, not just portfolio-level accuracy statistics. Portfolio averages hide the individual cases where the model is least reliable, which are exactly the cases where you are most exposed.</p>
+
+<p>Third, build a human review process around the edges. The properties that sit just above the suppression threshold, the ones the AVM values but with lower confidence, deserve a second look. Automated valuation and professional judgement are not competing approaches; they are complementary layers in a system that is only as trustworthy as its weakest link.</p>
+
+<p>An AVM that always gives you an answer is not a more capable product. It is a less honest one.</p>
+
+<!-- CTA Block -->
+<div class="cta-block">
+  <p>🎓</p>
+  <h4>Need your team to understand when to trust an AVM and when to override it?</h4>
+  <p>Bespoke corporate training on AVM governance, suppression policy, and confidence-score interpretation for lenders, asset managers, and valuation professionals.</p>
+  <p><a href="mailto:yishuang.xu@manchester.ac.uk">Enquire about training →</a></p>
+</div>
+
+<!-- Series Cross-Links -->
+<div class="series-links">
+  <h4>More in this series: Automated Valuation Models for Practitioners</h4>
+  <ul>
+    <li><a href="https://sherryxu.com/articles/avm-vendor-accuracy/">Your AVM Vendor's Accuracy Numbers Are Probably Wrong</a></li>
+    <li><a href="https://sherryxu.com/articles/avm-ensemble-stacking/">Why the "Best" AVM Is Actually Three Models in a Trenchcoat</a></li>
+    <li><a href="https://sherryxu.com/articles/valuer-role-avm-governance/">The Valuer Isn't Obsolete. The Job Description Just Changed.</a></li>
+    <li><a href="https://sherryxu.com/articles/avm-bias-discrimination/">AVMs Don't Discriminate on Purpose. They Do Discriminate.</a></li>
+  </ul>
+</div>
+
+</article>
+
+<!-- Newsletter Signup -->
+<div class="newsletter-signup">
+  <p>Get notified when I publish new work</p>
+  <p>New research articles, books, and practitioner tools on AI, ESG, and real estate — straight to your inbox. No fixed schedule, no spam. Written by a researcher who also builds the tools.</p>
+  <p><a href="https://sherryxucom.substack.com/">Subscribe (free) →</a></p>
+</div>
+
+<footer>
+  <p>© 2026 Yishuang (Sherry) Xu · <a href="https://sherryxu.com/">sherryxu.com</a> · <a href="https://sherryxu.com/#articles">All articles</a></p>
+</footer>
+
+</body>
+</html>
